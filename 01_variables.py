@@ -22,52 +22,25 @@ PYTHON DATA TYPES WE'LL COVER:
 # CONCEPT EXPLANATION: Variables and Data Types
 # ============================================================================
 
-print("=== PYTHON VARIABLES & DATA TYPES EXAMPLES ===")
-print()
-
 # STRING EXAMPLES - Text data (always in quotes)
 username = "admin"
 ip_address = "192.168.1.100"
 log_message = "Login successful"
-
-print("String Examples:")
-print(f"Username: {username}")
-print(f"IP Address: {ip_address}")
-print(f"Log Message: {log_message}")
-print()
 
 # INTEGER EXAMPLES - Whole numbers (no quotes needed)
 port_number = 443
 failed_attempts = 5
 max_connections = 100
 
-print("Integer Examples:")
-print(f"Port Number: {port_number}")
-print(f"Failed Attempts: {failed_attempts}")
-print(f"Max Connections: {max_connections}")
-print()
-
 # FLOAT EXAMPLES - Decimal numbers
 cpu_usage = 87.5
 network_latency = 0.025
 security_score = 8.7
 
-print("Float Examples:")
-print(f"CPU Usage: {cpu_usage}%")
-print(f"Network Latency: {network_latency} seconds")
-print(f"Security Score: {security_score}/10")
-print()
-
 # BOOLEAN EXAMPLES - True or False values
 firewall_enabled = True
 intrusion_detected = False
 admin_logged_in = True
-
-print("Boolean Examples:")
-print(f"Firewall Enabled: {firewall_enabled}")
-print(f"Intrusion Detected: {intrusion_detected}")
-print(f"Admin Logged In: {admin_logged_in}")
-print()
 
 # ============================================================================
 # HOW THIS APPLIES TO CYBERSECURITY ADMINISTRATION:
@@ -103,19 +76,11 @@ A cybersecurity admin might use variables to store:
 - scan_complete = False
 """
 
-print("=== CYBERSECURITY VARIABLE EXAMPLES ===")
-
 # Network Security Variables
 suspicious_ip = "203.0.113.42"
 blocked_ports = 1337
 threat_level = "MEDIUM"
 firewall_active = True
-
-print(f"Monitoring IP: {suspicious_ip}")
-print(f"Blocked Port: {blocked_ports}")
-print(f"Current Threat Level: {threat_level}")
-print(f"Firewall Status: {firewall_active}")
-print()
 
 # ============================================================================
 # WARM-UP EXERCISES: Practice Creating Variables
@@ -126,9 +91,8 @@ print()
 PRACTICE: Basic String Variable
 
 Create a variable named username1 that stores the text "admin".
-Then print it with a message.
 """
-# TODO: Create username1 variable and print it
+# TODO: Create username1 variable
 
 
 # Exercise 2: Create a number variable  
@@ -136,9 +100,8 @@ Then print it with a message.
 PRACTICE: Basic Number Variable
 
 Create a variable named port that stores the number 443.
-Then print it with a message.
 """
-# TODO: Create port variable and print it
+# TODO: Create port variable
 
 
 # Exercise 3: Create a boolean variable
@@ -146,9 +109,8 @@ Then print it with a message.
 PRACTICE: Basic Boolean Variable
 
 Create a variable named is_secure that stores True.
-Then print it with a message.
 """
-# TODO: Create is_secure variable and print it
+# TODO: Create is_secure variable
 
 
 # Exercise 4: Create multiple variables
@@ -159,15 +121,9 @@ Create these three variables:
 - server_name with value "firewall"
 - connections with value 25
 - online with value True
-
-Print each one.
 """
-# TODO: Create the three variables and print them
+# TODO: Create the three variables
 
-
-print("\n" + "="*50)
-print("WARM-UP COMPLETE - NOW THE MAIN EXERCISE")
-print("="*50 + "\n")
 
 # ============================================================================
 # YOUR MAIN EXERCISE: Create Cybersecurity Variables
@@ -212,10 +168,6 @@ label so other administrators can quickly review the system status.
 
 # Create backup_completed variable here
 
-
-# TODO: Print each variable with a descriptive message
-print("=== YOUR CYBERSECURITY MONITORING SYSTEM ===")
-# Add your print statements here
 
 # ============================================================================
 # BUILT-IN TESTS - Check Your Work! 
@@ -328,12 +280,10 @@ def test_main_exercise():
         return True
         
     except NameError as e:
-        print(f"❌ ERROR: Variable not found - {e}")
-        print("Make sure you've created all required variables above the test section.")
+        print(f"❌ ERROR: Variable not found - {e}: Make sure you've created all required variables above the test section.")
         return False
     except AssertionError as e:
-        print(f"❌ ERROR: {e}")
-        print("Check the values you assigned to your variables.")
+        print(f"❌ ERROR: {e}: Check the values you assigned to your variables.")
         return False
     except Exception as e:
         print(f"❌ UNEXPECTED ERROR: {e}")
@@ -345,15 +295,15 @@ def test_variables():
     main_success = test_main_exercise()
     
     if warmup_success and main_success:
-        print("\n✅ CONGRATULATIONS! All tests passed!")
-        print("You've successfully mastered Python variables and data types!")
-        print("Ready for Module 2: Operators")
+        print("\n✅ All tests passed! You've mastered Python variables and data types! Proceed to Module 2: Operators")
     else:
-        print("\n📚 Keep practicing! Complete all exercises to proceed.")
+        resultsDisplay = "\n📚 Keep practicing! Complete all exercises to proceed."
+        
         if not warmup_success:
-            print("- Finish the warm-up exercises first")
+            resultsDisplay+= " Finish the warm-up exercises first."
         if not main_success:
-            print("- Complete the main cybersecurity monitoring exercise")
+            resultsDisplay+= " Complete the main cybersecurity monitoring exercise."
+        print(resultsDisplay)
 
 # Run the tests
 test_variables()
