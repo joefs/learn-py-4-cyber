@@ -21,19 +21,10 @@ TYPES OF OPERATORS WE'LL COVER:
 # CONCEPT EXPLANATION: Arithmetic Operators
 # ============================================================================
 
-print("=== ARITHMETIC OPERATORS ===")
-print()
-
 # Basic math operations
 failed_attempts = 5
 max_attempts = 10
 remaining_attempts = max_attempts - failed_attempts
-
-print("Arithmetic Examples:")
-print(f"Failed attempts: {failed_attempts}")
-print(f"Max attempts: {max_attempts}")
-print(f"Remaining attempts: {remaining_attempts}")
-print()
 
 # More arithmetic examples
 total_users = 100
@@ -41,26 +32,15 @@ admin_users = 5
 regular_users = total_users - admin_users
 admin_percentage = (admin_users / total_users) * 100
 
-print(f"Total users: {total_users}")
-print(f"Admin users: {admin_users}")
-print(f"Regular users: {regular_users}")
-print(f"Admin percentage: {admin_percentage}%")
-print()
-
 # ============================================================================
 # CONCEPT EXPLANATION: Comparison Operators
 # ============================================================================
-
-print("=== COMPARISON OPERATORS ===")
-print()
 
 # Comparison operators return True or False
 current_cpu = 85
 cpu_threshold = 80
 
 print("Comparison Examples:")
-print(f"Current CPU usage: {current_cpu}%")
-print(f"CPU threshold: {cpu_threshold}%")
 print(f"CPU usage == threshold: {current_cpu == cpu_threshold}")
 print(f"CPU usage != threshold: {current_cpu != cpu_threshold}")
 print(f"CPU usage > threshold: {current_cpu > cpu_threshold}")
@@ -73,36 +53,22 @@ print()
 # CONCEPT EXPLANATION: Logical Operators
 # ============================================================================
 
-print("=== LOGICAL OPERATORS ===")
-print()
-
 # Logical operators combine conditions
 firewall_on = True
 antivirus_on = True
 updates_current = False
 
-print("Logical Examples:")
-print(f"Firewall enabled: {firewall_on}")
-print(f"Antivirus enabled: {antivirus_on}")
-print(f"Updates current: {updates_current}")
-print()
-
 # Using 'and' - both conditions must be True
 system_secure = firewall_on and antivirus_on
-print(f"Basic security (firewall AND antivirus): {system_secure}")
 
 # Using 'or' - at least one condition must be True
 some_protection = firewall_on or antivirus_on
-print(f"Some protection (firewall OR antivirus): {some_protection}")
 
 # Using 'not' - reverses True/False
 updates_needed = not updates_current
-print(f"Updates needed (NOT current): {updates_needed}")
 
 # Complex logical combinations
 fully_secure = firewall_on and antivirus_on and updates_current
-print(f"Fully secure (all conditions): {fully_secure}")
-print()
 
 # ============================================================================
 # HOW THIS APPLIES TO CYBERSECURITY ADMINISTRATION:
@@ -136,17 +102,10 @@ CYBERSECURITY APPLICATIONS OF OPERATORS:
    - System compromised OR data breach detected
 """
 
-print("=== CYBERSECURITY OPERATOR EXAMPLES ===")
-
 # Security threshold checks
 failed_logins = 7
 max_failed_logins = 5
 account_locked = failed_logins >= max_failed_logins
-
-print(f"Failed login attempts: {failed_logins}")
-print(f"Maximum allowed: {max_failed_logins}")
-print(f"Account should be locked: {account_locked}")
-print()
 
 # Security status evaluation
 patch_level = 95
@@ -156,11 +115,6 @@ antivirus_updated = True
 
 patches_current = patch_level >= min_patch_level
 security_good = patches_current and firewall_active and antivirus_updated
-
-print(f"Current patch level: {patch_level}%")
-print(f"Patches up to date: {patches_current}")
-print(f"Overall security status good: {security_good}")
-print()
 
 # ============================================================================
 # WARM-UP EXERCISES: Practice Using Operators
@@ -172,7 +126,6 @@ PRACTICE: Simple Comparison
 
 Create variables cpu_usage = 85 and cpu_limit = 90.
 Check if cpu_usage is greater than cpu_limit and store the result in high_cpu.
-Print the result.
 """
 # TODO: Create variables and comparison
 
@@ -183,7 +136,6 @@ PRACTICE: Arithmetic Operations
 
 Create variables users_online = 50 and new_users = 25.
 Calculate total_users by adding them together.
-Print the result.
 """
 # TODO: Create variables and calculate total
 
@@ -194,7 +146,6 @@ PRACTICE: AND Logic
 
 Create variables firewall_on = True and antivirus_on = True.
 Check if BOTH are True and store in system_protected.
-Print the result.
 """
 # TODO: Create variables and use AND logic
 
@@ -205,14 +156,9 @@ PRACTICE: OR Logic
 
 Create variables critical_alert = False and warning_alert = True.
 Check if EITHER is True and store in any_alert.
-Print the result.
 """
 # TODO: Create variables and use OR logic
 
-
-print("\n" + "="*50)
-print("WARM-UP COMPLETE - NOW THE MAIN EXERCISE")
-print("="*50 + "\n")
 
 # ============================================================================
 # YOUR MAIN EXERCISE: Create Security Monitoring Logic
@@ -258,7 +204,6 @@ admin_online, maintenance_mode, threat_level, and safe_threshold.
 # ============================================================================
 
 # PART 1: Create the required variables
-print("=== SECURITY MONITORING SYSTEM ===")
 
 # TODO: Create the 6 variables listed above
 # Create current_connections variable here
@@ -287,8 +232,6 @@ print("=== SECURITY MONITORING SYSTEM ===")
 # Create safe_to_operate variable here
 
 
-# PART 3: Print all results
-# TODO: Add your print statements here to display the system status and security analysis
 
 # ============================================================================
 # BUILT-IN TESTS - Check Your Work!
