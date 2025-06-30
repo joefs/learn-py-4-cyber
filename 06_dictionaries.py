@@ -23,193 +23,6 @@ DICTIONARY OPERATIONS WE'LL COVER:
 """
 
 # ============================================================================
-# CONCEPT EXPLANATION: Creating and Accessing Dictionaries
-# ============================================================================
-
-print("=== CREATING AND ACCESSING DICTIONARIES ===")
-print()
-
-# Creating dictionaries
-user_permissions = {
-    "admin": "full_access",
-    "manager": "read_write",
-    "analyst": "read_only",
-    "guest": "no_access"
-}
-
-server_status = {
-    "web-server-01": "online",
-    "db-server-01": "offline",
-    "mail-server-01": "online",
-    "backup-server-01": "maintenance"
-}
-
-vulnerability_info = {
-    "CVE-2023-1234": {"score": 9.8, "severity": "critical"},
-    "CVE-2023-5678": {"score": 6.2, "severity": "medium"},
-    "CVE-2023-9012": {"score": 8.1, "severity": "high"}
-}
-
-print("Dictionary Examples:")
-print(f"User permissions: {user_permissions}")
-print(f"Server status: {server_status}")
-print(f"Vulnerability info: {vulnerability_info}")
-print()
-
-# Accessing dictionary values
-print("Accessing Dictionary Values:")
-print(f"Admin permissions: {user_permissions['admin']}")
-print(f"Web server status: {server_status['web-server-01']}")
-print()
-
-# Safe access with get() method
-print("Safe Access with get():")
-print(f"Unknown user permissions: {user_permissions.get('unknown_user', 'not_found')}")
-print(f"Test server status: {server_status.get('test-server', 'not_monitored')}")
-print()
-
-# ============================================================================
-# CONCEPT EXPLANATION: Adding, Updating, and Removing Items
-# ============================================================================
-
-print("=== MODIFYING DICTIONARIES ===")
-print()
-
-# Starting with security alerts
-security_alerts = {
-    "2023-10-01 09:15": "Failed login attempt",
-    "2023-10-01 09:20": "Suspicious file download",
-    "2023-10-01 09:25": "Port scan detected"
-}
-
-print(f"Initial alerts: {security_alerts}")
-
-# Adding new items
-security_alerts["2023-10-01 09:30"] = "Malware signature detected"
-print(f"After adding alert: {security_alerts}")
-
-# Updating existing items
-security_alerts["2023-10-01 09:15"] = "Failed login attempt - Account locked"
-print(f"After updating alert: {security_alerts}")
-
-# Removing items
-removed_alert = security_alerts.pop("2023-10-01 09:20")
-print(f"Removed alert: {removed_alert}")
-print(f"After removal: {security_alerts}")
-
-# Using del to remove items
-del security_alerts["2023-10-01 09:25"]
-print(f"After del: {security_alerts}")
-print()
-
-# ============================================================================
-# CONCEPT EXPLANATION: Dictionary Methods
-# ============================================================================
-
-print("=== DICTIONARY METHODS ===")
-print()
-
-# Working with firewall rules
-firewall_rules = {
-    "rule_001": {"action": "allow", "port": 80, "protocol": "tcp"},
-    "rule_002": {"action": "deny", "port": 23, "protocol": "tcp"},
-    "rule_003": {"action": "allow", "port": 443, "protocol": "tcp"},
-    "rule_004": {"action": "deny", "port": 21, "protocol": "tcp"}
-}
-
-print("Firewall Rules Analysis:")
-print(f"All rules: {firewall_rules}")
-print()
-
-# Dictionary methods
-print("Dictionary Methods:")
-print(f"All rule names (keys): {list(firewall_rules.keys())}")
-print(f"All rule details (values): {list(firewall_rules.values())}")
-print(f"All rule items: {list(firewall_rules.items())}")
-print()
-
-# Checking for keys
-rule_to_check = "rule_002"
-if rule_to_check in firewall_rules:
-    print(f"✅ Rule {rule_to_check} exists: {firewall_rules[rule_to_check]}")
-else:
-    print(f"❌ Rule {rule_to_check} not found")
-print()
-
-# ============================================================================
-# CONCEPT EXPLANATION: Iterating Through Dictionaries
-# ============================================================================
-
-print("=== ITERATING THROUGH DICTIONARIES ===")
-print()
-
-# Network device inventory
-network_inventory = {
-    "192.168.1.1": {"device": "router", "vendor": "Cisco", "model": "ISR4331"},
-    "192.168.1.2": {"device": "switch", "vendor": "HP", "model": "2530-24G"},
-    "192.168.1.10": {"device": "firewall", "vendor": "Fortinet", "model": "FortiGate-60E"},
-    "192.168.1.100": {"device": "server", "vendor": "Dell", "model": "PowerEdge R740"}
-}
-
-# Iterate through keys
-print("Network Devices by IP:")
-for ip in network_inventory:
-    print(f"  {ip}: {network_inventory[ip]['device']}")
-print()
-
-# Iterate through key-value pairs
-print("Detailed Network Inventory:")
-for ip, details in network_inventory.items():
-    print(f"IP: {ip}")
-    print(f"  Device: {details['device']}")
-    print(f"  Vendor: {details['vendor']}")
-    print(f"  Model: {details['model']}")
-    print()
-
-# ============================================================================
-# CONCEPT EXPLANATION: Nested Dictionaries
-# ============================================================================
-
-print("=== NESTED DICTIONARIES ===")
-print()
-
-# Complex security configuration
-security_config = {
-    "authentication": {
-        "method": "multi_factor",
-        "password_policy": {
-            "min_length": 12,
-            "require_special": True,
-            "require_numbers": True,
-            "expiry_days": 90
-        },
-        "lockout_policy": {
-            "max_attempts": 5,
-            "lockout_duration": 30
-        }
-    },
-    "network_security": {
-        "firewall": {
-            "enabled": True,
-            "default_action": "deny",
-            "logging": True
-        },
-        "intrusion_detection": {
-            "enabled": True,
-            "sensitivity": "high",
-            "alert_threshold": 3
-        }
-    }
-}
-
-print("Security Configuration:")
-print(f"Authentication method: {security_config['authentication']['method']}")
-print(f"Password min length: {security_config['authentication']['password_policy']['min_length']}")
-print(f"Firewall enabled: {security_config['network_security']['firewall']['enabled']}")
-print(f"IDS sensitivity: {security_config['network_security']['intrusion_detection']['sensitivity']}")
-print()
-
-# ============================================================================
 # HOW THIS APPLIES TO CYBERSECURITY ADMINISTRATION:
 # ============================================================================
 """
@@ -246,53 +59,6 @@ CYBERSECURITY APPLICATIONS OF DICTIONARIES:
    - System performance: metric_name -> {current, threshold, trend, alerts}
 """
 
-print("=== CYBERSECURITY DICTIONARY EXAMPLES ===")
-
-# Security incident management system
-incident_database = {
-    "INC-2023-001": {
-        "title": "Phishing email campaign detected",
-        "severity": "high",
-        "status": "investigating",
-        "assigned_to": "security_team",
-        "affected_users": 15,
-        "created": "2023-10-01 08:30",
-        "updated": "2023-10-01 10:15"
-    },
-    "INC-2023-002": {
-        "title": "Unauthorized access attempt",
-        "severity": "critical",
-        "status": "contained",
-        "assigned_to": "incident_response",
-        "affected_users": 1,
-        "created": "2023-10-01 14:22",
-        "updated": "2023-10-01 16:45"
-    }
-}
-
-print("Active Security Incidents:")
-for incident_id, details in incident_database.items():
-    status_icon = "🔴" if details["severity"] == "critical" else "🟡" if details["severity"] == "high" else "🟢"
-    print(f"{status_icon} {incident_id}: {details['title']}")
-    print(f"   Severity: {details['severity']} | Status: {details['status']}")
-    print(f"   Assigned to: {details['assigned_to']} | Users affected: {details['affected_users']}")
-print()
-
-# Network security monitoring
-network_monitoring = {
-    "traffic_analysis": {"status": "active", "alerts": 3, "last_update": "2023-10-01 16:30"},
-    "intrusion_detection": {"status": "active", "alerts": 1, "last_update": "2023-10-01 16:28"},
-    "vulnerability_scan": {"status": "scheduled", "alerts": 0, "last_update": "2023-10-01 12:00"},
-    "log_analysis": {"status": "active", "alerts": 7, "last_update": "2023-10-01 16:32"}
-}
-
-print("Network Security Monitoring Dashboard:")
-for service, info in network_monitoring.items():
-    status_icon = "✅" if info["status"] == "active" else "⏰" if info["status"] == "scheduled" else "❌"
-    alert_text = f"({info['alerts']} alerts)" if info['alerts'] > 0 else ""
-    print(f"{status_icon} {service.replace('_', ' ').title()}: {info['status']} {alert_text}")
-print()
-
 # ============================================================================
 # WARM-UP EXERCISES: Practice Using Dictionaries
 # ============================================================================
@@ -301,57 +67,63 @@ print()
 """
 PRACTICE: Basic Dictionary Creation
 
-Your server monitoring system needs to track detailed server information.
-Create a dictionary called server_info containing server details:
-- "name" with value "web-server" for server identification
-- "port" with value 80 for service port tracking
-- "active" with value True for operational status
-
-Display this structured server data for infrastructure management.
+Write a function `create_server_info()` that creates and returns a dictionary
+called `server_info` with the following key-value pairs:
+- "name": "web-server"
+- "port": 80
+- "active": True
 """
-# TODO: Create dictionary server_info and print it
+# TODO: Implement the function create_server_info
+def create_server_info():
+    # Your code here
+    pass
 
 
 # Exercise 2: Access dictionary values
 """
 PRACTICE: Accessing Dictionary Values
 
-Your user management system stores account information in structured format.
-Create a dictionary user containing {"username": "admin", "role": "administrator", "logged_in": True}.
-Access and display the username and role values using dictionary key lookup.
-This demonstrates how to retrieve specific account details for security verification.
+Write a function `get_user_details(user_dict)` that takes a dictionary `user_dict`
+(e.g., {"username": "admin", "role": "administrator", "logged_in": True}).
+The function should return the user's username and role as a tuple: (username, role).
+If a key is missing, it should use "N/A" for that value.
 """
-# TODO: Create dictionary user and access username and role values
+# TODO: Implement the function get_user_details
+def get_user_details(user_dict):
+    # Your code here
+    pass
 
 
 # Exercise 3: Add new key-value pair
 """
 PRACTICE: Adding to Dictionaries
 
-Your system monitoring dashboard tracks resource utilization metrics.
-Create a dictionary system starting with {"cpu": 45, "memory": 60} for current usage percentages.
-Add "disk": 30 to track disk utilization alongside existing metrics.
-Display the updated monitoring data for comprehensive system analysis.
+Write a function `add_disk_usage(system_metrics_dict, disk_usage_value)`
+that takes a dictionary `system_metrics_dict` (e.g., {"cpu": 45, "memory": 60})
+and an integer `disk_usage_value`.
+It should add a new key "disk" with the value `disk_usage_value` to the dictionary.
+The function should return the modified dictionary.
 """
-# TODO: Create dictionary system, add "disk": 30, print updated dictionary
+# TODO: Implement the function add_disk_usage
+def add_disk_usage(system_metrics_dict, disk_usage_value):
+    # Your code here
+    pass
 
 
 # Exercise 4: Check if key exists
 """
 PRACTICE: Checking Dictionary Keys
 
-Your security configuration system verifies that required protection measures are configured.
-Create a dictionary config containing {"firewall": True, "antivirus": True} for security settings.
-Check if "firewall" configuration exists and display appropriate status message.
-Check if "backup" configuration exists and display appropriate status message.
-This ensures all critical security components are properly configured.
+Write a function `check_security_config(config_dict, key_to_check)`
+that takes a dictionary `config_dict` (e.g., {"firewall": True, "antivirus": True})
+and a `key_to_check` string.
+It should return True if `key_to_check` exists in `config_dict`, and False otherwise.
 """
-# TODO: Create dictionary config and check for "firewall" and "backup" keys
+# TODO: Implement the function check_security_config
+def check_security_config(config_dict, key_to_check):
+    # Your code here
+    pass
 
-
-print("\n" + "="*50)
-print("WARM-UP COMPLETE - NOW THE MAIN EXERCISE")
-print("="*50 + "\n")
 
 # ============================================================================
 # YOUR MAIN EXERCISE: Build a Comprehensive Security Management System
@@ -359,213 +131,303 @@ print("="*50 + "\n")
 """
 COMPREHENSIVE SECURITY MANAGEMENT DASHBOARD
 
-You are developing a centralized security management dashboard that organizes complex 
-security data using structured information systems. The dashboard needs to track user 
+You are developing a centralized security management dashboard that organizes complex
+security data using structured information systems. The dashboard needs to track user
 accounts, system health, and security tool configurations.
 
 USER ACCOUNT MANAGEMENT:
-Your organization has several user accounts with different access levels and activity status:
+Create a dictionary named `user_database`. Each key should be a username string
+(e.g., "alice_admin", "bob_analyst", "charlie_guest"), and each value should be
+another dictionary containing:
+- "role": (string, e.g., "administrator", "analyst", "guest")
+- "last_login": (string, e.g., "2023-10-01")
+- "failed_attempts": (integer)
+- "active": (boolean, True or False)
 
-Alice (admin role) - administrator who last logged in on 2023-10-01, has 0 failed login 
-attempts, and is currently active.
-
-Bob (analyst role) - security analyst who last logged in on 2023-09-30, has 2 failed 
-login attempts, and is currently active.
-
-Charlie (guest role) - guest user who last logged in on 2023-09-25, has 5 failed login 
-attempts, and is currently inactive.
-
-Create a user database named user_database that stores each user's information including 
-their role, last login date, failed attempt count, and active status.
+Populate `user_database` with:
+- Alice: admin role, last login 2023-10-01, 0 failed attempts, active.
+- Bob: analyst role, last login 2023-09-30, 2 failed attempts, active.
+- Charlie: guest role, last login 2023-09-25, 5 failed attempts, inactive.
 
 SYSTEM INFRASTRUCTURE MONITORING:
-You need to monitor three critical systems:
+Create a dictionary named `system_status`. Each key should be a system name string
+(e.g., "web_server", "database_server", "backup_server"), and each value should be
+another dictionary containing:
+- "cpu_usage": (integer, percentage)
+- "memory_usage": (integer, percentage)
+- "disk_usage": (integer, percentage)
+- "status": (string, e.g., "healthy", "warning", "critical")
 
-Web server - running at 75% CPU, 60% memory, 45% disk usage, with "healthy" status
-Database server - running at 90% CPU, 85% memory, 70% disk usage, with "warning" status  
-Backup server - running at 25% CPU, 30% memory, 95% disk usage, with "critical" status
-
-Create a system status tracker named system_status that stores each system's resource 
-utilization and operational status.
+Populate `system_status` with:
+- Web server: 75% CPU, 60% memory, 45% disk, "healthy" status.
+- Database server: 90% CPU, 85% memory, 70% disk, "warning" status.
+- Backup server: 25% CPU, 30% memory, 95% disk, "critical" status.
 
 SECURITY TOOLS CONFIGURATION:
-Your security infrastructure includes several tools:
+Create a dictionary named `security_tools`. Each key should be a tool name string
+(e.g., "firewall", "antivirus", "ids"), and each value should be another
+dictionary containing tool-specific information:
+- Firewall: "enabled": True, "rules": 150, "last_updated": "2023-10-01", "alerts": 3
+- Antivirus: "enabled": True, "definitions_date": "2023-09-30", "last_scan": "2023-10-01", "threats_found": 0
+- IDS (Intrusion Detection System): "enabled": False, "sensors": 5, "last_alert_date": "2023-09-28", "total_alerts": 12
 
-Firewall - enabled, has 150 rules, last updated 2023-10-01, generated 3 alerts
-Antivirus - enabled, definitions dated 2023-09-30, last scan 2023-10-01, found 0 threats
-Intrusion Detection System - disabled, has 5 sensors, last alert 2023-09-28, 12 total alerts
-
-Create a security tools configuration named security_tools that tracks each tool's 
-operational status and key metrics.
-
-SECURITY OPERATIONS TASKS:
-1. Add a new manager user named David who logged in today with 1 failed attempt
-2. Reset Bob's failed login attempts to 0 after investigation
-3. Check if any unauthorized user "eve_hacker" has accessed the system
-4. Generate reports on system performance, security tool status, and user activity
-5. Provide an overall security assessment with recommendations
+SECURITY OPERATIONS TASKS (Modify the dictionaries created above):
+1.  Add a new user "david_manager" to `user_database`. David is a "manager",
+    last logged in "2023-10-02", has 1 failed attempt, and is "active".
+2.  Update "bob_analyst" in `user_database`: reset "failed_attempts" to 0.
+3.  Check if a user "eve_hacker" exists in `user_database`. Store the result (True/False)
+    in a variable `eve_hacker_exists`.
+4.  Create a list `users_with_failed_logins` containing usernames of users from
+    `user_database` who have `failed_attempts > 0`.
+5.  Create a list `high_cpu_systems` containing names of systems from `system_status`
+    with `cpu_usage > 80`.
+6.  Update the "web_server" in `system_status`: change its "status" to "optimal".
+7.  Calculate the `average_disk_usage` across all systems in `system_status`. If no systems, average is 0.
+8.  Create a list `systems_needing_attention` from `system_status` for systems
+    whose status is "warning" or "critical".
+9.  Create a list `enabled_security_tools` containing names of tools from
+    `security_tools` that are "enabled".
+10. Find the name of the security tool with the most alerts (consider "alerts", "total_alerts", or "threats_found" - prioritize "total_alerts" if present, then "alerts", then "threats_found"). Store its name in `tool_with_most_alerts`. If no tools or no alerts, this can be an empty string or None.
+11. Update the "ids" in `security_tools`: set "enabled" to True.
 """
 
 # YOUR CODE GOES HERE
 # ============================================================================
 
-print("=== COMPREHENSIVE SECURITY MANAGEMENT SYSTEM ===")
-print()
-
 # PART 1: Create User Management Dictionary
-# TODO: Create user_database dictionary with specified users and their details
+# user_database = ?
 
 # PART 2: Create System Status Dictionary
-# TODO: Create system_status dictionary with specified systems and their metrics
+# system_status = ?
 
 # PART 3: Create Security Tools Configuration
-# TODO: Create security_tools dictionary with specified tools and their configurations
+# security_tools = ?
 
-print("1. USER MANAGEMENT OPERATIONS:")
-print("-" * 40)
-# PART 4: User Management Operations
-# TODO: Add new user, update existing user, check for user, print users with failed attempts
-# TODO: Add "david_manager" user to user_database
-# TODO: Update bob_analyst's failed_attempts to 0
-# TODO: Check if "eve_hacker" exists in user_database
-# TODO: Print users with failed_attempts > 0
 
-print("2. SYSTEM MONITORING:")
-print("-" * 40)
-# PART 5: System Monitoring
-# TODO: Find high CPU systems, update status, calculate average disk usage, find systems needing attention
-print("Systems with CPU usage > 80%:")
-for system, details in system_status.items():
-    if details["cpu_usage"] > 80:
-        print(f"  {system}: {details['cpu_usage']}% CPU usage")
+# PART 4: Perform Security Operations Tasks
+# Task 1: Add david_manager
+# Task 2: Reset bob_analyst's failed_attempts
+# Task 3: Check for eve_hacker
+# eve_hacker_exists = ?
+# Task 4: List users with failed logins
+# users_with_failed_logins = ?
+# Task 5: List high CPU systems
+# high_cpu_systems = ?
+# Task 6: Update web_server status
+# Task 7: Calculate average disk usage
+# average_disk_usage = ?
+# Task 8: List systems needing attention
+# systems_needing_attention = ?
+# Task 9: List enabled security tools
+# enabled_security_tools = ?
+# Task 10: Find tool with most alerts
+# tool_with_most_alerts = ?
+# Task 11: Enable IDS
 
-system_status["web_server"]["status"] = "optimal"
-
-total_disk_usage = sum(details["disk_usage"] for details in system_status.values())
-average_disk_usage = total_disk_usage / len(system_status)
-print(f"\nAverage disk usage across all systems: {average_disk_usage:.1f}%")
-
-print("\nSystems requiring attention:")
-for system, details in system_status.items():
-    if details["status"] in ["warning", "critical"]:
-        print(f"  {system}: {details['status'].upper()} status")
-print()
-
-print("3. SECURITY TOOLS ANALYSIS:")
-print("-" * 40)
-# PART 6: Security Tools Analysis
-# TODO: Check enabled tools, find tool with most alerts, update IDS, print summary
-print("Enabled security tools:")
-for tool, details in security_tools.items():
-    if details["enabled"]:
-        print(f"  ✅ {tool}")
-    else:
-        print(f"  ❌ {tool} (disabled)")
-
-# Find tool with most alerts
-max_alerts = 0
-max_alerts_tool = ""
-for tool, details in security_tools.items():
-    alerts = details.get("alerts", details.get("alert_count", 0))
-    if alerts > max_alerts:
-        max_alerts = alerts
-        max_alerts_tool = tool
-
-print(f"\nTool with most alerts: {max_alerts_tool} ({max_alerts} alerts)")
-
-security_tools["ids"]["enabled"] = True
-print("✅ IDS has been enabled")
-print()
-
-print("4. COMPREHENSIVE SECURITY REPORT:")
-print("-" * 40)
-# PART 7: Security Report
-# TODO: Create comprehensive security report
-active_users = sum(1 for user in user_database.values() if user["active"])
-inactive_users = len(user_database) - active_users
-
-critical_systems = [system for system, details in system_status.items() if details["status"] in ["warning", "critical"]]
-enabled_tools = [tool for tool, details in security_tools.items() if details["enabled"]]
-
-print("📊 SECURITY POSTURE SUMMARY:")
-print(f"   User Accounts: {active_users} active, {inactive_users} inactive")
-print(f"   Critical Systems: {len(critical_systems)} requiring attention")
-if critical_systems:
-    print(f"      - {', '.join(critical_systems)}")
-print(f"   Security Tools: {len(enabled_tools)}/{len(security_tools)} enabled")
-print(f"      - Active: {', '.join(enabled_tools)}")
-
-# Overall assessment
-if len(critical_systems) == 0 and len(enabled_tools) == len(security_tools) and inactive_users == 0:
-    overall_status = "EXCELLENT"
-    status_icon = "🟢"
-elif len(critical_systems) <= 1 and len(enabled_tools) >= 2:
-    overall_status = "GOOD"
-    status_icon = "🟡"
-else:
-    overall_status = "NEEDS ATTENTION"
-    status_icon = "🔴"
-
-print(f"\n{status_icon} Overall Security Posture: {overall_status}")
 
 # ============================================================================
 # BUILT-IN TESTS - Check Your Work!
 # ============================================================================
 
-print("\n" + "="*50)
-print("RUNNING TESTS...")
-print("="*50)
+def test_warmup_exercises():
+    """Test the warm-up exercises."""
+    warmup_passed = 0
+    total_warmup_tests = 4
 
-def test_dictionaries():
-    """Test function to verify your dictionary operations are correct."""
-    
+    # Test Exercise 1
     try:
-        # Test Part 1: User database creation
-        expected_users = {"alice_admin", "bob_analyst", "charlie_guest", "david_manager"}
-        actual_users = set(user_database.keys())
-        assert actual_users == expected_users, f"user_database should have users {expected_users}, got {actual_users}"
-        print("✅ Test 1 PASSED: user_database created correctly")
-        
-        # Test Part 2: System status creation
-        expected_systems = {"web_server", "database_server", "backup_server"}
-        actual_systems = set(system_status.keys())
-        assert actual_systems == expected_systems, f"system_status should have systems {expected_systems}, got {actual_systems}"
-        print("✅ Test 2 PASSED: system_status created correctly")
-        
-        # Test Part 3: Security tools creation
-        expected_tools = {"firewall", "antivirus", "ids"}
-        actual_tools = set(security_tools.keys())
-        assert actual_tools == expected_tools, f"security_tools should have tools {expected_tools}, got {actual_tools}"
-        print("✅ Test 3 PASSED: security_tools created correctly")
-        
-        # Test Part 4: User management operations
-        assert "david_manager" in user_database, "david_manager should be added to user_database"
-        assert user_database["bob_analyst"]["failed_attempts"] == 0, "bob_analyst's failed_attempts should be updated to 0"
-        print("✅ Test 4 PASSED: user management operations completed")
-        
-        # Test Part 5: System monitoring
-        assert system_status["web_server"]["status"] == "optimal", "web_server status should be updated to 'optimal'"
-        print("✅ Test 5 PASSED: system monitoring operations completed")
-        
-        # Test Part 6: Security tools analysis
-        assert security_tools["ids"]["enabled"] == True, "IDS should be enabled"
-        print("✅ Test 6 PASSED: security tools analysis completed")
-        
-        print("\n🎉 CONGRATULATIONS! All tests passed!")
+        expected = {"name": "web-server", "port": 80, "active": True}
+        assert create_server_info() == expected, "Exercise 1 Failed"
+        print("✅ Warm-up Exercise 1 PASSED")
+        warmup_passed += 1
+    except NameError:
+        print("❌ Warm-up Exercise 1 FAILED: Function 'create_server_info' not defined.")
+    except Exception as e:
+        print(f"❌ Warm-up Exercise 1 FAILED: Unexpected error - {e}")
+
+    # Test Exercise 2
+    try:
+        user_data = {"username": "admin", "role": "administrator", "logged_in": True}
+        assert get_user_details(user_data) == ("admin", "administrator"), "Exercise 2 Failed: Test 1"
+        assert get_user_details({"role": "guest"}) == ("N/A", "guest"), "Exercise 2 Failed: Test 2 (missing username)"
+        assert get_user_details({}) == ("N/A", "N/A"), "Exercise 2 Failed: Test 3 (empty dict)"
+        print("✅ Warm-up Exercise 2 PASSED")
+        warmup_passed += 1
+    except NameError:
+        print("❌ Warm-up Exercise 2 FAILED: Function 'get_user_details' not defined.")
+    except Exception as e:
+        print(f"❌ Warm-up Exercise 2 FAILED: Unexpected error - {e}")
+
+    # Test Exercise 3
+    try:
+        metrics = {"cpu": 45, "memory": 60}
+        expected = {"cpu": 45, "memory": 60, "disk": 30}
+        assert add_disk_usage(metrics, 30) == expected, "Exercise 3 Failed: Test 1"
+        assert add_disk_usage({}, 50) == {"disk": 50}, "Exercise 3 Failed: Test 2 (empty dict)"
+        print("✅ Warm-up Exercise 3 PASSED")
+        warmup_passed += 1
+    except NameError:
+        print("❌ Warm-up Exercise 3 FAILED: Function 'add_disk_usage' not defined.")
+    except Exception as e:
+        print(f"❌ Warm-up Exercise 3 FAILED: Unexpected error - {e}")
+
+    # Test Exercise 4
+    try:
+        config = {"firewall": True, "antivirus": True}
+        assert check_security_config(config, "firewall") == True, "Exercise 4 Failed: Test 1 (key exists)"
+        assert check_security_config(config, "backup") == False, "Exercise 4 Failed: Test 2 (key does not exist)"
+        assert check_security_config({}, "firewall") == False, "Exercise 4 Failed: Test 3 (empty dict)"
+        print("✅ Warm-up Exercise 4 PASSED")
+        warmup_passed += 1
+    except NameError:
+        print("❌ Warm-up Exercise 4 FAILED: Function 'check_security_config' not defined.")
+    except Exception as e:
+        print(f"❌ Warm-up Exercise 4 FAILED: Unexpected error - {e}")
+
+    print(f"\nWarm-up Score: {warmup_passed}/{total_warmup_tests} exercises completed correctly.")
+    return warmup_passed == total_warmup_tests
+
+def test_main_exercise_dictionaries():
+    """Test function to verify your dictionary operations in the main exercise are correct."""
+    main_passed = True
+    missing_vars = []
+
+    def check_var(var_name, expected_type=None):
+        if var_name not in globals():
+            missing_vars.append(var_name)
+            return False
+        if expected_type and not isinstance(globals()[var_name], expected_type):
+            missing_vars.append(f"{var_name} (wrong type, expected {expected_type})")
+            return False
+        return True
+
+    # Initial Dictionaries
+    if not check_var('user_database', dict): main_passed = False
+    if not check_var('system_status', dict): main_passed = False
+    if not check_var('security_tools', dict): main_passed = False
+
+    if not main_passed: # Stop if initial dicts are missing
+        print(f"❌ ERROR: Initial dictionaries not defined: {', '.join(missing_vars)}")
+        return False
+
+    # Task 1 & 2: User DB modifications
+    if "david_manager" not in user_database:
+        print("❌ Test FAILED: 'david_manager' not added to user_database.")
+        main_passed = False
+    elif user_database.get("david_manager", {}).get("role") != "manager":
+        print("❌ Test FAILED: 'david_manager' has incorrect role.")
+        main_passed = False
+    if user_database.get("bob_analyst", {}).get("failed_attempts") != 0:
+        print("❌ Test FAILED: 'bob_analyst' failed_attempts not reset.")
+        main_passed = False
+
+    # Task 3: Check eve_hacker
+    if not check_var('eve_hacker_exists', bool): main_passed = False
+    elif eve_hacker_exists is not False: # Should be False
+        print("❌ Test FAILED: 'eve_hacker_exists' should be False.")
+        main_passed = False
+
+    # Task 4: Users with failed logins
+    if not check_var('users_with_failed_logins', list): main_passed = False
+    else:
+        # Expected: Charlie (5), David (1) if Bob is reset
+        expected_failed_users = sorted(["charlie_guest", "david_manager"])
+        if sorted(users_with_failed_logins) != expected_failed_users:
+            print(f"❌ Test FAILED: 'users_with_failed_logins' incorrect. Expected {expected_failed_users}, got {sorted(users_with_failed_logins)}.")
+            main_passed = False
+
+    # Task 5: High CPU systems
+    if not check_var('high_cpu_systems', list): main_passed = False
+    elif sorted(high_cpu_systems) != sorted(["database_server"]): # Only DB server is > 80%
+        print(f"❌ Test FAILED: 'high_cpu_systems' incorrect. Expected ['database_server'], got {high_cpu_systems}.")
+        main_passed = False
+
+    # Task 6: Update web_server status
+    if system_status.get("web_server", {}).get("status") != "optimal":
+        print("❌ Test FAILED: 'web_server' status not updated to 'optimal'.")
+        main_passed = False
+
+    # Task 7: Average disk usage
+    if not check_var('average_disk_usage', float): main_passed = False
+    else:
+        # disk usages: web=45, db=70, backup=95. Sum=210. Avg=70.0
+        if abs(average_disk_usage - 70.0) > 0.001:
+            print(f"❌ Test FAILED: 'average_disk_usage' incorrect. Expected 70.0, got {average_disk_usage}.")
+            main_passed = False
+
+    # Task 8: Systems needing attention
+    if not check_var('systems_needing_attention', list): main_passed = False
+    else:
+        expected_attention = sorted(["database_server", "backup_server"])
+        if sorted(systems_needing_attention) != expected_attention:
+            print(f"❌ Test FAILED: 'systems_needing_attention' incorrect. Expected {expected_attention}, got {sorted(systems_needing_attention)}.")
+            main_passed = False
+
+    # Task 9: Enabled security tools
+    if not check_var('enabled_security_tools', list): main_passed = False
+    else:
+        # Firewall, Antivirus are initially enabled. IDS becomes enabled in task 11.
+        # Test will run after task 11 modifications.
+        pass # Checked after task 11
+
+    # Task 11: Enable IDS (must be done before testing Task 9 and 10 related to IDS)
+    if security_tools.get("ids", {}).get("enabled") is not True:
+        print("❌ Test FAILED: IDS 'enabled' status not updated to True.")
+        main_passed = False
+
+    # Re-check Task 9 after IDS enabling
+    if main_passed and check_var('enabled_security_tools', list): # only if IDS was enabled correctly
+        expected_enabled_tools = sorted(["firewall", "antivirus", "ids"])
+        if sorted(enabled_security_tools) != expected_enabled_tools:
+            print(f"❌ Test FAILED: 'enabled_security_tools' incorrect after IDS update. Expected {expected_enabled_tools}, got {sorted(enabled_security_tools)}.")
+            main_passed = False
+
+    # Task 10: Tool with most alerts
+    if not check_var('tool_with_most_alerts', (str, type(None))): main_passed = False
+    else:
+        # Firewall: 3, Antivirus: 0 (threats_found), IDS: 12 (total_alerts)
+        if tool_with_most_alerts != "ids":
+            print(f"❌ Test FAILED: 'tool_with_most_alerts' incorrect. Expected 'ids', got '{tool_with_most_alerts}'.")
+            main_passed = False
+
+    if missing_vars:
+        print(f"\n❌ ERROR: The following main exercise variables are not defined or have wrong type: {', '.join(missing_vars)}")
+        return False
+
+    if main_passed:
+        print("\n✅ MAIN EXERCISE: All checks passed!")
+    else:
+        print("\n❌ MAIN EXERCISE: Some checks failed. Review the messages above.")
+    return main_passed
+
+def run_all_tests():
+    """Run all tests for Module 6."""
+    print("="*50)
+    print("RUNNING WARM-UP TESTS...")
+    print("="*50)
+    warmup_success = test_warmup_exercises()
+
+    print("\n" + "="*50)
+    print("RUNNING MAIN EXERCISE CHECKS...")
+    print("="*50)
+    main_exercise_success = test_main_exercise_dictionaries()
+
+    print("\n" + "="*50)
+    print("TEST SUMMARY")
+    print("="*50)
+    if warmup_success and main_exercise_success:
+        print("\n✅ All warm-up and main exercise tests passed!")
         print("You've successfully mastered Python dictionaries!")
         print("Ready for Module 7: Functions")
-        
-    except NameError as e:
-        print(f"❌ ERROR: Variable not found - {e}")
-        print("Make sure you've created all required dictionaries.")
-    except AssertionError as e:
-        print(f"❌ TEST FAILED: {e}")
-        print("Check your dictionary operations and try again.")
-    except Exception as e:
-        print(f"❌ UNEXPECTED ERROR: {e}")
+    else:
+        print("\n📚 Keep practicing! Review the failed tests or checks above.")
+        if not warmup_success:
+            print("- Some warm-up exercises have issues.")
+        if not main_exercise_success:
+            print("- The main exercise has issues.")
 
 # Run the tests
-test_dictionaries()
+run_all_tests()
 
 # ============================================================================
 # WHAT'S NEXT?

@@ -19,121 +19,6 @@ TYPES OF LOOPS WE'LL COVER:
 """
 
 # ============================================================================
-# CONCEPT EXPLANATION: Basic FOR Loops
-# ============================================================================
-
-print("=== BASIC FOR LOOPS ===")
-print()
-
-# Loop through a list of items
-ports_to_scan = [21, 22, 23, 80, 443]
-
-print("Scanning ports:")
-for port in ports_to_scan:
-    print(f"Scanning port {port}...")
-print("Port scan complete!")
-print()
-
-# Loop through a range of numbers
-print("Checking first 5 user accounts:")
-for user_id in range(1, 6):  # range(1, 6) gives us 1, 2, 3, 4, 5
-    print(f"Checking user ID: {user_id}")
-print("User check complete!")
-print()
-
-# Loop through strings (each character)
-password = "Secret123"
-special_chars = 0
-
-print(f"Analyzing password: {password}")
-for character in password:
-    if character in "!@#$%^&*()":
-        special_chars += 1
-
-print(f"Special characters found: {special_chars}")
-print()
-
-# ============================================================================
-# CONCEPT EXPLANATION: WHILE Loops
-# ============================================================================
-
-print("=== WHILE LOOPS ===")
-print()
-
-# While loop - repeat until condition becomes False
-attempts = 0
-max_attempts = 3
-authenticated = False
-
-print("Simulating login attempts:")
-while attempts < max_attempts and not authenticated:
-    attempts += 1
-    print(f"Login attempt #{attempts}")
-    
-    # Simulate successful login on attempt 2
-    if attempts == 2:
-        authenticated = True
-        print("✅ Login successful!")
-    else:
-        print("❌ Login failed")
-
-if not authenticated:
-    print("🚨 Account locked after too many failed attempts")
-print()
-
-# ============================================================================
-# CONCEPT EXPLANATION: Loop Control (break and continue)
-# ============================================================================
-
-print("=== LOOP CONTROL ===")
-print()
-
-# Using 'break' to exit a loop early
-suspicious_ips = ["192.168.1.1", "10.0.0.1", "203.0.113.42", "192.168.1.2"]
-malicious_ip = "203.0.113.42"
-
-print("Scanning IP addresses for threats:")
-for ip in suspicious_ips:
-    print(f"Checking {ip}...")
-    if ip == malicious_ip:
-        print(f"🚨 THREAT DETECTED: {ip} is malicious!")
-        print("Stopping scan and triggering alert...")
-        break  # Exit the loop immediately
-    else:
-        print(f"✅ {ip} is clean")
-print()
-
-# Using 'continue' to skip the rest of the current iteration
-log_entries = ["INFO: User login", "ERROR: Database error", "INFO: File saved", "WARNING: High CPU"]
-
-print("Processing log entries (skipping INFO messages):")
-for entry in log_entries:
-    if entry.startswith("INFO"):
-        continue  # Skip the rest of this iteration
-    print(f"Processing: {entry}")
-print()
-
-# ============================================================================
-# CONCEPT EXPLANATION: Nested Loops
-# ============================================================================
-
-print("=== NESTED LOOPS ===")
-print()
-
-# Loop inside another loop
-networks = ["192.168.1", "10.0.0"]
-hosts_to_check = [1, 2, 3]
-
-print("Network discovery scan:")
-for network in networks:
-    print(f"Scanning network {network}.0/24:")
-    for host in hosts_to_check:
-        ip_address = f"{network}.{host}"
-        print(f"  Pinging {ip_address}...")
-    print(f"Network {network}.0/24 scan complete")
-print()
-
-# ============================================================================
 # HOW THIS APPLIES TO CYBERSECURITY ADMINISTRATION:
 # ============================================================================
 """
@@ -170,55 +55,6 @@ CYBERSECURITY APPLICATIONS OF LOOPS:
    - WHILE vulnerability scan running: process discovered issues
 """
 
-print("=== CYBERSECURITY LOOP EXAMPLES ===")
-
-# Automated vulnerability scanning
-servers = ["web-server-1", "db-server-1", "mail-server-1"]
-vulnerabilities_found = 0
-
-print("Starting vulnerability scan across servers:")
-for server in servers:
-    print(f"Scanning {server}...")
-    
-    # Simulate finding vulnerabilities (random for demo)
-    import random
-    vuln_count = random.randint(0, 3)
-    vulnerabilities_found += vuln_count
-    
-    if vuln_count > 0:
-        print(f"  ⚠️  Found {vuln_count} vulnerabilities")
-    else:
-        print(f"  ✅ No vulnerabilities found")
-
-print(f"Scan complete. Total vulnerabilities: {vulnerabilities_found}")
-print()
-
-# Brute force detection simulation
-failed_attempts = {}
-login_attempts = [
-    ("user1", "192.168.1.100"),
-    ("admin", "203.0.113.42"),
-    ("admin", "203.0.113.42"),
-    ("admin", "203.0.113.42"),
-    ("user2", "192.168.1.101"),
-    ("admin", "203.0.113.42"),
-]
-
-print("Analyzing login attempts for brute force patterns:")
-for username, ip_address in login_attempts:
-    key = f"{username}@{ip_address}"
-    
-    if key not in failed_attempts:
-        failed_attempts[key] = 0
-    
-    failed_attempts[key] += 1
-    
-    if failed_attempts[key] >= 3:
-        print(f"🚨 BRUTE FORCE DETECTED: {username} from {ip_address} ({failed_attempts[key]} attempts)")
-    else:
-        print(f"Login attempt: {username} from {ip_address}")
-print()
-
 # ============================================================================
 # WARM-UP EXERCISES: Practice Using Loops
 # ============================================================================
@@ -227,47 +63,67 @@ print()
 """
 PRACTICE: Basic For Loop
 
-Use a for loop to print numbers 1 through 3.
-Print "Checking system" followed by the number.
+Write a function `generate_system_checks()` that uses a for loop to generate
+a list of strings. For numbers 1 through 3, it should add
+"Checking system X" (where X is the number) to the list.
+The function should return this list.
+Example: ["Checking system 1", "Checking system 2", "Checking system 3"]
 """
-# TODO: Create for loop with range(1, 4)
+# TODO: Implement the function generate_system_checks
+def generate_system_checks():
+    # Your code here
+    pass
 
 
 # Exercise 2: Loop through a simple list
 """
 PRACTICE: Loop Through List
 
-Create a list called servers = ["web", "mail", "file"].
-Use a for loop to print "Checking [server] server" for each one.
+Write a function `check_servers(server_list)` that takes a list of server names.
+It should return a new list where each item is "Checking [server_name] server".
+Example: check_servers(["web", "mail"]) should return
+         ["Checking web server", "Checking mail server"]
 """
-# TODO: Create list and for loop
+# TODO: Implement the function check_servers
+def check_servers(server_list):
+    # Your code here
+    pass
 
 
 # Exercise 3: Simple while loop
 """
 PRACTICE: Basic While Loop
 
-Create a variable count = 1.
-Use a while loop to print "Security scan" and increment count.
-Stop when count reaches 4.
+Write a function `perform_security_scans(max_scans)` that takes an integer.
+It should simulate performing security scans.
+The function should return a list of strings, where each string is "Security scan X"
+(X being the scan number, starting from 1).
+The loop should stop when the scan number reaches `max_scans`.
+Example: perform_security_scans(3) should return
+         ["Security scan 1", "Security scan 2", "Security scan 3"]
 """
-# TODO: Create while loop
+# TODO: Implement the function perform_security_scans
+def perform_security_scans(max_scans):
+    # Your code here
+    pass
 
 
 # Exercise 4: Loop with if condition
 """
 PRACTICE: Loop with Conditional
 
-Create a list ports = [22, 80, 443, 3389].
-Loop through the list. If port is 22, print "SSH port found".
-For other ports, print "Port [number] checked".
+Write a function `find_ssh_ports(port_list)` that takes a list of port numbers.
+It should return a new list containing strings describing each port.
+If a port is 22, add "SSH port found".
+For other ports, add "Port [number] checked".
+Example: find_ssh_ports([22, 80, 443]) should return
+         ["SSH port found", "Port 80 checked", "Port 443 checked"]
 """
-# TODO: Create list and loop with if condition
+# TODO: Implement the function find_ssh_ports
+def find_ssh_ports(port_list):
+    # Your code here
+    pass
 
-
-print("\n" + "="*50)
-print("WARM-UP COMPLETE - NOW THE MAIN EXERCISE")
-print("="*50 + "\n")
 
 # ============================================================================
 # YOUR MAIN EXERCISE: Build a Security Monitoring System
@@ -275,142 +131,233 @@ print("="*50 + "\n")
 """
 AUTOMATED SECURITY MONITORING SYSTEM
 
-You are implementing an automated security monitoring system that performs regular 
-checks across multiple security domains. The system needs to process lists of data 
+You are implementing an automated security monitoring system that performs regular
+checks across multiple security domains. The system needs to process lists of data
 and perform repetitive security validation tasks.
 
 SECURITY SERVICE MONITORING:
-Your organization relies on four critical security services: firewall, antivirus, 
-backup, and logging. You need to check the status of each service. Based on current 
-system information, the firewall and antivirus services are running, while the 
+Your organization relies on four critical security services: firewall, antivirus,
+backup, and logging. You need to check the status of each service. Based on current
+system information, the firewall and antivirus services are running, while the
 backup and logging services are stopped.
 
-Create a list named critical_services containing these four service names, then 
+Create a list named critical_services containing these four service names, then
 check the status of each service and report whether it's running or stopped.
+This part of the exercise will involve printing the status.
 
 IP ACCESS CONTROL VALIDATION:
-Your network has an approved whitelist of IP addresses: 192.168.1.1, 10.0.0.1, 
-and 172.16.0.1. Recent connection attempts came from: 192.168.1.1, 203.0.113.42, 
+Your network has an approved whitelist of IP addresses: 192.168.1.1, 10.0.0.1,
+and 172.16.0.1. Recent connection attempts came from: 192.168.1.1, 203.0.113.42,
 10.0.0.1, 198.51.100.1, and 172.16.0.1.
 
-Create a list named ip_whitelist for approved addresses and connection_attempts 
-for the recent attempts. Validate each connection attempt against the whitelist 
-and report whether it should be allowed or blocked.
+Create a list named ip_whitelist for approved addresses and connection_attempts
+for the recent attempts. Validate each connection attempt against the whitelist
+and report whether it should be allowed or blocked by printing the result.
 
 USER LOGIN PATTERN ANALYSIS:
-Recent login records show the following user activity: admin, user1, guest, admin, 
+Recent login records show the following user activity: admin, user1, guest, admin,
 user2, admin. You need to analyze this data to identify users with high login activity.
 
-Create a list named recent_logins with this data, then count how many times each 
-user logged in. Flag any user who logged in more than 2 times as having high activity.
+Create a list named recent_logins with this data, then count how many times each
+user logged in (store this in a dictionary called `login_counts`).
+After counting, iterate through `login_counts` and print each user's count.
+Flag any user who logged in more than 2 times as having high activity by printing a message.
 
 CONTINUOUS MONITORING CYCLES:
-Your monitoring system runs in cycles, alternating between quick security checks 
-and deep security scans. Simulate 3 monitoring cycles where odd-numbered cycles 
-perform quick checks and even-numbered cycles perform deep scans.
+Your monitoring system runs in cycles, alternating between quick security checks
+and deep security scans. Simulate 3 monitoring cycles by printing a message for each.
+Odd-numbered cycles (1, 3) perform "Quick security check".
+Even-numbered cycles (2) perform "Deep security scan".
 """
 
 # YOUR CODE GOES HERE
 # ============================================================================
 
-print("=== AUTOMATED SECURITY MONITORING SYSTEM ===")
-print()
 
 # PART 1: Create the required lists
 # TODO: Create the 3 lists specified above
-# Create critical_services list here
-
-# Create ip_whitelist list here
-
-# Create recent_logins list here
+# critical_services = ?
+# ip_whitelist = ?
+# recent_logins = ?
 
 
 # PART 2: Security checks using loops
 
-print("1. CRITICAL SERVICES STATUS CHECK:")
-print("-" * 40)
+# --- SECURITY SERVICE MONITORING ---
 # TODO: Service status check loop
-# Write your for loop to check each service status here
+# Define which services are running (e.g., a set or list for quick lookup)
+# services_running = {"firewall", "antivirus"}
+# Loop through critical_services and print status
 
-print()
 
-print("2. IP WHITELIST VALIDATION:")
-print("-" * 40)
+# --- IP ACCESS CONTROL VALIDATION ---
 # TODO: IP whitelist validation loop
-# Create connection_attempts list here
+# connection_attempts = ? (define this list)
+# Loop through connection_attempts and print allowed/blocked status
 
-# Write your for loop to validate IP addresses here
 
-print()
-
-print("3. LOGIN PATTERN ANALYSIS:")
-print("-" * 40)
+# --- USER LOGIN PATTERN ANALYSIS ---
 # TODO: Login pattern analysis
-# Create login_counts dictionary here
+# login_counts = {} (initialize an empty dictionary)
+# Loop through recent_logins to populate login_counts
+# Loop through login_counts to print user counts and high activity flags
 
-# Write your for loop to count login attempts here
 
-# Write your for loop to print results and check for high activity here
+# --- CONTINUOUS MONITORING CYCLES ---
+# TODO: Monitoring loop for 3 cycles (1 to 3)
+# Loop 3 times, check if cycle number is odd or even to print the correct message
 
-print()
-
-print("4. CONTINUOUS MONITORING CYCLES:")
-print("-" * 40)
-# TODO: Monitoring loop for 3 cycles
-# Write your for loop for monitoring cycles here
-
-print("Monitoring system check complete!")
 
 # ============================================================================
 # BUILT-IN TESTS - Check Your Work!
 # ============================================================================
 
-print("\n" + "="*50)
-print("RUNNING TESTS...")
-print("="*50)
+def test_warmup_exercises():
+    """Test the warm-up exercises."""
+    warmup_passed = 0
+    total_warmup_tests = 4
 
-def test_loops():
-    """Test function to verify your loop implementations are correct."""
-    
+    # Test Exercise 1
+    try:
+        expected = ["Checking system 1", "Checking system 2", "Checking system 3"]
+        assert generate_system_checks() == expected, "Exercise 1 Failed"
+        print("✅ Warm-up Exercise 1 PASSED")
+        warmup_passed += 1
+    except NameError:
+        print("❌ Warm-up Exercise 1 FAILED: Function 'generate_system_checks' not defined.")
+    except AssertionError as e:
+        print(f"❌ Warm-up Exercise 1 FAILED: {e}")
+    except Exception as e:
+        print(f"❌ Warm-up Exercise 1 FAILED: Unexpected error - {e}")
+
+    # Test Exercise 2
+    try:
+        expected = ["Checking web server", "Checking mail server", "Checking file server"]
+        assert check_servers(["web", "mail", "file"]) == expected, "Exercise 2 Failed: Test 1"
+        assert check_servers([]) == [], "Exercise 2 Failed: Test 2 (empty list)"
+        print("✅ Warm-up Exercise 2 PASSED")
+        warmup_passed += 1
+    except NameError:
+        print("❌ Warm-up Exercise 2 FAILED: Function 'check_servers' not defined.")
+    except AssertionError as e:
+        print(f"❌ Warm-up Exercise 2 FAILED: {e}")
+    except Exception as e:
+        print(f"❌ Warm-up Exercise 2 FAILED: Unexpected error - {e}")
+
+    # Test Exercise 3
+    try:
+        expected = ["Security scan 1", "Security scan 2", "Security scan 3"]
+        assert perform_security_scans(3) == expected, "Exercise 3 Failed: max_scans = 3"
+        assert perform_security_scans(1) == ["Security scan 1"], "Exercise 3 Failed: max_scans = 1"
+        assert perform_security_scans(0) == [], "Exercise 3 Failed: max_scans = 0"
+        print("✅ Warm-up Exercise 3 PASSED")
+        warmup_passed += 1
+    except NameError:
+        print("❌ Warm-up Exercise 3 FAILED: Function 'perform_security_scans' not defined.")
+    except AssertionError as e:
+        print(f"❌ Warm-up Exercise 3 FAILED: {e}")
+    except Exception as e:
+        print(f"❌ Warm-up Exercise 3 FAILED: Unexpected error - {e}")
+
+    # Test Exercise 4
+    try:
+        expected = ["SSH port found", "Port 80 checked", "Port 443 checked", "SSH port found"]
+        assert find_ssh_ports([22, 80, 443, 22]) == expected, "Exercise 4 Failed: Test 1"
+        assert find_ssh_ports([100, 200]) == ["Port 100 checked", "Port 200 checked"], "Exercise 4 Failed: Test 2"
+        assert find_ssh_ports([]) == [], "Exercise 4 Failed: Test 3 (empty list)"
+        print("✅ Warm-up Exercise 4 PASSED")
+        warmup_passed += 1
+    except NameError:
+        print("❌ Warm-up Exercise 4 FAILED: Function 'find_ssh_ports' not defined.")
+    except AssertionError as e:
+        print(f"❌ Warm-up Exercise 4 FAILED: {e}")
+    except Exception as e:
+        print(f"❌ Warm-up Exercise 4 FAILED: Unexpected error - {e}")
+
+    print(f"\nWarm-up Score: {warmup_passed}/{total_warmup_tests} exercises completed correctly.")
+    return warmup_passed == total_warmup_tests
+
+
+def test_main_exercise_loops():
+    """Test function to verify your loop implementations in the main exercise are correct."""
+    main_passed = True
     try:
         # Test list creation
         expected_services = ["firewall", "antivirus", "backup", "logging"]
         assert critical_services == expected_services, f"critical_services should be {expected_services}"
-        print("✅ Test 1 PASSED: critical_services list is correct")
-        
+
         expected_whitelist = ["192.168.1.1", "10.0.0.1", "172.16.0.1"]
         assert ip_whitelist == expected_whitelist, f"ip_whitelist should be {expected_whitelist}"
-        print("✅ Test 2 PASSED: ip_whitelist list is correct")
-        
+
         expected_logins = ["admin", "user1", "guest", "admin", "user2", "admin"]
         assert recent_logins == expected_logins, f"recent_logins should be {expected_logins}"
-        print("✅ Test 3 PASSED: recent_logins list is correct")
-        
-        # Test that login_counts was created correctly
-        expected_counts = {"admin": 3, "user1": 1, "guest": 1, "user2": 1}
-        assert login_counts == expected_counts, f"login_counts should be {expected_counts}, got {login_counts}"
-        print("✅ Test 4 PASSED: login pattern analysis is correct")
-        
+
         # Test that connection_attempts was created
         expected_attempts = ["192.168.1.1", "203.0.113.42", "10.0.0.1", "198.51.100.1", "172.16.0.1"]
         assert connection_attempts == expected_attempts, f"connection_attempts should be {expected_attempts}"
-        print("✅ Test 5 PASSED: connection_attempts list is correct")
-        
-        print("\n🎉 CONGRATULATIONS! All tests passed!")
-        print("You've successfully mastered Python loops!")
-        print("Ready for Module 5: Lists")
-        
+
+        # Test that login_counts was created correctly
+        # This assumes the user correctly implements the counting logic.
+        # The problem asks to store counts in `login_counts`.
+        if 'login_counts' in globals():
+            expected_counts = {"admin": 3, "user1": 1, "guest": 1, "user2": 1}
+            assert login_counts == expected_counts, f"login_counts dictionary not as expected. Got: {login_counts}"
+        else:
+            print("❌ Main Exercise Check: 'login_counts' dictionary not defined.")
+            main_passed = False
+
+        if main_passed:
+            print("\n✅ MAIN EXERCISE: Initial lists and login_counts dictionary seem correct.")
+            print("Reminder: For the main exercise, manually verify your printed outputs for service status, IP validation, login analysis, and monitoring cycles against the problem description.")
+        else:
+            print("\n❌ MAIN EXERCISE: Some initial setup (lists or login_counts dictionary) is incorrect.")
+
     except NameError as e:
-        print(f"❌ ERROR: Variable not found - {e}")
-        print("Make sure you've created all required variables and loops.")
+        print(f"❌ ERROR in Main Exercise: Variable not found - {e}")
+        print("Make sure you've created all required variables (critical_services, ip_whitelist, recent_logins, connection_attempts, login_counts).")
+        return False # Return False on NameError
     except AssertionError as e:
-        print(f"❌ TEST FAILED: {e}")
-        print("Check your loop logic and variable assignments.")
+        print(f"❌ TEST FAILED in Main Exercise: {e}")
+        print("Check your list definitions or login_counts logic.")
+        return False # Return False on AssertionError
     except Exception as e:
-        print(f"❌ UNEXPECTED ERROR: {e}")
+        print(f"❌ UNEXPECTED ERROR in Main Exercise: {e}")
+        return False # Return False on other unexpected errors
+
+    return main_passed
+
+
+def run_all_tests():
+    """Run all tests for Module 4."""
+    print("="*50)
+    print("RUNNING WARM-UP TESTS...")
+    print("="*50)
+    warmup_success = test_warmup_exercises()
+
+    print("\n" + "="*50)
+    print("RUNNING MAIN EXERCISE CHECKS...")
+    print("="*50)
+    # The main exercise involves print statements. We check data structures.
+    # User must verify their print logic.
+    main_exercise_structures_ok = test_main_exercise_loops()
+
+    print("\n" + "="*50)
+    print("TEST SUMMARY")
+    print("="*50)
+    if warmup_success and main_exercise_structures_ok:
+        print("\n✅ All warm-up tests passed and main exercise data structures are set up correctly.")
+        print("Please ensure your main exercise loop logic prints the correct messages as per the requirements.")
+        print("You've successfully practiced Python loops!")
+        print("Ready for Module 5: Lists")
+    else:
+        print("\n📚 Keep practicing! Review the failed tests or checks above.")
+        if not warmup_success:
+            print("- Some warm-up exercises have issues.")
+        if not main_exercise_structures_ok:
+            print("- The main exercise data structure setup (lists, dictionary) has issues.")
 
 # Run the tests
-test_loops()
+run_all_tests()
 
 # ============================================================================
 # WHAT'S NEXT?
