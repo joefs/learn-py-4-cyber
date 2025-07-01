@@ -1,11 +1,12 @@
 """
 ====================================================================
-MODULE 4: LOOPS - Automating Repetitive Tasks 🔄
+MODULE 6: LOOPS - Automating Repetitive Tasks 🔄
 ====================================================================
 
-Welcome to Module 4! You've learned to make decisions with conditional
-statements. Now you'll learn how to automate repetitive tasks using loops -
-one of the most powerful features for cybersecurity automation.
+Welcome to Module 6! You've learned to make decisions with conditional
+statements and manage data with lists and dictionaries. Now you'll learn how
+to automate repetitive tasks using loops - one of the most powerful features
+for cybersecurity automation, especially when combined with collections of data.
 
 WHAT ARE LOOPS?
 Loops let you repeat code multiple times without writing it over and over.
@@ -480,14 +481,14 @@ def test_main_exercise_loops():
 
 
 def run_all_tests():
-    """Run all tests for Module 4."""
+    """Run all tests for Module 6."""
     warmup_ok = test_warmup_loops()
     main_ok = test_main_exercise_loops()
 
     if warmup_ok and main_ok:
         print("\n✅ CONGRATULATIONS! All tests passed!")
         print("You've successfully mastered Python loops!")
-        print("Ready for Module 5: Lists")
+        print("Ready for Module 7: Functions") # Updated to 7
     else:
         print("\n📚 Keep practicing! Review the failed tests or messages above.")
 
@@ -514,10 +515,10 @@ CYBERSECURITY SKILLS GAINED:
 - System health monitoring automation
 - Incident response automation basics
 
-NEXT MODULE: 05_lists.py
-In the next module, you'll dive deeper into lists - learning how to
-create, modify, and manipulate collections of security data like
-IP addresses, user accounts, security alerts, and system configurations!
+NEXT MODULE: 07_functions.py
+In the next module, you'll learn about functions - reusable blocks of code
+that help you organize your cybersecurity scripts, make them more efficient,
+and build modular tools for complex tasks!
 
 You're becoming a real cybersecurity automation expert! 🤖🔒
 """

@@ -1,9 +1,9 @@
 """
 ====================================================================
-MODULE 6: DICTIONARIES - Organizing Complex Security Data 🗂️
+MODULE 5: DICTIONARIES - Organizing Complex Security Data 🗂️
 ====================================================================
 
-Welcome to Module 6! You've mastered lists for storing collections of data.
+Welcome to Module 5! You've mastered lists for storing collections of data.
 Now you'll learn about dictionaries - powerful structures that store data
 as key-value pairs. Think of them as digital filing cabinets where each
 piece of information has a unique label (key) for quick access.
@@ -598,7 +598,7 @@ def run_all_tests(): # Renamed
     if warmup_ok and main_ok:
         print("\n✅ CONGRATULATIONS! All tests passed!")
         print("You've successfully mastered Python dictionaries!")
-        print("Ready for Module 7: Functions")
+        print("Ready for Module 6: Loops") # Updated to 6: Loops
     else:
         print("\n📚 Keep practicing! Review the failed tests or messages above.")
 
@@ -620,16 +620,16 @@ Excellent work completing Module 6! Here's what you learned:
 
 CYBERSECURITY SKILLS GAINED:
 - User account management and access control
-- System status monitoring and alerting  
+- System status monitoring and alerting
 - Security tool configuration and management
 - Incident tracking and response coordination
 - Asset inventory and vulnerability management
 - Policy and configuration management
 
-NEXT MODULE: 07_functions.py
-In the next module, you'll learn about functions - reusable blocks of code
-that help you organize your cybersecurity scripts, eliminate repetition,
-and build modular security tools that can be easily maintained and shared!
+NEXT MODULE: 06_loops.py
+In the next module, you'll learn about loops - the powerful feature that
+lets you automate repetitive tasks like scanning multiple IP addresses,
+processing log files, or checking system status across many servers!
 
 You're developing professional-level programming skills! 🚀🔧
 """

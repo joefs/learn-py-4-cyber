@@ -1,9 +1,9 @@
 """
 ====================================================================
-MODULE 5: LISTS - Managing Collections of Security Data 📋
+MODULE 4: LISTS - Managing Collections of Security Data 📋
 ====================================================================
 
-Welcome to Module 5! You've been using lists in previous modules, but now
+Welcome to Module 4! You've been using lists in previous modules, but now
 you'll master them completely. Lists are essential for cybersecurity work
 because you're always dealing with collections: IP addresses, user accounts,
 security alerts, port numbers, and more.
@@ -507,7 +507,7 @@ def run_all_tests(): # Renamed from test_lists
     if warmup_ok and main_ok:
         print("\n✅ CONGRATULATIONS! All tests passed!")
         print("You've successfully mastered Python lists!")
-        print("Ready for Module 6: Dictionaries")
+        print("Ready for Module 5: Dictionaries") # Updated to 5
     else:
         print("\n📚 Keep practicing! Review the failed tests or messages above.")
 
@@ -536,7 +536,7 @@ CYBERSECURITY SKILLS GAINED:
 - Asset inventory and configuration management
 - Log analysis and event processing
 
-NEXT MODULE: 06_dictionaries.py
+NEXT MODULE: 05_dictionaries.py
 In the next module, you'll learn about dictionaries - powerful data structures
 that store key-value pairs, perfect for organizing complex security information
 like user profiles, system configurations, and security policies!

@@ -462,7 +462,7 @@ def run_all_tests(): # Renamed from test_conditionals
     if warmup_success and main_success:
         print("\n✅ CONGRATULATIONS! All tests passed!")
         print("You've successfully mastered Python conditional statements!")
-        print("Ready for Module 4: Loops")
+        print("Ready for Module 4: Lists") # Updated from Loops to Lists
     else:
         print("\n📚 Keep practicing! Complete all exercises to proceed.")
         if not warmup_success:
@@ -492,10 +492,10 @@ CYBERSECURITY SKILLS GAINED:
 - Access control logic implementation
 - Incident response automation basics
 
-NEXT MODULE: 04_loops.py
-In the next module, you'll learn about loops - the powerful feature that
-lets you automate repetitive tasks like scanning multiple IP addresses,
-processing log files, or checking system status across many servers!
+NEXT MODULE: 04_lists.py
+In the next module, you'll dive deep into lists - the versatile containers
+that allow you to manage collections of security data like IP addresses,
+user accounts, security alerts, and much more!
 
 You're building serious cybersecurity automation skills! 🛡️
 """
