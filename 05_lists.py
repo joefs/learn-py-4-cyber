@@ -187,107 +187,141 @@ warmup4_port21_allowed = None
 
 # Exercise 1: Create and print a simple list
 """
-PRACTICE: Basic List Creation
+PRACTICE: Initial Device Inventory
 
-1. Create a list called `devices_warmup1` with three items: "firewall", "router", "switch".
-2. Assign `devices_warmup1` to the global variable `warmup1_devices_list`.
-3. Assign the length of `devices_warmup1` to the global variable `warmup1_devices_length`.
+Your organization is setting up its network. The first three core devices acquired are
+a "firewall", then a "router", and finally a "switch".
+You need to create a list representing this initial inventory in the order they were acquired.
+Also, record the total number of devices in this initial list.
+
+(Store the list itself in a global variable named `warmup1_devices_list` and the
+count of devices in `warmup1_devices_length` for automated checking.)
 """
-# TODO: Create devices_warmup1 list, then assign it and its length to global vars
+# TODO: Create a list with "firewall", "router", "switch".
+# TODO: Assign this list to `warmup1_devices_list`.
+# TODO: Calculate its length and assign to `warmup1_devices_length`.
 
 
 # Exercise 2: Add item to list
 """
-PRACTICE: Adding to Lists
+PRACTICE: Expanding User Access
 
-1. Create a list `users_warmup2 = ["admin", "guest"]`.
-2. Add "operator" to the end of `users_warmup2` using append().
-3. Assign the modified `users_warmup2` list to the global variable `warmup2_users_list_modified`.
+Initially, your system has two types of users: "admin" and "guest".
+A new user role, "operator", needs to be added to this list of user types.
+The new role should be added at the end of the existing list.
+
+(Start with a list `users_warmup2` containing "admin" and "guest".
+After adding "operator", store the final list in the global variable
+`warmup2_users_list_modified`.)
 """
-# TODO: Create users_warmup2, add item, assign to warmup2_users_list_modified
+# TODO: Create `users_warmup2` with "admin", "guest".
+# TODO: Append "operator" to this list.
+# TODO: Assign the modified list to `warmup2_users_list_modified`.
 
 
 # Exercise 3: Remove item from list
 """
-PRACTICE: Removing from Lists
+PRACTICE: Decommissioning a Service
 
-1. Create a list `services_warmup3 = ["web", "mail", "test", "dns"]`.
-2. Remove "test" from `services_warmup3` using remove(). Handle potential ValueError if "test" isn't there.
-3. Assign the modified `services_warmup3` list to the global variable `warmup3_services_list_modified`.
+Your current list of active network services is "web", "mail", "test", and "dns".
+The "test" service is being decommissioned and needs to be removed from this list.
+Ensure your code can handle the case where "test" might already be missing,
+though for this specific exercise, it will be present.
+
+(Start with a list `services_warmup3` containing these four services.
+After removing "test", store the updated list in the global variable
+`warmup3_services_list_modified`.)
 """
-# TODO: Create services_warmup3, remove item, assign to warmup3_services_list_modified
+# TODO: Create `services_warmup3` with "web", "mail", "test", "dns".
+# TODO: Remove "test" from the list.
+# TODO: Assign the modified list to `warmup3_services_list_modified`.
 
 
 # Exercise 4: Check if item exists in list
 """
-PRACTICE: Checking List Membership
+PRACTICE: Validating Allowed Ports
 
-1. Create a list `allowed_ports_warmup4 = [22, 80, 443]`.
-2. Check if port 22 is in `allowed_ports_warmup4` and assign the boolean result to `warmup4_port22_allowed`.
-3. Check if port 21 is in `allowed_ports_warmup4` and assign the boolean result to `warmup4_port21_allowed`.
+Your firewall has a list of currently allowed incoming ports: 22, 80, and 443.
+You need to perform two checks:
+1. Is port 22 currently allowed?
+2. Is port 21 currently allowed?
+Record the true/false results of these checks.
+
+(Define the list of allowed ports as `allowed_ports_warmup4`.
+Store the boolean result for port 22 in `warmup4_port22_allowed`.
+Store the boolean result for port 21 in `warmup4_port21_allowed`.)
 """
-# TODO: Create list and assign boolean check results to global vars
+# TODO: Create `allowed_ports_warmup4` with 22, 80, 443.
+# TODO: Check if 22 is in the list and assign the result to `warmup4_port22_allowed`.
+# TODO: Check if 21 is in the list and assign the result to `warmup4_port21_allowed`.
 
 
 # ============================================================================
 # YOUR MAIN EXERCISE: Build a Security Asset Management System
 # ============================================================================
 """
-SECURITY ASSET MANAGEMENT SYSTEM
+CHALLENGE: SECURITY ASSET MANAGEMENT SYSTEM
 
-You are building a comprehensive security asset management system for your organization.
-The system needs to track network devices, user accounts, security alerts, and
-vulnerability assessments. For each task, perform the operations and store the
-final results in the specified global variables.
+You're building a system to manage various security assets within your organization.
+This involves tracking network devices, user accounts, security alerts, and
+vulnerability data. Each task below builds upon lists to manage this information.
 
 TASK 1: NETWORK INFRASTRUCTURE TRACKING
-Initial devices: `network_devices = ["firewall", "router", "switch", "server"]`
-Operations:
-1. Add "intrusion_detection_system" to the end of `network_devices`.
-2. Insert "load_balancer" at index 2 into `network_devices`.
-After operations, assign the final state of `network_devices` to `final_network_devices`
-and its length to `final_device_count`.
+   Your initial list of core network devices is: "firewall", "router", "switch", "server".
+   Two updates are needed:
+   1. An "intrusion_detection_system" has been added. Append it to your list.
+   2. A "load_balancer" was installed earlier and should be inserted into the list
+      right after the "router" (i.e., it will become the third item if "router" is second).
+   (Start with `network_devices`. After these operations, make the final list available
+   as `final_network_devices`, and store the total count of devices in `final_device_count`.)
 
 TASK 2: USER ACCOUNT MANAGEMENT
-Initial accounts: `user_accounts = ["admin", "user1", "user2", "guest"]`
-Operations:
-1. Remove "guest" from `user_accounts`.
-2. Add "analyst" and "manager" to `user_accounts`.
-After operations, assign the final state of `user_accounts` to `final_user_accounts`.
-Assign a boolean `("admin" in final_user_accounts)` to `is_admin_in_final_list`.
+   The current list of user account types is: "admin", "user1", "user2", "guest".
+   Perform these changes:
+   1. The "guest" account type is being removed.
+   2. Two new account types, "analyst" and "manager", are being added to the list.
+   After these changes, also verify if the "admin" account type is still present.
+   (Start with `user_accounts`. The final list of account types should be stored in
+   `final_user_accounts`. A boolean indicating if "admin" is in this final list
+   should be stored in `is_admin_in_final_list`.)
 
 TASK 3: SECURITY ALERT TRACKING
-Initial alerts (strings):
-  alert1 = "Failed login attempt from IP address 203.0.113.42"
-  alert2 = "High CPU usage detected on server-01"
-  alert3 = "Suspicious file detected in downloads folder"
-  alert4 = "Firewall rule violation from internal network"
-Operations:
-1. Create an empty list `security_alerts_log`. Add all four initial alerts to it.
-2. Create `formatted_initial_alerts` (list of strings), where each alert from
-   `security_alerts_log` is prefixed by its 1-based index (e.g., "1: Failed login...").
-3. Remove the first alert from `security_alerts_log`. Store the removed alert string
-   in `removed_alert_content`.
-4. Create `formatted_remaining_alerts` (list of strings) from the updated
-   `security_alerts_log`, again prefixed by 1-based index.
+   You have received four security alerts as plain text messages:
+     Alert 1: "Failed login attempt from IP address 203.0.113.42"
+     Alert 2: "High CPU usage detected on server-01"
+     Alert 3: "Suspicious file detected in downloads folder"
+     Alert 4: "Firewall rule violation from internal network"
+   Your tasks are:
+   1. Collect these four alerts into a list called `security_alerts_log`.
+   2. Create a new list, `formatted_initial_alerts`, where each alert message from
+      `security_alerts_log` is prefixed by its 1-based index number (e.g., "1: Alert message...").
+   3. The first alert in `security_alerts_log` has been resolved. Remove it from the list.
+      Store the content of this removed alert in `removed_alert_content`.
+   4. Create another list, `formatted_remaining_alerts`, from the updated `security_alerts_log`
+      (after removal), again prefixing each alert with its new 1-based index.
 
 TASK 4: VULNERABILITY ASSESSMENT
-Initial scores: `vulnerability_scores = [8.5, 6.2, 9.1, 4.3, 7.8]`
-Operations:
-1. Create `sorted_vulnerability_scores` by sorting the `vulnerability_scores` list
-   in descending order. (The original list can be modified or a new one created).
-2. Create `high_severity_vulns_list` containing scores from `sorted_vulnerability_scores`
-   that are > 7.0.
-3. Calculate the average of the original `vulnerability_scores` and store it in
-   `average_vuln_score`. If the list were empty, average should be 0.0.
+   You have a list of raw vulnerability scores from a recent scan: `[8.5, 6.2, 9.1, 4.3, 7.8]`.
+   Process these scores:
+   1. Sort these scores in descending order (highest to lowest). Store this sorted list
+      in `sorted_vulnerability_scores`. The original list can be modified or you can create a new one.
+   2. From the `sorted_vulnerability_scores`, create a new list called `high_severity_vulns_list`
+      that includes only scores greater than 7.0.
+   3. Calculate the average of the original `vulnerability_scores`. If the list of scores
+      were empty, the average should be considered 0.0. Store this average in `average_vuln_score`.
+   (Define the initial `vulnerability_scores` list yourself as part of your solution for this task.)
 
 TASK 5: SECURITY DASHBOARD SUMMARY DATA
-Create these global variables using the final data from the tasks above:
-- `dashboard_total_devices`: (int) Value from `final_device_count`.
-- `dashboard_total_users`: (int) Length of `final_user_accounts`.
-- `dashboard_active_alerts_count`: (int) Length of the updated `security_alerts_log`.
-- `dashboard_highest_vulnerability`: (float) The highest score from `sorted_vulnerability_scores`
-                                       (or 0.0 if `sorted_vulnerability_scores` is empty).
+   To populate a security dashboard, you need to consolidate some key metrics from the
+   previous tasks. Create the following global variables and assign them values based on
+   the final state of your data from Tasks 1-4:
+   - `dashboard_total_devices`: The total number of network devices (from `final_device_count`).
+   - `dashboard_total_users`: The total number of user account types (from `final_user_accounts`).
+   - `dashboard_active_alerts_count`: The number of alerts remaining in `security_alerts_log`.
+   - `dashboard_highest_vulnerability`: The highest score from `sorted_vulnerability_scores`
+     (if the list is empty, this should be 0.0).
+
+Ensure all results are stored in the specified global variables for checking.
 """
 
 # YOUR CODE GOES HERE

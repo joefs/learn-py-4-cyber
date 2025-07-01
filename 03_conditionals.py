@@ -183,50 +183,70 @@ else:
 
 # Exercise 1: Simple if statement
 """
-PRACTICE: Basic If Statement
+PRACTICE: Threat Level Assessment
 
-Create a variable `threat_level_warmup1` and set it to 8.
-If `threat_level_warmup1` is greater than 5, assign the string "High threat detected"
-to a global variable `warmup1_output`. Otherwise, assign "Low or normal threat".
+In your security monitoring system, you're tracking a numerical threat level.
+For this exercise, assume the current threat level is 8.
+Your task is to write code that checks this threat level. If it's above 5,
+your system should note "High threat detected". Otherwise, it should note "Low or normal threat".
+
+(Store the result of this assessment in a global variable named `warmup1_output` for checking.)
 """
-# TODO: Create threat_level_warmup1 and if statement assigning to warmup1_output
+# TODO: Define a variable for the threat level (set to 8).
+# TODO: Write an if-else statement to determine the threat message.
+# TODO: Assign the determined message to the global variable `warmup1_output`.
 # warmup1_output = "" # Initialize for testing
 
 
 # Exercise 2: If-else statement
 """
-PRACTICE: If-Else Logic
+PRACTICE: Port Connection Type
 
-Create a variable `port_warmup2` and set it to 22.
-If `port_warmup2` equals 22, assign "SSH connection" to a global variable
-`warmup2_output`. Otherwise, assign "Other connection".
+Your system needs to identify the type of connection based on a port number.
+Consider port number 22. If the connection is on port 22, it's an "SSH connection".
+Any other port should be identified as "Other connection".
+
+(Store the connection type string in a global variable named `warmup2_output`.)
 """
-# TODO: Create port_warmup2 and if-else statement assigning to warmup2_output
+# TODO: Define a variable for the port number (set to 22).
+# TODO: Use an if-else statement to identify the connection type.
+# TODO: Assign the connection type to the global variable `warmup2_output`.
 # warmup2_output = "" # Initialize for testing
 
 
 # Exercise 3: Multiple conditions with elif
 """
-PRACTICE: If-Elif-Else Logic
+PRACTICE: Security Score Evaluation
 
-Create a variable `security_score_warmup3` and set it to 7.
-If `security_score_warmup3` is 9 or above, assign "Excellent security" to `warmup3_output`.
-Else if `security_score_warmup3` is between 7 and 8 (inclusive), assign "Good security" to `warmup3_output`.
-Otherwise, assign "Needs improvement" to `warmup3_output`.
+A system's security posture is rated with a score. For this scenario, the score is 7.
+Evaluate this score:
+- A score of 9 or higher is "Excellent security".
+- A score between 7 and 8 (inclusive) is "Good security".
+- Any other score "Needs improvement".
+
+(Assign the evaluation string to the global variable `warmup3_output`.)
 """
-# TODO: Create security_score_warmup3 and if-elif-else statement assigning to warmup3_output
+# TODO: Define a variable for the security score (set to 7).
+# TODO: Implement an if-elif-else structure to evaluate the score.
+# TODO: Assign the evaluation message to the global variable `warmup3_output`.
 # warmup3_output = "" # Initialize for testing
 
 
 # Exercise 4: Combining conditions with AND
 """
-PRACTICE: Conditional with AND
+PRACTICE: System Readiness Check
 
-Create variables `admin_logged_in_warmup4 = True` and `system_healthy_warmup4 = True`.
-If BOTH are True, assign "System ready for operations" to `warmup4_output`.
-Otherwise, assign "System not ready" to `warmup4_output`.
+For a system to be ready for critical operations, two conditions must be met:
+an administrator must be logged in, AND the overall system health must be good.
+Assume for this check that an admin is indeed logged in, and the system is healthy.
+Determine if the system is "System ready for operations" or "System not ready".
+
+(Store the readiness status in the global variable `warmup4_output`.)
 """
-# TODO: Create variables and conditional with AND, assigning to warmup4_output
+# TODO: Define two boolean variables: one for admin login status (True),
+#       and one for system health (True).
+# TODO: Write a conditional statement using 'and' to check if both are true.
+# TODO: Assign the appropriate readiness message to `warmup4_output`.
 # warmup4_output = "" # Initialize for testing
 
 
@@ -234,55 +254,62 @@ Otherwise, assign "System not ready" to `warmup4_output`.
 # YOUR MAIN EXERCISE: Build a Security Assessment System
 # ============================================================================
 """
-AUTOMATED SECURITY ASSESSMENT SYSTEM
+CHALLENGE: AUTOMATED SECURITY ASSESSMENT TOOL
 
-You are developing an automated security assessment tool that evaluates a computer
-system's security posture and provides recommendations.
+Imagine you're building a tool to quickly assess a computer's security settings.
+This tool will check several aspects of the system and report on each.
 
-The system being assessed has the following characteristics (define these variables):
-- password_length = 6
-- last_update_days = 45
-- firewall_enabled = True
-- antivirus_active = False
-- admin_account_active = True
-- failed_login_attempts = 8
+First, establish the current state of the system by defining these characteristics:
+- The password for the main user account is 6 characters long.
+- The system was last updated 45 days ago.
+- The firewall is currently enabled.
+- Antivirus software is not active.
+- The primary administrator account is active.
+- There have been 8 failed login attempts recently.
 
-Your task is to determine the appropriate message for each security area based on
-the rules below and assign it to a corresponding global variable.
+Based on these characteristics, your tool needs to generate specific assessment messages
+for different security areas. The rules for these messages are as follows:
 
-PASSWORD SECURITY ASSESSMENT:
-Assign to `password_assessment_msg`:
-- "Strong password" if password_length >= 12
-- "Adequate password" if 8 <= password_length <= 11
-- "Weak password, requires immediate change" if password_length < 8
+1.  PASSWORD SECURITY ASSESSMENT:
+    How strong is the password?
+    - If the password length is 12 characters or more, it's a "Strong password".
+    - If it's between 8 and 11 characters (inclusive), it's an "Adequate password".
+    - If it's shorter than 8 characters, it's a "Weak password, requires immediate change".
+    (Store this assessment in `password_assessment_msg`.)
 
-SYSTEM UPDATE STATUS:
-Assign to `update_status_msg`:
-- "System updates are current" if last_update_days <= 7
-- "System updates are acceptable" if 7 < last_update_days <= 30
-- "System is critically outdated" if last_update_days > 30
+2.  SYSTEM UPDATE STATUS:
+    Is the system up-to-date?
+    - If the last update was 7 days ago or less, "System updates are current".
+    - If it was between 8 and 30 days ago (inclusive of 30), "System updates are acceptable".
+    - If it was more than 30 days ago, "System is critically outdated".
+    (Store this status in `update_status_msg`.)
 
-SECURITY SOFTWARE PROTECTION:
-Assign to `software_protection_msg`:
-- "System is fully protected" if firewall_enabled is True AND antivirus_active is True
-- "System is partially protected" if firewall_enabled is True OR antivirus_active is True (but not both)
-- "System is unprotected" if neither is active
+3.  SECURITY SOFTWARE PROTECTION:
+    How well is the system protected by security software?
+    - If both the firewall is enabled AND antivirus is active, "System is fully protected".
+    - If either the firewall is enabled OR antivirus is active (but not both), "System is partially protected".
+    - If neither is active, "System is unprotected".
+    (Store this protection status in `software_protection_msg`.)
 
-ACCOUNT SECURITY MONITORING:
-Assign to `account_security_msg`:
-(Order of checks matters here)
-- "Admin account under attack" if admin_account_active is True AND failed_login_attempts > 5
-- Else if failed_login_attempts > 10, assign "Possible brute force attack"
-- Else if failed_login_attempts > 3, assign "Multiple failed attempts warning"
-- Else, assign "Normal login activity"
+4.  ACCOUNT SECURITY MONITORING:
+    What's the status of account login activity? (Evaluate these conditions in order)
+    - If the admin account is active AND there have been more than 5 failed login attempts, it's an "Admin account under attack".
+    - Else, if there have been more than 10 failed login attempts, it's a "Possible brute force attack".
+    - Else, if there have been more than 3 failed login attempts, it's a "Multiple failed attempts warning".
+    - Otherwise, it's "Normal login activity".
+    (Store this activity status in `account_security_msg`.)
 
-OVERALL SECURITY RECOMMENDATION: (Optional Challenge)
-Based on the messages above, assign an overall recommendation string to
-`overall_recommendation_msg`. For example, if multiple areas are weak/critical,
-recommend "Urgent action required across multiple areas."
-If mostly good, "System posture is fair, address noted issues."
-If all good/strong, "System security posture is strong."
-(This part is more open-ended for the user to define their logic).
+OPTIONAL CHALLENGE: OVERALL SECURITY RECOMMENDATION
+    Based on the individual assessment messages you've generated, try to determine an
+    overall security recommendation. For example:
+    - If multiple areas are weak or critical, the recommendation might be "Urgent action required across multiple areas."
+    - If most areas are good, "System posture is fair, address noted issues."
+    - If all areas are strong, "System security posture is strong."
+    This is an open-ended part for you to define your own logic.
+    (Store your overall recommendation in `overall_recommendation_msg`.)
+
+Your goal is to implement the logic to define the initial characteristics and then
+determine each of these messages, storing them in their respective global variables for automated checking.
 """
 
 # YOUR CODE GOES HERE

@@ -105,11 +105,15 @@ def analyze_security_log(log_filename): # This helper is used by main exercise
 
 # Exercise 1: Write a simple file
 """
-PRACTICE: Basic File Writing
+PRACTICE: Recording System Status
 
-Write a function `write_status_to_file_warmup(filename, status_message)` that
-creates a file named `filename` and writes the `status_message` into it.
-The function should return True if successful, False otherwise.
+Your security system needs to periodically save its current status to a file.
+Create a tool (a function) that takes a filename and a status message.
+This tool should write the given status message into the specified file.
+It should indicate whether the operation was successful.
+
+(Define this as a function `write_status_to_file_warmup(filename, status_message)`
+that returns True if writing was successful, False otherwise.)
 """
 # TODO: Implement write_status_to_file_warmup
 def write_status_to_file_warmup(filename, status_message):
@@ -117,11 +121,15 @@ def write_status_to_file_warmup(filename, status_message):
 
 # Exercise 2: Read a simple file
 """
-PRACTICE: Basic File Reading
+PRACTICE: Retrieving System Status
 
-Write a function `read_status_from_file_warmup(filename)` that reads and
-returns the entire content of the specified `filename`.
-If the file doesn't exist or an error occurs, it should return None.
+Complementary to the previous exercise, you need a tool to read the last saved
+system status from a file. This tool should take a filename, attempt to read
+its entire content, and return that content. If the file cannot be found or
+read, it should return a special value (None) to indicate failure.
+
+(Define this as a function `read_status_from_file_warmup(filename)`
+that returns the file content or None.)
 """
 # TODO: Implement read_status_from_file_warmup
 def read_status_from_file_warmup(filename):
@@ -129,12 +137,16 @@ def read_status_from_file_warmup(filename):
 
 # Exercise 3: Append to a file
 """
-PRACTICE: Appending to Files
+PRACTICE: Continuous Logging
 
-Write a function `append_log_to_file_warmup(filename, log_message)` that
-appends the `log_message` (prefixed with a newline character if the
-file is not empty and does not end with a newline) to the specified `filename`.
-Returns True if successful, False otherwise.
+Your system generates log messages that need to be added to an ongoing log file.
+Create a utility that takes a filename and a new log message. This utility
+should append the new message to the end of the file. To keep the log readable,
+if the file isn't empty and doesn't already end with a newline, a newline
+should be added before the new message. The utility should report its success.
+
+(Define this as a function `append_log_to_file_warmup(filename, log_message)`
+that returns True if appending was successful, False otherwise.)
 """
 # TODO: Implement append_log_to_file_warmup
 def append_log_to_file_warmup(filename, log_message):
@@ -142,15 +154,18 @@ def append_log_to_file_warmup(filename, log_message):
 
 # Exercise 4: Process file line by line
 """
-PRACTICE: Line-by-Line Processing
+PRACTICE: Server Checkup from List
 
-Write a function `get_servers_from_file_warmup(filename, server_list_content_str)`
-that first creates/overwrites `filename` with `server_list_content_str` (where
-each server name is separated by a newline in the string).
-Then, it should read `filename` line by line.
-The function should return a list of strings, where each string is
-"Checking: [server_name]". Skip empty lines from the file.
-If the file cannot be read after creation, return an empty list.
+You have a list of servers stored in a file, one server name per line.
+First, your utility needs to create this server list file from a given string
+(where server names in the string are separated by newlines).
+Then, it must read this file line by line. For each server name found (ignoring
+any empty lines), it should generate a status message "Checking: [server_name]".
+Collect all such status messages. If the file, once created, cannot be read,
+return an empty collection of messages.
+
+(Define this as a function `get_servers_from_file_warmup(filename, server_list_content_str)`
+that returns a list of formatted "Checking: ..." strings.)
 """
 # TODO: Implement get_servers_from_file_warmup
 def get_servers_from_file_warmup(filename, server_list_content_str):
@@ -160,55 +175,76 @@ def get_servers_from_file_warmup(filename, server_list_content_str):
 # YOUR MAIN EXERCISE: Build a Security File Management System
 # ============================================================================
 """
-USER ACCOUNT DATA PROCESSOR:
-`process_user_list(csv_filepath)`:
-  Input: Path to a CSV file (e.g., "users.csv").
-  CSV Format: username,role,email,last_login_date,status (active/inactive)
-  Output: A dictionary with:
-    "total_users": count
-    "active_users": list of usernames
-    "inactive_users": list of usernames
-    "admin_users": list of usernames (role is "admin" or "administrator")
-  Return None if file not found or parsing error.
+CHALLENGE: SECURITY FILE MANAGEMENT SYSTEM
 
-SECURITY ALERT FILTERING SYSTEM:
-`process_security_alerts(alerts_filepath, output_report_filepath)`:
-  Input: Path to an alerts file, path for the output report.
-  Alerts File Format: Each line is "timestamp|severity|source_system|description"
-  Task: Filter for "HIGH" or "CRITICAL" severity alerts.
-        Write these filtered alerts to `output_report_filepath`, one alert per line,
-        formatted as: "ALERT: [timestamp] - [severity] - [source] - [description]".
-  Output: Count of high-priority alerts processed and written. Return -1 on error.
+You are tasked with developing a suite of tools for managing various security-related
+files. Each tool will be a function designed for a specific file operation task.
 
-CONFIGURATION MANAGEMENT TOOL:
-`update_security_config(config_filepath, updates_dict)`:
-  Input: Path to a config file, dictionary of updates `{"key_to_update": "new_value"}`.
-  Config File Format: "key=value" per line. Lines starting with "#" are comments.
-  Task: Update values for keys present in `updates_dict`. Add new key-value pairs
-        if a key in `updates_dict` is not in the file. Preserve comments and structure.
-  Output: True if successful, False on error.
+TOOL 1: USER ACCOUNT DATA PROCESSOR
+   Function Name: `process_user_list`
+   Input: `csv_filepath` (string path to a CSV file)
+   CSV File Format: Each line contains user data: `username,role,email,last_login_date,status`
+     (e.g., "jdoe,user,jdoe@example.com,2023-01-15,active")
+   Task: Read the CSV file. Parse each line to extract user information.
+   Output: Return a dictionary summarizing the data:
+     - "total_users": Total number of users in the file.
+     - "active_users": A list of usernames for users whose status is "active".
+     - "inactive_users": A list of usernames for users whose status is "inactive".
+     - "admin_users": A list of usernames for users whose role is "admin" or "administrator" (case-insensitive).
+   Error Handling: If the file is not found or a significant parsing error occurs (e.g., incorrect CSV format
+                   that prevents basic processing), return `None`.
 
-LOG ARCHIVE SYSTEM:
-`archive_old_logs(source_directory, archive_filepath)`:
-  Input: Directory path, path for the output archive file.
-  Task: Find all ".log" and ".txt" files in `source_directory` (excluding the
-        `archive_filepath` itself). Append their content to `archive_filepath`.
-        Each appended file's content should be preceded by a header like:
-        "--- Start of [filename] (Archived: YYYY-MM-DD HH:MM:SS) ---"
-        and followed by "--- End of [filename] ---".
-  Output: List of filenames successfully archived. Return empty list on error.
+TOOL 2: SECURITY ALERT FILTERING SYSTEM
+   Function Name: `process_security_alerts`
+   Inputs: `alerts_filepath` (path to the input alerts file), `output_report_filepath` (path for the filtered report)
+   Alerts File Format: Each line is a pipe-separated string: "timestamp|severity|source_system|description"
+     (e.g., "2023-10-01T09:30:00Z|HIGH|firewall-01|Suspicious outbound connection")
+   Task: Read the alerts file. Identify and filter alerts that are of "HIGH" or "CRITICAL" severity.
+         Write these selected high-priority alerts to the `output_report_filepath`. Each alert in the
+         output file should be formatted as: "ALERT: [timestamp] - [severity] - [source] - [description]".
+   Output: Return the count of high-priority alerts that were processed and written to the report.
+   Error Handling: If any file operation fails, return -1.
 
-SECURITY METRICS ANALYZER:
-`generate_metrics_report(user_csv_filepath, alerts_input_filepath, output_metrics_filepath)`:
-  Input: Paths to user CSV, alerts file (for counting, not writing), and path for output metrics report.
-  Task: Use `process_user_list` (or similar logic) and analyze `alerts_input_filepath`
-        (similar to `process_security_alerts` but just for counting).
-        Calculate metrics:
-          - User metrics: total_users, active_user_percentage, admin_user_count.
-          - Alert metrics: total_alerts_in_file, high_priority_alert_count (HIGH or CRITICAL),
-                           critical_alert_count (CRITICAL only).
-        Write these metrics to `output_metrics_filepath` in a readable format.
-  Output: A dictionary containing the calculated metrics. Return empty dict on error.
+TOOL 3: CONFIGURATION MANAGEMENT TOOL
+   Function Name: `update_security_config`
+   Inputs: `config_filepath` (path to a configuration file), `updates_dict` (a dictionary like `{"key_to_update": "new_value"}`)
+   Config File Format: Standard "key=value" pairs, one per line. Lines starting with "#" are comments and should be preserved.
+   Task: Read the existing configuration file. For each key in `updates_dict`:
+         - If the key exists in the config file, update its value.
+         - If the key does not exist, add it as a new "key=value" pair at the end of the file.
+         Preserve all comments and unchanged lines in their original positions. Write the modified
+         content back to the `config_filepath`, overwriting the original.
+   Output: Return `True` if the update process completes successfully.
+   Error Handling: Return `False` if any file operation fails.
+
+TOOL 4: LOG ARCHIVE SYSTEM
+   Function Name: `archive_old_logs`
+   Inputs: `source_directory` (path to a directory containing log files), `archive_filepath` (path for the consolidated archive file)
+   Task: Search `source_directory` for all files ending with ".log" or ".txt". For each found file
+         (excluding the `archive_filepath` itself if it's in the same directory):
+         1. Get the current timestamp (e.g., "YYYY-MM-DD HH:MM:SS").
+         2. Append a header to `archive_filepath`: "--- Start of [filename] (Archived: [timestamp]) ---".
+         3. Append the entire content of the found log file to `archive_filepath`.
+         4. Append a footer: "--- End of [filename] ---".
+         Ensure each appended section (header, content, footer) is followed by a newline in the archive.
+   Output: Return a list of filenames that were successfully archived.
+   Error Handling: If the `source_directory` doesn't exist or other major file operation errors occur,
+                   return an empty list. Individual file read errors should be skipped, and archiving should continue if possible.
+
+TOOL 5: SECURITY METRICS ANALYZER
+   Function Name: `generate_metrics_report`
+   Inputs: `user_csv_filepath` (for user data), `alerts_input_filepath` (for alert data), `output_metrics_filepath` (for the report)
+   Task:
+     1. Analyze user data (similar to `process_user_list` or by calling it if available and robust) to get:
+        total user count, active user count, and admin user count. Calculate active user percentage.
+     2. Analyze the alerts file (similar to `process_security_alerts` but only for counting, not writing a filtered report) to get:
+        total alert count, count of "HIGH" or "CRITICAL" alerts, and count of "CRITICAL" alerts only.
+     3. Write all these calculated metrics into `output_metrics_filepath` in a human-readable format
+        (e.g., "Total Users: 50\nActive User Percentage: 90.0%\n...").
+   Output: Return a dictionary containing all the calculated metrics (e.g., `{"total_users": ...,
+           "active_user_percentage": ..., "admin_user_count": ..., "total_alerts": ...,
+           "high_priority_alert_count": ..., "critical_alert_count": ...}`).
+   Error Handling: If essential input files are missing or major processing fails, return an empty dictionary.
 """
 
 # YOUR CODE GOES HERE

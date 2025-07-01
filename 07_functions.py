@@ -279,53 +279,72 @@ for system_c in test_systems_conceptual: # Renamed loop var
 
 # Exercise 1: Simple function with no parameters
 """
-PRACTICE: Basic Function
+PRACTICE: System Status Reporter
 
-Write a function `check_system_status_warmup()` that returns the string
-"System status: Online".
+You need a quick way to report the basic status of a system.
+Create a reusable piece of code (a function) that, when called,
+always reports "System status: Online".
+
+(Define this as a function named `check_system_status_warmup` that returns the status string.)
 """
-# TODO: Implement the function check_system_status_warmup
+# TODO: Define the function `check_system_status_warmup`.
+# TODO: Inside the function, return the string "System status: Online".
 def check_system_status_warmup():
     pass # Placeholder
 
 
 # Exercise 2: Function with one parameter
 """
-PRACTICE: Function with Parameter
+PRACTICE: Personalized Greeting
 
-Write a function `greet_user_warmup(username)` that accepts a username string.
-The function should return a personalized greeting string: "Hello, [username]".
+To make your security tools more user-friendly, you want to greet users by name.
+Develop a component that can take any username as input and produce a
+personalized greeting: "Hello, [username]".
+
+(Define this as a function named `greet_user_warmup` that accepts one
+argument (the username) and returns the greeting string.)
 """
-# TODO: Implement the function greet_user_warmup
+# TODO: Define the function `greet_user_warmup` that takes one parameter (e.g., `username`).
+# TODO: Inside the function, construct and return the greeting string "Hello, [username]".
 def greet_user_warmup(username):
     pass # Placeholder
 
 
 # Exercise 3: Function that returns a value
 """
-PRACTICE: Function with Return Value
+PRACTICE: Security Score Calculator
 
-Write a function `calculate_security_score_warmup(threats, defenses)` that
-accepts two integers: `threats` and `defenses`.
-The function should calculate and return the security score using the formula:
-score = defenses - threats.
+A simple way to assess overall security is to subtract the number of identified
+threats from the number of effective defenses. Create a tool that performs
+this calculation. It should take the count of threats and defenses as input
+and output the resulting security score.
+
+(Define this as a function named `calculate_security_score_warmup` that
+accepts two arguments: `threats` and `defenses`. It should return their difference.)
 """
-# TODO: Implement the function calculate_security_score_warmup
+# TODO: Define the function `calculate_security_score_warmup` with two parameters (e.g., `threats`, `defenses`).
+# TODO: Calculate `defenses - threats` and return the result.
 def calculate_security_score_warmup(threats, defenses):
     pass # Placeholder
 
 
 # Exercise 4: Function with conditional logic
 """
-PRACTICE: Function with Logic
+PRACTICE: Port Assessor
 
-Write a function `assess_port_warmup(port_number)` that accepts an integer `port_number`.
-It should return:
-- "SSH port" if port_number is 22
-- "HTTP port" if port_number is 80
-- "Unknown port" for any other port_number.
+Different network ports are used for different services. You need a utility
+that can identify common services based on their port number.
+- Port 22 is typically "SSH port".
+- Port 80 is typically "HTTP port".
+- Any other port should be labeled "Unknown port".
+Your utility should take a port number and return its assessment.
+
+(Define this as a function named `assess_port_warmup` that accepts a
+`port_number` and returns the corresponding string assessment.)
 """
-# TODO: Implement the function assess_port_warmup
+# TODO: Define the function `assess_port_warmup` that takes `port_number` as a parameter.
+# TODO: Use conditional logic (if/elif/else) to check the port_number.
+# TODO: Return "SSH port", "HTTP port", or "Unknown port" accordingly.
 def assess_port_warmup(port_number):
     pass # Placeholder
 
@@ -334,71 +353,83 @@ def assess_port_warmup(port_number):
 # YOUR MAIN EXERCISE: Build Modular Security Tools
 # ============================================================================
 """
-MODULAR SECURITY TOOLKIT DEVELOPMENT
+CHALLENGE: MODULAR SECURITY TOOLKIT DEVELOPMENT
 
-You are building a comprehensive security toolkit that can be reused across different
-security operations. The toolkit should provide modular functions for common cybersecurity
-tasks including password analysis, network reconnaissance, log processing, and incident alerting.
+You're tasked with creating a versatile security toolkit. This toolkit will consist of
+several specialized functions (modules) that can be used independently or together for
+various security operations.
 
-PASSWORD SECURITY ANALYZER:
-Create a function named `analyze_password(password_string)` that evaluates password strength.
-Criteria:
-- Minimum length of 8 characters (20 points)
-- Presence of uppercase letters (20 points)
-- Presence of lowercase letters (20 points)
-- Inclusion of numbers (20 points)
-- Use of special characters from "!@#$%^&*" (20 points)
+TOOL 1: PASSWORD SECURITY ANALYZER
+   Develop a function to analyze the strength of a given password string.
+   The analysis should be based on the following criteria, each contributing to a total score (max 100):
+   - Is the password at least 8 characters long? (Adds 20 points)
+   - Does it contain at least one uppercase letter? (Adds 20 points)
+   - Does it contain at least one lowercase letter? (Adds 20 points)
+   - Does it include at least one number? (Adds 20 points)
+   - Does it use any special characters from the set "!@#$%^&*" (Adds 20 points)
 
-Return a dictionary with:
-- "score": (integer, 0-100)
-- "strength": (string: "Weak" (0-40), "Fair" (41-60), "Good" (61-80), "Strong" (81-100))
-- "recommendations": (list of strings for unmet criteria, e.g., "Add uppercase letters.")
+   This function, named `analyze_password`, should take the `password_string` as input.
+   It must return a dictionary containing:
+   - "score": The calculated numerical score (0-100).
+   - "strength": A text assessment ("Weak" for scores 0-40, "Fair" for 41-60,
+                 "Good" for 61-80, "Strong" for 81-100).
+   - "recommendations": A list of text strings suggesting improvements for any unmet criteria
+     (e.g., "Add uppercase letters.", "Ensure password is at least 8 characters.").
 
-NETWORK RECONNAISSANCE SCANNER:
-Create a function `scan_network_range(network_base, start_host, end_host, target_port=80)`.
-`network_base` is like "192.168.1". `start_host` and `end_host` define the range.
-Simulate scanning: for each IP, randomly decide if `target_port` is open or closed.
-Return a dictionary: {"open_hosts": [list_of_ips], "closed_hosts": [list_of_ips]}.
+TOOL 2: NETWORK RECONNAISSANCE SCANNER
+   Create a function for basic network scanning. This function,
+   `scan_network_range(network_base, start_host, end_host, target_port=80)`,
+   will simulate checking a specific port on a range of IP addresses.
+   - `network_base`: The first part of the IP, like "192.168.1".
+   - `start_host`, `end_host`: Define the range for the last part of the IP (e.g., 1 to 3).
+   - `target_port`: The port to check (defaults to 80 if not specified).
+   For each IP in the range, your function should simulate a scan: randomly decide if the
+   `target_port` is "open" or "closed".
+   The function should return a dictionary: `{"open_hosts": [list_of_IPs_with_open_port],
+   "closed_hosts": [list_of_IPs_with_closed_port]}`.
 
-SECURITY LOG PROCESSOR:
-Create a function `parse_security_event(log_line_string)`.
-Log format: "YYYY-MM-DD HH:MM:SS SEVERITY Event description"
-   (Note: SEVERITY is a single word, then a space, then description)
-   Example: "2023-10-01 14:30:15 WARNING Multiple failed login attempts"
-Return a dictionary: {"timestamp": "YYYY-MM-DD HH:MM:SS", "severity": "SEVERITY", "description": "Event description"}.
-If malformed (e.g., not enough parts), return:
-  {"timestamp": "Unknown", "severity": "ERROR", "description": "Malformed log entry: [original_log_line]"}.
+TOOL 3: SECURITY LOG PROCESSOR
+   Develop a function, `parse_security_event(log_line_string)`, to process individual lines
+   from a security log. Assume log lines follow the format:
+   "YYYY-MM-DD HH:MM:SS SEVERITY Event description"
+   (Example: "2023-10-01 14:30:15 WARNING Multiple failed login attempts")
+   The SEVERITY is always a single word.
+   This function must return a dictionary with keys "timestamp", "severity", and "description".
+   If a log line is malformed (e.g., doesn't have enough parts to extract timestamp, severity, and description),
+   it should return `{"timestamp": "Unknown", "severity": "ERROR",
+   "description": "Malformed log entry: [original_log_line]"}`.
 
-INCIDENT ALERT GENERATOR:
-Create a function `generate_security_alert(event_type, severity, affected_systems_list, details_string)`.
-`severity` can be "LOW", "MEDIUM", "HIGH", "CRITICAL".
-Generate an `alert_id` like "ALERT-YYYYMMDD-HHMMSSMS" (e.g., ALERT-20231028-153000123456).
-The function should print a formatted alert message to the console (as specified in the original problem).
-Return a dictionary:
-- "alert_id": (string)
-- "formatted_message": (string, the same comprehensive alert message that was printed).
+TOOL 4: INCIDENT ALERT GENERATOR
+   Create a function `generate_security_alert(event_type, severity, affected_systems_list, details_string)`
+   to format and prepare security alerts.
+   - `severity` can be "LOW", "MEDIUM", "HIGH", or "CRITICAL".
+   The function should first generate a unique `alert_id` (e.g., "ALERT-YYYYMMDD-HHMMSSMS",
+   like ALERT-20231028-153000123).
+   Then, it should prepare a detailed, multi-line alert message string. This message should include the alert ID,
+   event type, timestamp (current time when the alert is generated), severity (with an icon: 🟢 LOW, 🟡 MEDIUM, 🟠 HIGH, 🔴 CRITICAL),
+   a list of affected systems, and the details string. This formatted message should be printed to the console.
+   The function must return a dictionary containing the `alert_id` and the `formatted_message` string.
 
-INTEGRATED SECURITY ASSESSMENT (Main Function):
-Create `run_security_assessment()` that uses the functions above.
-1. Test passwords: "password", "SecurePass123!", "MyP@ssw0rd2023". Store results.
-2. Scan network: "192.168.1", hosts 1-3, port 80. Store results.
-3. Process logs:
-   - "2023-10-01 14:30:15 INFO User login successful"
-   - "2023-10-01 14:35:22 WARNING Multiple failed login attempts"
-   - "Malformed log"
-   Store parsed logs.
-4. Generate alerts:
-   - If any password is "Weak" or "Fair".
-   - If any critical/high severity logs are found.
-   - If any hosts are found with open ports in the scan.
-   Store alert dictionaries.
-5. The `run_security_assessment` function should print its step-by-step findings/summaries
-   as described in the original problem for illustrative purposes.
-6. Finally, `run_security_assessment` should return a summary dictionary containing:
-   - "password_analysis_results": list of results from analyze_password
-   - "network_scan_results": result from scan_network_range
-   - "parsed_log_results": list of results from parse_security_event
-   - "generated_alerts_details": list of alert dictionaries from generate_security_alert
+INTEGRATION: SECURITY ASSESSMENT SCRIPT
+   Finally, create a main function `run_security_assessment()` that demonstrates the use of your toolkit:
+   1. Analyze these passwords: "password", "SecurePass123!", and "MyP@ssw0rd2023". Store all results.
+   2. Perform a network scan for the base "192.168.1", covering hosts 1 through 3, on port 80. Store the result.
+   3. Process these log lines:
+      - "2023-10-01 14:30:15 INFO User login successful"
+      - "2023-10-01 14:35:22 WARNING Multiple failed login attempts"
+      - "Malformed log" (a deliberately malformed entry)
+      Store all parsed log data.
+   4. Based on the findings:
+      - Generate an alert if any analyzed password has a "Weak" or "Fair" strength.
+      - Generate an alert if any processed log event has a "CRITICAL", "HIGH", or "ERROR" severity.
+      - Generate an alert if the network scan found any hosts with open ports.
+      Store all generated alert dictionaries.
+   5. The `run_security_assessment` function should also print summaries of its findings at each step
+      (e.g., "Password analysis complete...", "Network scan found X open hosts..."). These prints are for
+      illustrative purposes during execution.
+   6. This main function must return a dictionary summarizing all collected data:
+      `{"password_analysis_results": [...], "network_scan_results": {...},
+      "parsed_log_results": [...], "generated_alerts_details": [...]}`.
 """
 
 # YOUR CODE GOES HERE

@@ -108,12 +108,16 @@ def process_security_data_conceptual(data_list, index):
 
 # Exercise 1: Basic try-except
 """
-PRACTICE: Simple Try-Except
+PRACTICE: Safe Integer Conversion
 
-Write a function `safe_convert_to_int_warmup(value_str)` that attempts to convert
-`value_str` to an integer.
-If successful, return the integer.
-If a ValueError occurs (e.g., `value_str` is "abc"), return the string "Invalid number".
+Your system often receives data as strings that need to be converted to numbers.
+Create a tool that attempts to convert a given string value into an integer.
+If the conversion is successful, the tool should provide the integer.
+However, if the string cannot be converted (e.g., it's "abc"), the tool
+should report "Invalid number" instead of crashing.
+
+(Define this as a function `safe_convert_to_int_warmup(value_str)` that
+returns the integer or the error string.)
 """
 # TODO: Implement safe_convert_to_int_warmup
 def safe_convert_to_int_warmup(value_str):
@@ -122,12 +126,16 @@ def safe_convert_to_int_warmup(value_str):
 
 # Exercise 2: Handle file not found
 """
-PRACTICE: File Error Handling
+PRACTICE: Robust Configuration File Reading
 
-Write a function `read_config_file_warmup(filename)` that attempts to open
-and read the content of `filename`.
-If successful, return the content.
-If a FileNotFoundError occurs, return the string "File not found".
+Security tools often rely on configuration files. It's important that your
+tools can handle situations where a configuration file might be missing.
+Develop a utility that tries to open and read a specified configuration file.
+If the file exists and is readable, it should return the file's content.
+If the file is not found, it should indicate this by returning "File not found".
+
+(Define this as a function `read_config_file_warmup(filename)` that
+returns the file content or the error string.)
 """
 # TODO: Implement read_config_file_warmup
 def read_config_file_warmup(filename):
@@ -136,12 +144,18 @@ def read_config_file_warmup(filename):
 
 # Exercise 3: Multiple exception types
 """
-PRACTICE: Multiple Exception Handling
+PRACTICE: Secure Division Calculator
 
-Write a function `safe_divide_warmup(a, b)` that attempts to return `a / b`.
-Handle ZeroDivisionError by returning "Cannot divide by zero".
-Handle TypeError (e.g., if a or b are not numbers) by returning "Invalid input types".
-For any other exception, return "An unexpected error occurred".
+You're building a calculator for security metrics that involves division.
+This calculator must be robust and handle various mathematical errors gracefully.
+It should take two numbers, `a` and `b`, and attempt to calculate `a / b`.
+- If division by zero is attempted, it should return "Cannot divide by zero".
+- If the inputs are not valid numbers for division (e.g., one is a string),
+  it should return "Invalid input types".
+- For any other unexpected error during division, it should return "An unexpected error occurred".
+
+(Define this as a function `safe_divide_warmup(a, b)` that returns the
+result or an appropriate error message string.)
 """
 # TODO: Implement safe_divide_warmup
 def safe_divide_warmup(a,b):
@@ -150,15 +164,19 @@ def safe_divide_warmup(a,b):
 
 # Exercise 4: Try-except-finally
 """
-PRACTICE: Finally Block
+PRACTICE: File Processing with Guaranteed Cleanup
 
-Write a function `process_file_with_cleanup_warmup(filename)` that attempts to open
-`filename` for reading and returns its content.
-Regardless of success or failure (FileNotFoundError or other exceptions),
-the function should also create/overwrite a file named "cleanup_log.txt"
-with the message "File operation completed for [filename]".
-If reading is successful, return file content. If an error occurs during read, return None.
-The cleanup action (writing to "cleanup_log.txt") must always be attempted.
+When processing files, especially in security contexts, it's often crucial
+to ensure that certain cleanup actions (like logging the completion of an operation)
+are performed, regardless of whether the main file operation succeeded or failed.
+Create a tool that attempts to read a given file and return its content.
+Whether the read is successful or fails (e.g., file not found), this tool
+MUST always write a message "File operation completed for [filename]" to
+a separate log file named "cleanup_log.txt". If reading the original file fails,
+the tool should return `None` for the content.
+
+(Define this as a function `process_file_with_cleanup_warmup(filename)` that
+returns the file content or None, and always attempts the cleanup logging.)
 """
 # TODO: Implement process_file_with_cleanup_warmup
 def process_file_with_cleanup_warmup(filename):
@@ -169,84 +187,104 @@ def process_file_with_cleanup_warmup(filename):
 # YOUR MAIN EXERCISE: Build a Robust Security Monitoring System
 # ============================================================================
 """
-CUSTOM SECURITY EXCEPTION FRAMEWORK:
-Define these custom exceptions, all inheriting from a base `SecurityException(Exception)`:
-- `NetworkSecurityError(SecurityException)`
-- `DataValidationError(SecurityException)`
-- `ConfigurationError(SecurityException)`
-- `SecurityPolicyError(SecurityException)`
+CHALLENGE: ROBUST SECURITY MONITORING SYSTEM
 
-SECURE FILE PROCESSING ENGINE:
-`secure_file_processor(filename, operation_type)`:
-  `operation_type` can be "read", "parse", "validate".
-  - "read": Returns file content.
-  - "parse": Assumes "key=value" lines. Returns list of {"key": k, "value": v} dicts.
-             Raises `DataValidationError` if a line (not comment/empty) isn't "key=value".
-  - "validate": Checks if content is empty or contains "CRITICAL".
-                Returns True if valid (not empty, no "CRITICAL").
-                Raises `DataValidationError` if empty or "CRITICAL" found.
-  General Errors: Raise `FileNotFoundError`, `PermissionError` as appropriate.
-                  Wrap other IOErrors in `ConfigurationError`.
-  Logging: For each operation (start, success, failure), append to "security_operations.log":
-           "[TIMESTAMP] [LEVEL] Operation: [op_type] on [filename] - Details: [success/error msg]"
-           (LEVEL can be INFO or ERROR)
-  Return: A dictionary `{"success": True/False, "data": ..., "error": "message if failed"}`.
-          `data` is content for "read", list of dicts for "parse", boolean for "validate".
+You are tasked with developing a sophisticated security monitoring system.
+This system must be highly resilient, capable of handling various errors
+gracefully, and providing clear feedback on its operations.
 
-NETWORK SECURITY MONITORING SERVICE:
-`monitor_network_security(ip_list, port_list)`:
-  Inputs: list of IP strings, list of port integers.
-  Simulate checks: For each IP/port:
-    - If IP is "0.0.0.0", raise `NetworkSecurityError("Monitoring all interfaces is a risk")`.
-    - If port is < 1 or > 65535, raise `DataValidationError("Invalid port number")`.
-    - Randomly simulate "open", "closed", or "timeout".
-    - If "timeout", raise `NetworkSecurityError("Connection timeout")`.
-  Return: A list of dictionaries, one for each successful check:
-          `{"ip": ..., "port": ..., "status": "open/closed"}`.
-          If an error occurs for an IP/port, that check is skipped (not in returned list).
-          The function itself should not crash but continue with other IPs/ports.
+COMPONENT 1: CUSTOM SECURITY EXCEPTION FRAMEWORK
+   Define a hierarchy of custom exceptions to represent specific security-related
+   error conditions. All these exceptions should ultimately inherit from a base
+   `SecurityException` (which itself inherits from Python's built-in `Exception`).
+   The specific exceptions to define are:
+   - `NetworkSecurityError`: For issues related to network connectivity or security.
+   - `DataValidationError`: For problems with the format or content of security data.
+   - `ConfigurationError`: For errors encountered in system or tool configurations.
+   - `SecurityPolicyError`: For violations of established security policies.
 
-SECURITY CONFIGURATION VALIDATOR:
-`validate_security_config(config_dict)`:
-  Input: A dictionary representing a parsed configuration.
-  Validations:
-    - Required keys: "firewall_enabled", "max_login_attempts". If missing, raise `ConfigurationError`.
-    - "firewall_enabled" must be True. If not, raise `SecurityPolicyError`.
-    - "max_login_attempts" must be an int between 3 and 10 (inclusive). If not, raise `DataValidationError`.
-  Return: True if all validations pass. Otherwise, the function will raise an exception.
+COMPONENT 2: SECURE FILE PROCESSING ENGINE
+   Create a function `secure_file_processor(filename, operation_type)` for robustly
+   handling file operations. `operation_type` can be "read", "parse", or "validate".
+   - "read": Attempt to read and return the entire content of `filename`.
+   - "parse": Assume `filename` contains "key=value" pairs per line (comments with "#"
+              and empty lines should be ignored). Return a list of dictionaries,
+              e.g., `[{"key": "firewall", "value": "enabled"}]`. If a line is
+              not a comment/empty and not in "key=value" format, raise `DataValidationError`.
+   - "validate": Check if the file content is empty or contains the exact string "CRITICAL".
+                 Return `True` if the content is valid (not empty and no "CRITICAL" string).
+                 Raise `DataValidationError` if it's empty or "CRITICAL" is found.
+   Error Handling for `secure_file_processor`:
+     - If the file is not found, raise `FileNotFoundError`.
+     - If permissions deny access, raise `PermissionError`.
+     - Wrap any other `IOError` during file operations in a `ConfigurationError`.
+   Logging: For every operation (attempt, success, or failure), append a detailed message
+            to "security_operations.log". The log entry should include a timestamp,
+            log level (INFO/ERROR), the operation type, filename, and success/error details.
+   Return Value: A dictionary `{"success": True/False, "data": ..., "error": "message if failed"}`.
+                 `data` is the file content for "read", list of dicts for "parse", or boolean for "validate".
+                 The "error" field should contain a descriptive message if `success` is `False`.
 
-INTEGRATED SECURITY DASHBOARD (Class):
-`SecurityDashboard(name)`:
-  - `__init__(self, name)`: Store `name`. Init `successful_ops = 0`, `failed_ops = 0`, `error_log = []` (list of error strings).
-  - `_log_error(self, operation_name, error_instance)`: Appends f"{operation_name} failed: {type(error_instance).__name__} - {error_instance}" to `self.error_log`. Increments `failed_ops`.
-  - `process_file_batch(self, filenames_ops_tuples)`: Takes list of `(filename, op_type)` tuples.
-    Calls `secure_file_processor` for each. If `result["success"]` is True, increment `successful_ops`. Else, call `_log_error`.
-    Return list of all results from `secure_file_processor`.
-  - `run_network_checks(self, ips, ports)`: Calls `monitor_network_security`.
-    If `monitor_network_security` raises any `SecurityException` (or its children) or `DataValidationError`,
-    call `_log_error`. Otherwise (if no exception or other type of exception), increment `successful_ops`.
-    Return results from `monitor_network_security` or None if a caught exception occurred.
-  - `audit_configurations(self, config_dicts_map)`: Takes a dict `{"configname": config_dict}`.
-    Calls `validate_security_config` for each. If True, increment `successful_ops`.
-    If any of the defined custom exceptions (or `DataValidationError`) are raised, call `_log_error`.
-    Return a dict `{"configname": True/False (validation_status)}`.
-  - `get_dashboard_summary(self)`: Returns a string summarizing total ops, successful, failed, and lists errors from `error_log`.
+COMPONENT 3: NETWORK SECURITY MONITORING SERVICE
+   Implement `monitor_network_security(ip_list, port_list)` to simulate checking network targets.
+   For each IP address and port combination:
+     - If `ip_list` contains "0.0.0.0", immediately raise `NetworkSecurityError`
+       ("Monitoring all interfaces is a risk"). This check applies to the whole list.
+     - If a port number is outside the valid range (1-65535), raise `DataValidationError`.
+     - Simulate the check: randomly determine if the port is "open", "closed", or if a "timeout" occurs.
+     - If a "timeout" occurs for a specific IP/port, raise `NetworkSecurityError("Connection timeout")`.
+   The function should continue checking other IP/port pairs even if one check fails due to
+   a `DataValidationError` or `NetworkSecurityError` specific to that pair.
+   Return: A list of dictionaries for successfully checked pairs: `{"ip": ..., "port": ..., "status": "open/closed"}`.
 
-COMPREHENSIVE SYSTEM TESTING (Function):
-`run_security_monitoring_test()`:
-  - Create sample files:
-    - "valid_read.txt": "Secure data"
-    - "valid_parse.ini": "key1=val1\nkey2=val2"
-    - "invalid_parse.ini": "key1=val1\nbadline"
-    - "critical_content.txt": "Contains CRITICAL keyword"
-    - "empty_file.txt": ""
-  - Instantiate `SecurityDashboard`.
-  - Call its methods with a mix of valid and invalid inputs to trigger errors and successes.
-    (e.g., process valid files, non-existent files, files causing parse/validation errors).
-    (e.g., run network checks with valid IPs, "0.0.0.0", invalid ports).
-    (e.g., audit valid configs, configs missing keys, configs violating policies).
-  - Call `get_dashboard_summary()` and print it.
-  - Ensure "security_operations.log" is created and has entries.
+COMPONENT 4: SECURITY CONFIGURATION VALIDATOR
+   Create `validate_security_config(config_dict)` to check a parsed configuration (dictionary).
+   Validations:
+     - It must contain "firewall_enabled" and "max_login_attempts" keys. If not, raise `ConfigurationError`.
+     - The value for "firewall_enabled" must be `True`. If not, raise `SecurityPolicyError`.
+     - "max_login_attempts" must be an integer between 3 and 10 (inclusive). If not, raise `DataValidationError`.
+   Return: `True` if all validations pass. (The function will raise an exception otherwise).
+
+COMPONENT 5: INTEGRATED SECURITY DASHBOARD (Class)
+   Develop a `SecurityDashboard` class.
+   - `__init__(self, name)`: Store `name`. Initialize `successful_ops = 0`, `failed_ops = 0`,
+     and `error_log = []` (a list to store string representations of errors).
+   - `_log_error(self, operation_name, error_instance)`: A helper to append a formatted error string
+     (e.g., "[operation_name] failed: [ExceptionType] - [error_message]") to `self.error_log`
+     and increment `failed_ops`.
+   - `process_file_batch(self, filenames_ops_tuples)`: Takes a list of `(filename, op_type)` tuples.
+     Calls `secure_file_processor` for each. If `result["success"]` is True, increment `successful_ops`.
+     Otherwise, call `_log_error` with details from `result["error"]`. Return a list of all results
+     from `secure_file_processor`.
+   - `run_network_checks(self, ips, ports)`: Calls `monitor_network_security`. If `monitor_network_security`
+     itself raises `NetworkSecurityError` (e.g., for "0.0.0.0") or any other exception not caught internally by it,
+     call `_log_error`. If it completes (even if some individual IP/port checks failed internally and were skipped),
+     increment `successful_ops`. Return the list of results from `monitor_network_security` or `None` if a
+     function-level exception was caught by `run_network_checks`.
+   - `audit_configurations(self, config_dicts_map)`: Takes a dictionary `{"configname": config_dict}`.
+     Calls `validate_security_config` for each. If validation is successful (returns True), increment `successful_ops`.
+     If `validate_security_config` raises any of the defined custom exceptions or `DataValidationError`,
+     call `_log_error`. Return a dictionary `{"configname": True/False (validation_status)}`.
+   - `get_dashboard_summary(self)`: Returns a multi-line string summarizing total operations,
+     successful ops, failed ops, and lists all errors from `self.error_log`.
+
+COMPONENT 6: COMPREHENSIVE SYSTEM TESTING (Illustrative Function)
+   Create `run_security_monitoring_test()` to demonstrate the system.
+   - Prepare sample files: "valid_read.txt", "valid_parse.ini" (key=value format),
+     "invalid_parse.ini" (malformed line), "critical_content.txt" (contains "CRITICAL"),
+     "empty_file.txt".
+   - Instantiate `SecurityDashboard`.
+   - Execute dashboard methods using a mix of valid and invalid inputs designed to trigger
+     both successful operations and various error conditions (e.g., try to process a
+     non-existent file, parse an invalid file, validate a file with "CRITICAL" content).
+   - Run network checks with valid IPs, an invalid port, and potentially the "0.0.0.0" case.
+   - Audit configurations: one valid, one missing required keys, one violating a policy.
+   - Print the summary from `get_dashboard_summary()`.
+   - Verify that "security_operations.log" has been created and contains entries.
+   (This function is for demonstration and its internal prints will show the system's behavior.)
+
+This comprehensive exercise will test your ability to design error-handling strategies,
+use try-except-finally blocks, define custom exceptions, and build a resilient application.
 """
 
 # YOUR CODE GOES HERE

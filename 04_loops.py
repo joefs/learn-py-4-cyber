@@ -209,101 +209,126 @@ warmup4_output_list = []
 
 # Exercise 1: Simple for loop with range
 """
-PRACTICE: Basic For Loop
+PRACTICE: Iterating System Checks
 
-Use a for loop to iterate through numbers 1 through 3 (inclusive).
-For each number, create a string "Checking system X" (where X is the number)
-and add it to the global list `warmup1_output_list`.
+Your security script needs to perform a check on systems numbered 1, 2, and 3.
+For each system number, you want to record a message indicating that the system is being checked.
+The message should be "Checking system X", where X is the system number.
+Collect these messages in a list.
+
+(Store the list of check messages in the global variable `warmup1_output_list`.)
 """
-# TODO: Create for loop with range(1, 4) and append messages to warmup1_output_list
+# TODO: Use a for loop and the range() function to iterate from 1 to 3.
+# TODO: Inside the loop, format the string "Checking system X".
+# TODO: Append each formatted string to the `warmup1_output_list`.
 
 
 # Exercise 2: Loop through a simple list
 """
-PRACTICE: Loop Through List
+PRACTICE: Server Inventory Check
 
-Create a list called `servers_warmup2 = ["web", "mail", "file"]`.
-Use a for loop to iterate through `servers_warmup2`. For each server,
-create a string "Checking [server] server" and add it to the global list
-`warmup2_output_list`.
+You have a list of essential servers: "web", "mail", and "file".
+Your task is to iterate through this list and, for each server, generate a message
+stating "Checking [server_name] server". For example, for the "web" server,
+the message would be "Checking web server". Accumulate these messages.
+
+(Define the list of servers as `servers_warmup2`. Store the generated messages
+in the global list `warmup2_output_list`.)
 """
-# TODO: Create servers_warmup2 list and for loop, append messages to warmup2_output_list
+# TODO: Create a list named `servers_warmup2` with "web", "mail", "file".
+# TODO: Loop through `servers_warmup2`.
+# TODO: For each server, create the specified message string.
+# TODO: Append each message to `warmup2_output_list`.
 
 
 # Exercise 3: Simple while loop
 """
-PRACTICE: Basic While Loop
+PRACTICE: Repeated Security Scans
 
-Initialize a variable `count_warmup3 = 1`.
-Use a while loop that continues as long as `count_warmup3` is less than 4.
-Inside the loop, create a string "Security scan X" (where X is `count_warmup3`)
-and add it to the global list `warmup3_output_list`. Increment `count_warmup3`.
+You need to simulate running a security scan three times.
+Each scan should be identified by its sequence number (1, 2, 3).
+For each scan, record a message "Security scan X", where X is the scan number.
+Use a counter that starts at 1 and stops when it reaches 4.
+
+(Collect these scan messages in the global list `warmup3_output_list`.)
 """
-# TODO: Create while loop, append messages to warmup3_output_list
+# TODO: Initialize a counter variable `count_warmup3` to 1.
+# TODO: Use a while loop that continues as long as `count_warmup3` is less than 4.
+# TODO: Inside the loop, create the "Security scan X" message.
+# TODO: Append the message to `warmup3_output_list`.
+# TODO: Increment `count_warmup3` in each iteration.
 
 
 # Exercise 4: Loop with if condition
 """
-PRACTICE: Loop with Conditional
+PRACTICE: Port Status Identification
 
-Create a list `ports_warmup4 = [22, 80, 443, 3389]`.
-Loop through `ports_warmup4`. If a port is 22, add "SSH port found" to the
-global list `warmup4_output_list`. For other ports, add "Port [number] checked".
+You are given a list of network ports: 22, 80, 443, and 3389.
+Your script needs to check each port. If a port is 22, it's an "SSH port found".
+For any other port, the message should be "Port [number] checked".
+Compile a list of these status messages.
+
+(Define the list of ports as `ports_warmup4`. Store the resulting messages
+in the global list `warmup4_output_list`.)
 """
-# TODO: Create list and loop with if condition, append messages to warmup4_output_list
+# TODO: Create a list named `ports_warmup4` with the specified ports.
+# TODO: Loop through `ports_warmup4`.
+# TODO: Use an if condition to check if the port is 22.
+# TODO: Append the appropriate message ("SSH port found" or "Port [number] checked")
+#       to `warmup4_output_list`.
 
 
 # ============================================================================
 # YOUR MAIN EXERCISE: Build a Security Monitoring System
 # ============================================================================
 """
-AUTOMATED SECURITY MONITORING SYSTEM
+CHALLENGE: AUTOMATED SECURITY MONITORING SYSTEM
 
-You are implementing an automated security monitoring system that performs regular
-checks across multiple security domains. The system needs to process lists of data
-and perform repetitive security validation tasks.
+You are tasked with building components for an automated security monitoring system.
+This system needs to perform several repetitive checks and analyses.
 
-For each task, you will process the initial data and store your results in the
-specified global variables.
+Initial Data Sets for Your System:
+-   A list of `critical_services` that must always be running: "firewall", "antivirus", "backup", "logging".
+-   A representation of currently `running_services` (use a set for this: {"firewall", "antivirus"}).
+-   An `ip_whitelist` of allowed IP addresses: ["192.168.1.1", "10.0.0.1", "172.16.0.1"].
+-   A log of `connection_attempts` (IP addresses that tried to connect):
+    ["192.168.1.1", "203.0.113.42", "10.0.0.1", "198.51.100.1", "172.16.0.1"].
+-   A list of `recent_logins` by username: ["admin", "user1", "guest", "admin", "user2", "admin"].
+
+Your Implementation Tasks:
 
 TASK 1: SECURITY SERVICE MONITORING
-Initial data:
-  `critical_services = ["firewall", "antivirus", "backup", "logging"]`
-  `running_services = {"firewall", "antivirus"}` (a set for efficient lookup)
-Task:
-  Iterate through `critical_services`. For each service, check if it's in
-  `running_services`.
-  Store the results in a global list called `service_status_results`. This list
-  should contain dictionaries, e.g.,
-  `[{"service": "firewall", "status": "running"}, {"service": "backup", "status": "stopped"}, ...]`.
+   Go through each service defined in `critical_services`. For every service, determine if it
+   is currently in the `running_services` set.
+   Compile a list where each item describes a critical service and its status (e.g.,
+   `{"service": "firewall", "status": "running"}` or `{"service": "backup", "status": "stopped"}`).
+   (Store this list of dictionaries in the global variable `service_status_results`.)
 
 TASK 2: IP ACCESS CONTROL VALIDATION
-Initial data:
-  `ip_whitelist = ["192.168.1.1", "10.0.0.1", "172.16.0.1"]`
-  `connection_attempts = ["192.168.1.1", "203.0.113.42", "10.0.0.1", "198.51.100.1", "172.16.0.1"]`
-Task:
-  Iterate through `connection_attempts`. For each IP, check if it's in `ip_whitelist`.
-  Store the results in a global list called `ip_validation_results`. This list should
-  contain dictionaries, e.g.,
-  `[{"ip": "192.168.1.1", "status": "allowed"}, {"ip": "203.0.113.42", "status": "blocked"}, ...]`.
+   Examine each IP address in the `connection_attempts` list. Check if this IP is present
+   in the `ip_whitelist`.
+   Create a list detailing each attempt, marking it as "allowed" or "blocked" (e.g.,
+   `{"ip": "192.168.1.1", "status": "allowed"}` or `{"ip": "203.0.113.42", "status": "blocked"}`).
+   (Store this list of dictionaries in the global variable `ip_validation_results`.)
 
 TASK 3: USER LOGIN PATTERN ANALYSIS
-Initial data:
-  `recent_logins = ["admin", "user1", "guest", "admin", "user2", "admin"]`
-Task:
-  1. Create a global dictionary `user_login_counts` to store login counts for each user.
-     Iterate through `recent_logins` and populate this dictionary.
-  2. Create a global list `high_activity_users_list` containing usernames of users
-     who logged in more than 2 times (based on `user_login_counts`).
+   Analyze the `recent_logins` list.
+   First, count how many times each user has logged in.
+   (Store these counts in a global dictionary called `user_login_counts`, where keys are usernames
+   and values are their login counts.)
+   Second, identify users who have logged in more than 2 times.
+   (Store a list of these high-activity usernames in the global list `high_activity_users_list`.)
 
 TASK 4: CONTINUOUS MONITORING CYCLES
-Task:
-  Simulate 3 monitoring cycles (i.e., loop 3 times, for cycles 1, 2, and 3).
-  Odd-numbered cycles perform a "Quick security check".
-  Even-numbered cycles perform a "Deep security scan".
-  Store a list of strings describing the action for each cycle in a global list
-  called `monitoring_actions_list`.
-  (e.g., `["Cycle 1: Quick security check", "Cycle 2: Deep security scan", ...]`)
+   Simulate three cycles of a continuous monitoring process.
+   - In odd-numbered cycles (1st, 3rd), the system performs a "Quick security check".
+   - In even-numbered cycles (2nd), it performs a "Deep security scan".
+   Record the action taken in each cycle.
+   (Store these action descriptions as strings in a global list called `monitoring_actions_list`,
+   e.g., "Cycle 1: Quick security check", "Cycle 2: Deep security scan", etc.)
+
+Make sure to use the globally defined initial data lists and store your final results
+in the specified global variables for automated checking.
 """
 
 # YOUR CODE GOES HERE

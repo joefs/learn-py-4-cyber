@@ -278,115 +278,155 @@ warmup4_backup_exists = None
 
 # Exercise 1: Create a simple dictionary
 """
-PRACTICE: Basic Dictionary Creation
+PRACTICE: Server Profile
 
-Create a dictionary with the following key-value pairs:
-- "name": "web-server"
-- "port": 80
-- "active": True
-Assign this dictionary to the global variable `server_info_warmup1`.
+You need to store basic information about a server. This information includes its name,
+the port it primarily listens on, and whether it's currently active.
+Specifically, the server is named "web-server", operates on port 80, and is active (True).
+Represent this information as a collection of labeled data.
+
+(Store this collection in a global variable named `server_info_warmup1` for checking.)
 """
-# TODO: Create the dictionary and assign it to server_info_warmup1
+# TODO: Create a dictionary with keys "name", "port", "active" and their respective values.
+# TODO: Assign this dictionary to `server_info_warmup1`.
 
 
 # Exercise 2: Access dictionary values
 """
-PRACTICE: Accessing Dictionary Values
+PRACTICE: User Details Retrieval
 
-Create a dictionary `user_warmup2 = {"username": "admin", "role": "administrator", "logged_in": True}`.
-Access the "username" and "role" from `user_warmup2`.
-Assign the username to the global variable `warmup2_username`.
-Assign the role to the global variable `warmup2_role`.
-Use .get() with a default value of "N/A" if a key might be missing.
+You have a record for a user containing their username, role, and login status:
+username is "admin", role is "administrator", and logged_in is True.
+From this record, you need to extract the username and the role.
+If a piece of information might be missing, your retrieval should gracefully
+default to "N/A".
+
+(Create a dictionary `user_warmup2` with this user's data.
+Store the extracted username in `warmup2_username`.
+Store the extracted role in `warmup2_role`.)
 """
-# TODO: Create user_warmup2, access values, and assign to global vars
+# TODO: Create `user_warmup2` with "username", "role", "logged_in" keys and values.
+# TODO: Access the "username" and assign it to `warmup2_username`.
+# TODO: Access the "role" and assign it to `warmup2_role`. (Consider using .get() for safety, though not strictly required by test if keys are guaranteed).
 
 
 # Exercise 3: Add new key-value pair
 """
-PRACTICE: Adding to Dictionaries
+PRACTICE: System Resource Monitoring Update
 
-Create a dictionary `system_warmup3 = {"cpu": 45, "memory": 60}`.
-Add a new key-value pair "disk": 30 to `system_warmup3`.
-Assign the modified `system_warmup3` to the global variable `system_warmup3_modified`.
+Your system monitoring dashboard currently tracks CPU usage (45%) and memory usage (60%).
+You now also need to start tracking disk usage, which is currently at 30%.
+Add this new piece of information (disk usage) to your existing system metrics.
+
+(Start with a dictionary `system_warmup3` for CPU and memory.
+Add the "disk" usage to it. Store the final, updated dictionary in
+`system_warmup3_modified`.)
 """
-# TODO: Create system_warmup3, add the new pair, assign to system_warmup3_modified
+# TODO: Create `system_warmup3` with "cpu" and "memory" usage.
+# TODO: Add a new key "disk" with its value to this dictionary.
+# TODO: Assign the modified dictionary to `system_warmup3_modified`.
 
 
 # Exercise 4: Check if key exists
 """
-PRACTICE: Checking Dictionary Keys
+PRACTICE: Configuration Verification
 
-Create a dictionary `config_warmup4 = {"firewall": True, "antivirus": True}`.
-Check if the key "firewall" exists in `config_warmup4` and assign the boolean result
-to the global variable `warmup4_firewall_exists`.
-Check if the key "backup" exists in `config_warmup4` and assign the boolean result
-to the global variable `warmup4_backup_exists`.
+You have a security configuration that specifies whether the firewall is enabled (True)
+and if antivirus is active (True). You need to verify two things:
+1. Is there a setting for "firewall" in your configuration?
+2. Is there a setting for "backup" in your configuration?
+Record the true/false answers to these questions.
+
+(Create `config_warmup4` with "firewall" and "antivirus" settings.
+Store the boolean result of checking for "firewall" in `warmup4_firewall_exists`.
+Store the boolean result of checking for "backup" in `warmup4_backup_exists`.)
 """
-# TODO: Create config_warmup4 and assign boolean check results to global vars
+# TODO: Create `config_warmup4` with "firewall" and "antivirus" settings.
+# TODO: Check if "firewall" key exists and assign result to `warmup4_firewall_exists`.
+# TODO: Check if "backup" key exists and assign result to `warmup4_backup_exists`.
 
 
 # ============================================================================
 # YOUR MAIN EXERCISE: Build a Comprehensive Security Management System
 # ============================================================================
 """
-COMPREHENSIVE SECURITY MANAGEMENT DASHBOARD
+CHALLENGE: COMPREHENSIVE SECURITY MANAGEMENT DASHBOARD
 
-You are developing a centralized security management dashboard that organizes complex
-security data using structured information systems. The dashboard needs to track user
-accounts, system health, and security tool configurations.
+You're designing a system to manage and report on various security aspects of an organization.
+This involves creating structured data for user accounts, system health, and security tools,
+and then performing operations and analysis on this data.
 
 TASK 1: USER ACCOUNT DATABASE CREATION
-Create `user_database`: a dictionary where keys are usernames (e.g., "alice_admin")
-and values are dictionaries with "role", "last_login", "failed_attempts", "active" status.
-Users:
-- Alice: "admin" role, last login "2023-10-01", 0 failed attempts, active.
-- Bob: "analyst" role, last login "2023-09-30", 2 failed attempts, active.
-- Charlie: "guest" role, last login "2023-09-25", 5 failed attempts, inactive.
+   Establish a database (as a dictionary) for user accounts. Each username should map to
+   another dictionary holding their details: "role", "last_login" date (YYYY-MM-DD string),
+   number of "failed_attempts", and an "active" status (boolean).
+   Populate it with:
+   - Username "alice_admin": role "admin", last login "2023-10-01", 0 failed attempts, active.
+   - Username "bob_analyst": role "analyst", last login "2023-09-30", 2 failed attempts, active.
+   - Username "charlie_guest": role "guest", last login "2023-09-25", 5 failed attempts, inactive.
+   (This entire structure should be stored in the global variable `user_database`.)
 
 TASK 2: SYSTEM INFRASTRUCTURE STATUS
-Create `system_status`: a dictionary where keys are system names (e.g., "web_server")
-and values are dictionaries with "cpu_usage", "memory_usage", "disk_usage", "status".
-Systems:
-- Web server: 75% CPU, 60% memory, 45% disk, "healthy" status.
-- Database server: 90% CPU, 85% memory, 70% disk, "warning" status.
-- Backup server: 25% CPU, 30% memory, 95% disk, "critical" status.
+   Create a dictionary to track the status of key systems. Each system name should map to
+   a dictionary detailing its "cpu_usage" (percentage), "memory_usage" (percentage),
+   "disk_usage" (percentage), and overall "status" (string like "healthy", "warning", "critical").
+   Include these systems:
+   - "web_server": 75% CPU, 60% memory, 45% disk, status "healthy".
+   - "database_server": 90% CPU, 85% memory, 70% disk, status "warning".
+   - "backup_server": 25% CPU, 30% memory, 95% disk, status "critical".
+   (Store this in the global variable `system_status`.)
 
 TASK 3: SECURITY TOOLS CONFIGURATION
-Create `security_tools`: a dictionary where keys are tool names (e.g., "firewall")
-and values are dictionaries with their specific configurations.
-Tools:
-- Firewall: "enabled": True, "rules": 150, "last_updated": "2023-10-01", "alerts": 3
-- Antivirus: "enabled": True, "definitions_date": "2023-09-30", "last_scan": "2023-10-01", "threats_found": 0
-- IDS: "enabled": False, "sensors": 5, "last_alert_date": "2023-09-28", "total_alerts": 12
+   Maintain a configuration inventory for security tools. Each tool name should map to
+   a dictionary of its settings.
+   Configure the following:
+   - "firewall": "enabled" (True), "rules" (150), "last_updated" ("2023-10-01"), "alerts" (3).
+   - "antivirus": "enabled" (True), "definitions_date" ("2023-09-30"), "last_scan" ("2023-10-01"), "threats_found" (0).
+   - "ids" (Intrusion Detection System): "enabled" (False), "sensors" (5), "last_alert_date" ("2023-09-28"), "total_alerts" (12).
+   (Store this inventory in the global variable `security_tools`.)
 
-TASK 4: SECURITY OPERATIONS (Modify the dictionaries created above)
-4.1. Add new user "david_manager" to `user_database`: "manager" role, last login "2023-10-02", 1 failed attempt, active.
-4.2. Update "bob_analyst" in `user_database`: reset "failed_attempts" to 0.
-4.3. Check if "eve_hacker" exists in `user_database`. Store boolean result in `main_eve_hacker_exists`.
-4.4. Create `main_users_needing_attention`: a list of usernames from `user_database` with `failed_attempts > 0` OR `active` is False.
+TASK 4: SECURITY OPERATIONS ON USER ACCOUNTS
+   Perform the following updates and checks on the `user_database` created in TASK 1:
+   4.1. A new user, "david_manager", joins. Add their record: role "manager", last login "2023-10-02", 1 failed attempt, active.
+   4.2. "bob_analyst" successfully logged in. Update their record to show 0 "failed_attempts".
+   4.3. Investigate if a user named "eve_hacker" exists in the database.
+        (Store the boolean result in `main_eve_hacker_exists`.)
+   4.4. Identify users requiring attention: list all usernames who have more than 0 "failed_attempts" OR are "active" is False.
+        (Store this list of usernames in `main_users_needing_attention`.)
 
 TASK 5: SYSTEM MONITORING OPERATIONS
-5.1. Create `main_high_cpu_systems`: a list of system names from `system_status` with `cpu_usage > 80%`.
-5.2. Update "web_server" in `system_status`: change its "status" to "optimal".
-5.3. Calculate `main_average_disk_usage`: average "disk_usage" of all systems. If no systems, 0.0.
-5.4. Create `main_attention_systems`: a list of system names from `system_status` where status is "warning" or "critical".
+   Using the `system_status` data from TASK 2:
+   5.1. List all systems where "cpu_usage" is greater than 80%.
+        (Store this list of system names in `main_high_cpu_systems`.)
+   5.2. The "web_server" has been optimized. Update its "status" to "optimal".
+   5.3. Calculate the average "disk_usage" across all monitored systems. If there are no systems, the average is 0.0.
+        (Store this average in `main_average_disk_usage`.)
+   5.4. Compile a list of systems whose status is either "warning" or "critical".
+        (Store this list of system names in `main_attention_systems`.)
 
 TASK 6: SECURITY TOOLS ANALYSIS
-6.1. Create `main_enabled_tools`: a list of names of tools from `security_tools` that are "enabled".
-6.2. Find the tool with the most alerts (consider "alerts", "total_alerts", or "threats_found" - use the one that exists and is highest). Store its name in `main_tool_max_alerts` (or None if no alerts/tools).
-6.3. Update "ids" in `security_tools`: set "enabled" to True.
+   Based on the `security_tools` configuration from TASK 3:
+   6.1. List all security tools that are currently "enabled".
+        (Store this list of tool names in `main_enabled_tools`.)
+   6.2. Determine which tool has generated the most alerts. Consider the "alerts" field for the firewall,
+        "threats_found" for antivirus, and "total_alerts" for IDS. If multiple tools share the max, any one is fine.
+        If no tools have alerts or relevant fields, this can be None.
+        (Store the name of the tool with the most alerts in `main_tool_max_alerts`.)
+   6.3. The "ids" tool is now being activated. Update its configuration to set "enabled" to True.
 
 TASK 7: COMPREHENSIVE SECURITY REPORT DATA
-Create `report_data_dict` (a dictionary) with the following keys and calculated values:
-- "total_active_users": count of users from `user_database` where "active" is True.
-- "critical_system_count": count of systems from `system_status` with "critical" status.
-- "ids_final_status_enabled": boolean, True if IDS "enabled" in `security_tools` is now True.
-- "attention_user_count": length of `main_users_needing_attention`.
-- "overall_system_health_string": A string like "EXCELLENT", "GOOD", "NEEDS ATTENTION" based on:
-    - "EXCELLENT": no critical systems, all tools enabled, all users active.
-    - "GOOD": <=1 critical system, >=2 tools enabled.
-    - "NEEDS ATTENTION": otherwise.
+   Aggregate key information into a final report dictionary.
+   Create `report_data_dict` with these specific keys and their corresponding values derived from the (now updated) data:
+   - "total_active_users": The number of users in `user_database` who are currently "active".
+   - "critical_system_count": The number of systems in `system_status` marked with "critical" status.
+   - "ids_final_status_enabled": A boolean indicating if the "ids" in `security_tools` is enabled after the update in TASK 6.
+   - "attention_user_count": The number of users identified in `main_users_needing_attention`.
+   - "overall_system_health_string": A general assessment string ("EXCELLENT", "GOOD", or "NEEDS ATTENTION") based on this logic:
+        - "EXCELLENT": If there are no critical systems, all security tools are enabled, and all users are active.
+        - "GOOD": If there is at most 1 critical system AND at least 2 security tools are enabled.
+        - "NEEDS ATTENTION": For all other conditions.
+
+Ensure all results are stored in the specified global variables for automated checking.
 """
 
 # YOUR CODE GOES HERE
