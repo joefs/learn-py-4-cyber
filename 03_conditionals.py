@@ -21,9 +21,6 @@ CONDITIONAL STATEMENTS WE'LL COVER:
 # CONCEPT EXPLANATION: Basic IF Statements
 # ============================================================================
 
-print("=== BASIC IF STATEMENTS ===")
-print()
-
 # Simple if statement
 failed_logins = 3
 max_attempts = 5
@@ -33,60 +30,50 @@ print(f"Maximum allowed attempts: {max_attempts}")
 
 if failed_logins > max_attempts:
     print("🚨 ALERT: Account should be locked!")
-print()
 
 # If statement that executes
 failed_logins = 6  # Now it exceeds the limit
 
-print(f"Failed login attempts: {failed_logins}")
+print(f"\nFailed login attempts: {failed_logins}") # Added newline for clarity
 print(f"Maximum allowed attempts: {max_attempts}")
 
 if failed_logins > max_attempts:
     print("🚨 ALERT: Account should be locked!")
-print()
 
 # ============================================================================
 # CONCEPT EXPLANATION: IF-ELSE Statements
 # ============================================================================
 
-print("=== IF-ELSE STATEMENTS ===")
-print()
-
 # If-else provides an alternative action
 firewall_status = True
 
-print(f"Firewall enabled: {firewall_status}")
+print(f"\nFirewall enabled: {firewall_status}") # Added newline
 
 if firewall_status:
     print("✅ Security status: Firewall protection active")
 else:
     print("⚠️  Security status: Firewall protection disabled")
-print()
 
 # Another if-else example
 cpu_usage = 95
 cpu_threshold = 90
 
-print(f"Current CPU usage: {cpu_usage}%")
+print(f"\nCurrent CPU usage: {cpu_usage}%") # Added newline
 print(f"CPU threshold: {cpu_threshold}%")
 
 if cpu_usage > cpu_threshold:
     print("🔥 WARNING: High CPU usage detected!")
 else:
     print("✅ CPU usage is within normal limits")
-print()
 
 # ============================================================================
 # CONCEPT EXPLANATION: IF-ELIF-ELSE Statements
 # ============================================================================
 
-print("=== IF-ELIF-ELSE STATEMENTS ===")
-print()
-
 # Multiple conditions with elif
 threat_score = 7
 
-print(f"Current threat score: {threat_score}/10")
+print(f"\nCurrent threat score: {threat_score}/10") # Added newline
 
 if threat_score >= 9:
     print("🚨 CRITICAL: Immediate action required!")
@@ -98,21 +85,17 @@ elif threat_score >= 3:
     print("🟢 LOW: Minimal risk")
 else:
     print("✅ SAFE: No significant threats")
-print()
 
 # ============================================================================
 # CONCEPT EXPLANATION: Complex Conditions
 # ============================================================================
-
-print("=== COMPLEX CONDITIONS ===")
-print()
 
 # Using logical operators in conditions
 user_role = "admin"
 authenticated = True
 vpn_connected = False
 
-print(f"User role: {user_role}")
+print(f"\nUser role: {user_role}") # Added newline
 print(f"Authenticated: {authenticated}")
 print(f"VPN connected: {vpn_connected}")
 
@@ -122,7 +105,6 @@ if user_role == "admin" and authenticated:
         print("⚠️  Warning: Admin not using VPN")
 else:
     print("❌ Access denied")
-print()
 
 # ============================================================================
 # HOW THIS APPLIES TO CYBERSECURITY ADMINISTRATION:
@@ -156,14 +138,12 @@ CYBERSECURITY APPLICATIONS OF CONDITIONAL STATEMENTS:
    - IF system unpatched > 30 days THEN flag for immediate attention
 """
 
-print("=== CYBERSECURITY CONDITIONAL EXAMPLES ===")
-
 # Security access control example
 user_ip = "203.0.113.42"
 blacklisted_ips = ["203.0.113.42", "198.51.100.1"]
 user_authenticated = True
 
-print(f"User IP: {user_ip}")
+print(f"\nUser IP: {user_ip}") # Added newline
 print(f"User authenticated: {user_authenticated}")
 
 if user_ip in blacklisted_ips:
@@ -172,14 +152,13 @@ elif not user_authenticated:
     print("❌ DENIED: User not authenticated")
 else:
     print("✅ ACCESS GRANTED: User cleared for entry")
-print()
 
 # System health monitoring example
 memory_usage = 85
 disk_usage = 45
 network_errors = 12
 
-print("System Health Check:")
+print("\nSystem Health Check:") # Added newline
 print(f"Memory usage: {memory_usage}%")
 print(f"Disk usage: {disk_usage}%")
 print(f"Network errors: {network_errors}")
@@ -197,7 +176,6 @@ elif disk_usage > 75:
     print("🟡 WARNING: Disk space running low")
 else:
     print("🟢 OK: Disk space sufficient")
-print()
 
 # ============================================================================
 # WARM-UP EXERCISES: Practice Using Conditionals
@@ -205,152 +183,154 @@ print()
 
 # Exercise 1: Simple if statement
 """
-PRACTICE: Basic If Statement
+PRACTICE: Threat Level Assessment
 
-Create a variable threat_level = 8.
-If threat_level is greater than 5, print "High threat detected".
+In your security monitoring system, you're tracking a numerical threat level.
+For this exercise, assume the current threat level is 8.
+Your task is to write code that checks this threat level. If it's above 5,
+your system should note "High threat detected". Otherwise, it should note "Low or normal threat".
+
+(Store the result of this assessment in a global variable named `warmup1_output` for checking.)
 """
-# TODO: Create variable and if statement
+# TODO: Define a variable for the threat level (set to 8).
+# TODO: Write an if-else statement to determine the threat message.
+# TODO: Assign the determined message to the global variable `warmup1_output`.
+# warmup1_output = "" # Initialize for testing
 
 
 # Exercise 2: If-else statement
 """
-PRACTICE: If-Else Logic
+PRACTICE: Port Connection Type
 
-Create a variable port = 22.
-If port equals 22, print "SSH connection".
-Otherwise, print "Other connection".
+Your system needs to identify the type of connection based on a port number.
+Consider port number 22. If the connection is on port 22, it's an "SSH connection".
+Any other port should be identified as "Other connection".
+
+(Store the connection type string in a global variable named `warmup2_output`.)
 """
-# TODO: Create variable and if-else statement
+# TODO: Define a variable for the port number (set to 22).
+# TODO: Use an if-else statement to identify the connection type.
+# TODO: Assign the connection type to the global variable `warmup2_output`.
+# warmup2_output = "" # Initialize for testing
 
 
 # Exercise 3: Multiple conditions with elif
 """
-PRACTICE: If-Elif-Else Logic
+PRACTICE: Security Score Evaluation
 
-Create a variable security_score = 7.
-If score is 9 or above, print "Excellent security".
-If score is 7-8, print "Good security".
-Otherwise, print "Needs improvement".
+A system's security posture is rated with a score. For this scenario, the score is 7.
+Evaluate this score:
+- A score of 9 or higher is "Excellent security".
+- A score between 7 and 8 (inclusive) is "Good security".
+- Any other score "Needs improvement".
+
+(Assign the evaluation string to the global variable `warmup3_output`.)
 """
-# TODO: Create variable and if-elif-else statement
+# TODO: Define a variable for the security score (set to 7).
+# TODO: Implement an if-elif-else structure to evaluate the score.
+# TODO: Assign the evaluation message to the global variable `warmup3_output`.
+# warmup3_output = "" # Initialize for testing
 
 
 # Exercise 4: Combining conditions with AND
 """
-PRACTICE: Conditional with AND
+PRACTICE: System Readiness Check
 
-Create variables admin_logged_in = True and system_healthy = True.
-If BOTH are True, print "System ready for operations".
-Otherwise, print "System not ready".
+For a system to be ready for critical operations, two conditions must be met:
+an administrator must be logged in, AND the overall system health must be good.
+Assume for this check that an admin is indeed logged in, and the system is healthy.
+Determine if the system is "System ready for operations" or "System not ready".
+
+(Store the readiness status in the global variable `warmup4_output`.)
 """
-# TODO: Create variables and conditional with AND
+# TODO: Define two boolean variables: one for admin login status (True),
+#       and one for system health (True).
+# TODO: Write a conditional statement using 'and' to check if both are true.
+# TODO: Assign the appropriate readiness message to `warmup4_output`.
+# warmup4_output = "" # Initialize for testing
 
-
-print("\n" + "="*50)
-print("WARM-UP COMPLETE - NOW THE MAIN EXERCISE")
-print("="*50 + "\n")
 
 # ============================================================================
 # YOUR MAIN EXERCISE: Build a Security Assessment System
 # ============================================================================
 """
-AUTOMATED SECURITY ASSESSMENT SYSTEM
+CHALLENGE: AUTOMATED SECURITY ASSESSMENT TOOL
 
-You are developing an automated security assessment tool that evaluates a computer 
-system's security posture and provides recommendations.
+Imagine you're building a tool to quickly assess a computer's security settings.
+This tool will check several aspects of the system and report on each.
 
-The system being assessed has the following characteristics:
-- Current password length: 6 characters
-- Days since last security update: 45 days
-- Firewall status: Enabled
-- Antivirus status: Not active
-- Administrator account status: Active
-- Recent failed login attempts: 8 attempts
+First, establish the current state of the system by defining these characteristics:
+- The password for the main user account is 6 characters long.
+- The system was last updated 45 days ago.
+- The firewall is currently enabled.
+- Antivirus software is not active.
+- The primary administrator account is active.
+- There have been 8 failed login attempts recently.
 
-Your assessment tool needs to evaluate four critical security areas:
+Based on these characteristics, your tool needs to generate specific assessment messages
+for different security areas. The rules for these messages are as follows:
 
-PASSWORD SECURITY ASSESSMENT:
-Evaluate password strength and provide appropriate feedback:
-- Passwords with 12 or more characters are considered strong
-- Passwords with 8-11 characters are adequate  
-- Passwords with less than 8 characters are weak and require immediate change
+1.  PASSWORD SECURITY ASSESSMENT:
+    How strong is the password?
+    - If the password length is 12 characters or more, it's a "Strong password".
+    - If it's between 8 and 11 characters (inclusive), it's an "Adequate password".
+    - If it's shorter than 8 characters, it's a "Weak password, requires immediate change".
+    (Store this assessment in `password_assessment_msg`.)
 
-SYSTEM UPDATE STATUS:
-Assess how current the system updates are:
-- Systems updated within 7 days are current
-- Systems updated within 30 days are acceptable
-- Systems not updated for over 30 days are critically outdated
+2.  SYSTEM UPDATE STATUS:
+    Is the system up-to-date?
+    - If the last update was 7 days ago or less, "System updates are current".
+    - If it was between 8 and 30 days ago (inclusive of 30), "System updates are acceptable".
+    - If it was more than 30 days ago, "System is critically outdated".
+    (Store this status in `update_status_msg`.)
 
-SECURITY SOFTWARE PROTECTION:
-Determine the level of security software protection:
-- Systems with both firewall and antivirus active are fully protected
-- Systems with only one protection active are partially protected
-- Systems with neither protection are unprotected
+3.  SECURITY SOFTWARE PROTECTION:
+    How well is the system protected by security software?
+    - If both the firewall is enabled AND antivirus is active, "System is fully protected".
+    - If either the firewall is enabled OR antivirus is active (but not both), "System is partially protected".
+    - If neither is active, "System is unprotected".
+    (Store this protection status in `software_protection_msg`.)
 
-ACCOUNT SECURITY MONITORING:
-Analyze login attempt patterns for security threats:
-- If admin account is active and failed attempts exceed 5: admin account under attack
-- If failed attempts exceed 10: possible brute force attack
-- If failed attempts exceed 3: multiple failed attempts warning
-- Otherwise: normal login activity
+4.  ACCOUNT SECURITY MONITORING:
+    What's the status of account login activity? (Evaluate these conditions in order)
+    - If the admin account is active AND there have been more than 5 failed login attempts, it's an "Admin account under attack".
+    - Else, if there have been more than 10 failed login attempts, it's a "Possible brute force attack".
+    - Else, if there have been more than 3 failed login attempts, it's a "Multiple failed attempts warning".
+    - Otherwise, it's "Normal login activity".
+    (Store this activity status in `account_security_msg`.)
 
-Create variables named password_length, last_update_days, firewall_enabled, 
-antivirus_active, admin_account_active, and failed_login_attempts to store the 
-system data, then implement the assessment logic.
+OPTIONAL CHALLENGE: OVERALL SECURITY RECOMMENDATION
+    Based on the individual assessment messages you've generated, try to determine an
+    overall security recommendation. For example:
+    - If multiple areas are weak or critical, the recommendation might be "Urgent action required across multiple areas."
+    - If most areas are good, "System posture is fair, address noted issues."
+    - If all areas are strong, "System security posture is strong."
+    This is an open-ended part for you to define your own logic.
+    (Store your overall recommendation in `overall_recommendation_msg`.)
+
+Your goal is to implement the logic to define the initial characteristics and then
+determine each of these messages, storing them in their respective global variables for automated checking.
 """
 
 # YOUR CODE GOES HERE
 # ============================================================================
 
-print("=== AUTOMATED SECURITY ASSESSMENT SYSTEM ===")
-print()
+# PART 1: Define the system characteristic variables
+# TODO: Define the 6 initial system characteristic variables
+# password_length = 6
+# ... and so on
 
-# PART 1: Create the assessment variables
-# TODO: Create the 6 variables listed above
-# Create password_length variable here
+# PART 2: Determine assessment messages and assign to global variables
+# TODO: Implement conditional logic for each assessment area and assign to the respective `_msg` variables
 
-# Create last_update_days variable here
+# password_assessment_msg = "" # Initialize for testing
+# update_status_msg = ""       # Initialize for testing
+# software_protection_msg = "" # Initialize for testing
+# account_security_msg = ""    # Initialize for testing
 
-# Create firewall_enabled variable here
+# (Optional Challenge)
+# overall_recommendation_msg = "" # Initialize for testing
 
-# Create antivirus_active variable here
-
-# Create admin_account_active variable here
-
-# Create failed_login_attempts variable here
-
-
-# TODO: Print system information
-print("System Information:")
-# Add your print statements here
-
-print()
-
-print("Security Assessment Results:")
-print("-" * 40)
-
-# PART 2: Write the conditional statements
-
-# TODO: Password Security Assessment
-# Write your if/elif/else statements for password security here
-
-# TODO: System Updates Assessment
-# Write your if/elif/else statements for system updates here
-
-# TODO: Security Software Assessment
-# Write your if/elif/else statements for security software here
-
-# TODO: Account Security Assessment
-# Write your if/elif/else statements for account security here
-
-print()
-
-# PART 3: Overall Security Recommendation
-print("Overall Security Recommendation:")
-print("-" * 40)
-
-# TODO: Write overall security recommendation logic here
 
 # ============================================================================
 # BUILT-IN TESTS - Check Your Work!
@@ -362,114 +342,136 @@ print("="*50)
 
 def test_warmup_exercises():
     """Test the warm-up exercises."""
-    print("=== TESTING WARM-UP EXERCISES ===")
-    warmup_passed = 0
-    
-    # Test Exercise 1: Basic if statement
+    print("--- Testing Warm-up Exercises ---")
+    passed_count = 0
+
+    # Test Exercise 1
     try:
-        assert threat_level == 8, f"Variable 'threat_level' should be 8, got: {threat_level}"
-        print("✅ Exercise 1 PASSED: threat_level variable created correctly")
-        warmup_passed += 1
-    except NameError as e:
-        print(f"❌ Exercise 1 FAILED: Missing variable - {e}")
-        print("Create variable: threat_level=8 and add if statement to print when > 5")
+        # User is expected to define threat_level_warmup1 and warmup1_output
+        # Simulating user code for testing:
+        # threat_level_warmup1 = 8
+        # if threat_level_warmup1 > 5: warmup1_output = "High threat detected"
+        # else: warmup1_output = "Low or normal threat"
+        assert warmup1_output == "High threat detected", "Warmup 1: threat_level = 8"
+
+        # Test the other case (conceptually, user would change threat_level_warmup1 and rerun)
+        # For testing, we assume the logic handles both.
+        # A real student environment might require them to set up both test cases or we test their logic more directly.
+        # For now, we'll assume the primary case (threat_level=8) is what they implement for the variable.
+        print("✅ Warm-up 1 PASSED")
+        passed_count += 1
+    except NameError:
+        print("❌ Warm-up 1 FAILED: `threat_level_warmup1` or `warmup1_output` not defined.")
     except AssertionError as e:
-        print(f"❌ Exercise 1 FAILED: {e}")
-    
-    # Test Exercise 2: If-else logic
+        print(f"❌ Warm-up 1 FAILED: {e}")
+
+    # Test Exercise 2
     try:
-        assert port == 22, f"Variable 'port' should be 22, got: {port}"
-        print("✅ Exercise 2 PASSED: port variable and if-else logic correct")
-        warmup_passed += 1
-    except NameError as e:
-        print(f"❌ Exercise 2 FAILED: Missing variable - {e}")
-        print("Create variable: port=22 and add if-else to check port type")
+        # port_warmup2 = 22
+        # if port_warmup2 == 22: warmup2_output = "SSH connection"
+        # else: warmup2_output = "Other connection"
+        assert warmup2_output == "SSH connection", "Warmup 2: port = 22"
+        print("✅ Warm-up 2 PASSED")
+        passed_count += 1
+    except NameError:
+        print("❌ Warm-up 2 FAILED: `port_warmup2` or `warmup2_output` not defined.")
     except AssertionError as e:
-        print(f"❌ Exercise 2 FAILED: {e}")
-    
-    # Test Exercise 3: If-elif-else logic
+        print(f"❌ Warm-up 2 FAILED: {e}")
+
+    # Test Exercise 3
     try:
-        assert security_score == 7, f"Variable 'security_score' should be 7, got: {security_score}"
-        print("✅ Exercise 3 PASSED: security_score variable and if-elif-else logic correct")
-        warmup_passed += 1
-    except NameError as e:
-        print(f"❌ Exercise 3 FAILED: Missing variable - {e}")
-        print("Create variable: security_score=7 and add if-elif-else for score ranges")
+        # security_score_warmup3 = 7
+        # if security_score_warmup3 >= 9: warmup3_output = "Excellent security"
+        # elif security_score_warmup3 >= 7: warmup3_output = "Good security"
+        # else: warmup3_output = "Needs improvement"
+        assert warmup3_output == "Good security", "Warmup 3: score = 7"
+        print("✅ Warm-up 3 PASSED")
+        passed_count += 1
+    except NameError:
+        print("❌ Warm-up 3 FAILED: `security_score_warmup3` or `warmup3_output` not defined.")
     except AssertionError as e:
-        print(f"❌ Exercise 3 FAILED: {e}")
-    
-    # Test Exercise 4: Conditional with AND
+        print(f"❌ Warm-up 3 FAILED: {e}")
+
+    # Test Exercise 4
     try:
-        assert admin_logged_in == True, f"Variable 'admin_logged_in' should be True, got: {admin_logged_in}"
-        assert system_healthy == True, f"Variable 'system_healthy' should be True, got: {system_healthy}"
-        print("✅ Exercise 4 PASSED: admin_logged_in and system_healthy variables correct")
-        warmup_passed += 1
-    except NameError as e:
-        print(f"❌ Exercise 4 FAILED: Missing variable - {e}")
-        print("Create variables: admin_logged_in=True, system_healthy=True and add AND conditional")
+        # admin_logged_in_warmup4 = True
+        # system_healthy_warmup4 = True
+        # if admin_logged_in_warmup4 and system_healthy_warmup4: warmup4_output = "System ready for operations"
+        # else: warmup4_output = "System not ready"
+        assert warmup4_output == "System ready for operations", "Warmup 4: True, True"
+        print("✅ Warm-up 4 PASSED")
+        passed_count += 1
+    except NameError:
+        print("❌ Warm-up 4 FAILED: Variables for warmup 4 or `warmup4_output` not defined.")
     except AssertionError as e:
-        print(f"❌ Exercise 4 FAILED: {e}")
-    
-    print(f"Warm-up Score: {warmup_passed}/4 exercises completed")
-    return warmup_passed == 4
+        print(f"❌ Warm-up 4 FAILED: {e}")
+
+    print(f"Warm-up Score: {passed_count}/4 exercises completed.")
+    return passed_count == 4
 
 def test_main_exercise():
     """Test the main exercise conditional logic."""
-    print("\n=== TESTING MAIN EXERCISE ===")
-    
-    try:
-        # Test data variables
-        assert password_length == 6, f"Variable 'password_length' should be 6, got: {password_length}"
-        print("✅ password_length: Correct")
-        
-        assert last_update_days == 45, f"Variable 'last_update_days' should be 45, got: {last_update_days}"
-        print("✅ last_update_days: Correct")
-        
-        assert firewall_enabled == True, f"Variable 'firewall_enabled' should be True, got: {firewall_enabled}"
-        print("✅ firewall_enabled: Correct")
-        
-        assert antivirus_active == False, f"Variable 'antivirus_active' should be False, got: {antivirus_active}"
-        print("✅ antivirus_active: Correct")
-        
-        assert admin_account_active == True, f"Variable 'admin_account_active' should be True, got: {admin_account_active}"
-        print("✅ admin_account_active: Correct")
-        
-        assert failed_login_attempts == 8, f"Variable 'failed_login_attempts' should be 8, got: {failed_login_attempts}"
-        print("✅ failed_login_attempts: Correct")
-        
-        print("\n✅ MAIN EXERCISE COMPLETED! Security assessment logic implemented!")
-        return True
-        
-    except NameError as e:
-        print(f"❌ ERROR: Variable not found - {e}")
-        print("Make sure you've created all required variables and implemented the conditional logic.")
-        return False
-    except AssertionError as e:
-        print(f"❌ ERROR: {e}")
-        print("Check your variable values and conditional logic.")
-        return False
-    except Exception as e:
-        print(f"❌ UNEXPECTED ERROR: {e}")
-        return False
+    print("\n--- Testing Main Exercise ---")
+    main_passed = True
 
-def test_conditionals():
+    expected_initial_vars = {
+        "password_length": 6, "last_update_days": 45, "firewall_enabled": True,
+        "antivirus_active": False, "admin_account_active": True, "failed_login_attempts": 8
+    }
+    for var_name, expected_value in expected_initial_vars.items():
+        try:
+            actual_value = globals()[var_name] # Check if defined by user
+            assert actual_value == expected_value, f"Initial variable '{var_name}' has wrong value. Expected {expected_value}, got {actual_value}"
+        except NameError:
+            print(f"❌ Main Exercise FAILED: Initial variable '{var_name}' not defined.")
+            main_passed = False
+        except AssertionError as e:
+            print(f"❌ Main Exercise FAILED: {e}")
+            main_passed = False
+
+    if not main_passed: return False # Stop if initial vars are wrong
+
+    expected_messages = {
+        "password_assessment_msg": "Weak password, requires immediate change",
+        "update_status_msg": "System is critically outdated",
+        "software_protection_msg": "System is partially protected",
+        "account_security_msg": "Admin account under attack"
+    }
+    for var_name, expected_msg in expected_messages.items():
+        try:
+            actual_msg = globals()[var_name] # Check if defined by user
+            assert actual_msg == expected_msg, f"Assessment message variable '{var_name}' incorrect. Expected '{expected_msg}', got '{actual_msg}'"
+        except NameError:
+            print(f"❌ Main Exercise FAILED: Result variable '{var_name}' not defined. Make sure to implement the logic and assign to this variable.")
+            main_passed = False
+        except AssertionError as e:
+            print(f"❌ Main Exercise FAILED: {e}")
+            main_passed = False
+
+    if main_passed:
+        print("✅ Main Exercise: All required message variables correctly assigned!")
+    else:
+        print("❌ Main Exercise: Some message variables incorrect or not defined.")
+    return main_passed
+
+def run_all_tests(): # Renamed from test_conditionals
     """Run all tests for Module 3."""
     warmup_success = test_warmup_exercises()
     main_success = test_main_exercise()
-    
+
     if warmup_success and main_success:
         print("\n✅ CONGRATULATIONS! All tests passed!")
         print("You've successfully mastered Python conditional statements!")
-        print("Ready for Module 4: Loops")
+        print("Ready for Module 4: Lists") # Updated from Loops to Lists
     else:
         print("\n📚 Keep practicing! Complete all exercises to proceed.")
         if not warmup_success:
-            print("- Finish the warm-up exercises first")
+            print("- Review warm-up exercises.")
         if not main_success:
-            print("- Complete the main security assessment exercise")
+            print("- Review main security assessment exercise.")
 
 # Run the tests
-test_conditionals()
+run_all_tests() # Updated call
 
 # ============================================================================
 # WHAT'S NEXT?
@@ -490,10 +492,10 @@ CYBERSECURITY SKILLS GAINED:
 - Access control logic implementation
 - Incident response automation basics
 
-NEXT MODULE: 04_loops.py
-In the next module, you'll learn about loops - the powerful feature that
-lets you automate repetitive tasks like scanning multiple IP addresses,
-processing log files, or checking system status across many servers!
+NEXT MODULE: 04_lists.py
+In the next module, you'll dive deep into lists - the versatile containers
+that allow you to manage collections of security data like IP addresses,
+user accounts, security alerts, and much more!
 
 You're building serious cybersecurity automation skills! 🛡️
 """
