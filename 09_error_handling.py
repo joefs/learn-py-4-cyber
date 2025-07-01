@@ -21,9 +21,65 @@ ERROR HANDLING CONCEPTS WE'LL COVER:
 - Custom exceptions for security scenarios
 - Best practices for robust cybersecurity tools
 """
+
+"""
+====================================================================
+MODULE 9: ERROR HANDLING - Building Robust Security Tools 🛡️
+====================================================================
+
+Welcome to the final module! You've learned all the core Python concepts.
+Now you'll master error handling - the critical skill that makes your
+cybersecurity tools robust, reliable, and ready for real-world deployment.
+
+WHAT IS ERROR HANDLING?
+Error handling lets your programs gracefully manage unexpected situations:
+network failures, missing files, invalid data, or system errors. In
+cybersecurity, robust error handling is essential because your tools must
+work reliably even when systems are under attack or compromised.
+
+ERROR HANDLING CONCEPTS WE'LL COVER:
+- Understanding different types of errors
+- try/except blocks for catching errors
+- Multiple exception types and specific handling
+- finally blocks for cleanup operations
+- Custom exceptions for security scenarios
+- Best practices for robust cybersecurity tools
+"""
 import datetime
 import random # For network simulation
 import os # For file operations in tests
+
+# ============================================================================
+# CONCEPT EXPLANATION: Types of Errors and Basic try/except
+# ============================================================================
+
+# print("Examples of common errors (handled safely):") # Removed as per plan
+try:
+    print(undefined_variable) # This will cause NameError, caught below
+except NameError as e:
+    print(f"NameError caught: {e}") # This print is for conceptual demo, keep.
+# ... (other conceptual error examples are fine as they print the error, not just headers)
+
+# Basic try/except structure - conceptual prints are fine
+def safe_division_conceptual(a, b):
+    try:
+        result = a / b
+        print(f"Division successful: {a} / {b} = {result}")
+        return result
+    except ZeroDivisionError:
+        print("❌ Error: Cannot divide by zero!")
+        return None
+    except TypeError:
+        print("❌ Error: Both arguments must be numbers!")
+        return None
+
+print("\nSafe division examples (conceptual):") # Added newline
+safe_division_conceptual(10, 2)
+safe_division_conceptual(10, 0)
+safe_division_conceptual(10, "a")
+
+# ... (Keep other conceptual blocks similarly, ensuring only headers/dividers are removed,
+# and conceptual demonstration prints are kept, adding newlines for readability if needed)
 
 # ============================================================================
 # WARM-UP EXERCISES: Practice Error Handling

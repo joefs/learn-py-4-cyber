@@ -20,6 +20,29 @@ FILE I/O CONCEPTS WE'LL COVER:
 - Working with CSV files for structured data
 - Processing common cybersecurity file formats
 """
+
+"""
+====================================================================
+MODULE 8: FILE INPUT/OUTPUT - Working with Security Data Files 📁
+====================================================================
+
+Welcome to Module 8! Functions help you organize code, but cybersecurity work
+involves lots of data stored in files: configuration files, log files,
+reports, and data exports. You'll learn to read, write, and process files
+that are essential for security administration.
+
+WHAT IS FILE I/O?
+File Input/Output (I/O) lets your programs interact with files on the system.
+In cybersecurity, you constantly work with files: reading configuration files,
+parsing log files, generating reports, and storing security data.
+
+FILE I/O CONCEPTS WE'LL COVER:
+- Opening and closing files safely
+- Reading files: full content, line by line
+- Writing files: creating and appending data
+- Working with CSV files for structured data
+- Processing common cybersecurity file formats
+"""
 import os
 import re
 from datetime import datetime
@@ -383,6 +406,7 @@ def run_all_tests():
 
 if __name__ == "__main__":
     run_all_tests()
+
 # ============================================================================
 # WHAT'S NEXT?
 # ============================================================================
