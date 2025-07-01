@@ -267,65 +267,63 @@ for service, info in network_monitoring_conceptual.items():
 # WARM-UP EXERCISES: Practice Using Dictionaries
 # ============================================================================
 
+# Initialize global variables for warmup outputs
+server_info_warmup1 = {}
+warmup2_username = ""
+warmup2_role = ""
+system_warmup3_modified = {}
+warmup4_firewall_exists = None
+warmup4_backup_exists = None
+
+
 # Exercise 1: Create a simple dictionary
 """
 PRACTICE: Basic Dictionary Creation
 
-Write a function `create_server_details()` that creates and returns a dictionary
-with the following key-value pairs:
+Create a dictionary with the following key-value pairs:
 - "name": "web-server"
 - "port": 80
 - "active": True
+Assign this dictionary to the global variable `server_info_warmup1`.
 """
-# TODO: Implement the function create_server_details
-def create_server_details():
-    pass
+# TODO: Create the dictionary and assign it to server_info_warmup1
 
 
 # Exercise 2: Access dictionary values
 """
 PRACTICE: Accessing Dictionary Values
 
-Write a function `get_user_info(user_dict)` that takes a dictionary `user_dict`
-(e.g., {"username": "admin", "role": "administrator", "logged_in": True}).
-The function should return a tuple containing the username and role: (username, role).
-If 'username' or 'role' keys are missing, use "N/A" for the respective value.
+Create a dictionary `user_warmup2 = {"username": "admin", "role": "administrator", "logged_in": True}`.
+Access the "username" and "role" from `user_warmup2`.
+Assign the username to the global variable `warmup2_username`.
+Assign the role to the global variable `warmup2_role`.
+Use .get() with a default value of "N/A" if a key might be missing.
 """
-# TODO: Implement the function get_user_info
-def get_user_info(user_dict):
-    pass
+# TODO: Create user_warmup2, access values, and assign to global vars
 
 
 # Exercise 3: Add new key-value pair
 """
 PRACTICE: Adding to Dictionaries
 
-Write a function `add_system_metric(metrics_dict, metric_name, metric_value)`
-that takes a dictionary `metrics_dict`, a `metric_name` string, and a `metric_value`.
-It should add/update the `metric_name` with `metric_value` in the dictionary.
-The function should return the modified dictionary.
-Example: add_system_metric({"cpu": 45}, "memory", 60) returns {"cpu": 45, "memory": 60}
+Create a dictionary `system_warmup3 = {"cpu": 45, "memory": 60}`.
+Add a new key-value pair "disk": 30 to `system_warmup3`.
+Assign the modified `system_warmup3` to the global variable `system_warmup3_modified`.
 """
-# TODO: Implement the function add_system_metric
-def add_system_metric(metrics_dict, metric_name, metric_value):
-    pass
+# TODO: Create system_warmup3, add the new pair, assign to system_warmup3_modified
 
 
 # Exercise 4: Check if key exists
 """
 PRACTICE: Checking Dictionary Keys
 
-Write a function `is_security_feature_enabled(config_dict, feature_name)`
-that takes a dictionary `config_dict` and a `feature_name` string.
-It should return True if `feature_name` exists as a key in `config_dict` AND its value is True.
-Otherwise, it should return False.
-Example: is_security_feature_enabled({"firewall": True, "antivirus": False}, "firewall") returns True
-         is_security_feature_enabled({"firewall": True, "antivirus": False}, "antivirus") returns False
-         is_security_feature_enabled({"firewall": True}, "backup") returns False
+Create a dictionary `config_warmup4 = {"firewall": True, "antivirus": True}`.
+Check if the key "firewall" exists in `config_warmup4` and assign the boolean result
+to the global variable `warmup4_firewall_exists`.
+Check if the key "backup" exists in `config_warmup4` and assign the boolean result
+to the global variable `warmup4_backup_exists`.
 """
-# TODO: Implement the function is_security_feature_enabled
-def is_security_feature_enabled(config_dict, feature_name):
-    pass
+# TODO: Create config_warmup4 and assign boolean check results to global vars
 
 
 # ============================================================================
@@ -365,26 +363,30 @@ Tools:
 TASK 4: SECURITY OPERATIONS (Modify the dictionaries created above)
 4.1. Add new user "david_manager" to `user_database`: "manager" role, last login "2023-10-02", 1 failed attempt, active.
 4.2. Update "bob_analyst" in `user_database`: reset "failed_attempts" to 0.
-4.3. Check if "eve_hacker" exists in `user_database`. Store boolean result in `eve_hacker_present`.
-4.4. Create `users_needing_attention`: a list of usernames from `user_database` with `failed_attempts > 0` OR `active` is False.
+4.3. Check if "eve_hacker" exists in `user_database`. Store boolean result in `main_eve_hacker_exists`.
+4.4. Create `main_users_needing_attention`: a list of usernames from `user_database` with `failed_attempts > 0` OR `active` is False.
 
 TASK 5: SYSTEM MONITORING OPERATIONS
-5.1. Create `high_cpu_systems_names`: a list of system names from `system_status` with `cpu_usage > 80%`.
+5.1. Create `main_high_cpu_systems`: a list of system names from `system_status` with `cpu_usage > 80%`.
 5.2. Update "web_server" in `system_status`: change its "status" to "optimal".
-5.3. Calculate `average_system_disk_usage`: average "disk_usage" of all systems. If no systems, 0.0.
-5.4. Create `systems_with_issues`: a list of system names from `system_status` where status is "warning" or "critical".
+5.3. Calculate `main_average_disk_usage`: average "disk_usage" of all systems. If no systems, 0.0.
+5.4. Create `main_attention_systems`: a list of system names from `system_status` where status is "warning" or "critical".
 
 TASK 6: SECURITY TOOLS ANALYSIS
-6.1. Create `active_security_tools_names`: a list of names of tools from `security_tools` that are "enabled".
-6.2. Find the tool with the most alerts (consider "alerts", "total_alerts", or "threats_found" - use the one that exists and is highest). Store its name in `tool_with_highest_alerts` (or None if no alerts).
+6.1. Create `main_enabled_tools`: a list of names of tools from `security_tools` that are "enabled".
+6.2. Find the tool with the most alerts (consider "alerts", "total_alerts", or "threats_found" - use the one that exists and is highest). Store its name in `main_tool_max_alerts` (or None if no alerts/tools).
 6.3. Update "ids" in `security_tools`: set "enabled" to True.
 
 TASK 7: COMPREHENSIVE SECURITY REPORT DATA
-Create `security_report_data` (a dictionary) with the following keys and calculated values:
-- "total_active_users": count of users where "active" is True.
-- "systems_in_critical_state": count of systems with "critical" status.
-- "ids_status_updated": boolean, True if IDS "enabled" is now True, False otherwise.
-- "users_to_investigate_count": length of `users_needing_attention`.
+Create `report_data_dict` (a dictionary) with the following keys and calculated values:
+- "total_active_users": count of users from `user_database` where "active" is True.
+- "critical_system_count": count of systems from `system_status` with "critical" status.
+- "ids_final_status_enabled": boolean, True if IDS "enabled" in `security_tools` is now True.
+- "attention_user_count": length of `main_users_needing_attention`.
+- "overall_system_health_string": A string like "EXCELLENT", "GOOD", "NEEDS ATTENTION" based on:
+    - "EXCELLENT": no critical systems, all tools enabled, all users active.
+    - "GOOD": <=1 critical system, >=2 tools enabled.
+    - "NEEDS ATTENTION": otherwise.
 """
 
 # YOUR CODE GOES HERE
@@ -400,24 +402,31 @@ Create `security_report_data` (a dictionary) with the following keys and calcula
 # PART 3: Create Security Tools Configuration
 # security_tools = ?
 
+# Initialize global variables for main exercise results from operations
+main_eve_hacker_exists = None
+main_users_needing_attention = []
+main_high_cpu_systems = []
+main_average_disk_usage = 0.0
+main_attention_systems = []
+main_enabled_tools = []
+main_tool_max_alerts = None
+report_data_dict = {}
+
+
 # PART 4: User Management Operations
-# Perform operations on user_database
-# eve_hacker_present = ?
-# users_needing_attention = ?
+# Perform operations on user_database defined in PART 1
+# Assign to main_eve_hacker_exists, main_users_needing_attention
 
 # PART 5: System Monitoring Operations
-# Perform operations on system_status
-# high_cpu_systems_names = ?
-# average_system_disk_usage = ?
-# systems_with_issues = ?
+# Perform operations on system_status defined in PART 2
+# Assign to main_high_cpu_systems, main_average_disk_usage, main_attention_systems
 
 # PART 6: Security Tools Analysis
-# Perform operations on security_tools
-# active_security_tools_names = ?
-# tool_with_highest_alerts = ?
+# Perform operations on security_tools defined in PART 3
+# Assign to main_enabled_tools, main_tool_max_alerts
 
 # PART 7: Comprehensive Security Report Data
-# security_report_data = ?
+# Populate report_data_dict
 
 
 # ============================================================================
@@ -428,38 +437,38 @@ print("\n" + "="*50)
 print("RUNNING TESTS...")
 print("="*50)
 
-def test_warmup_dictionaries():
-    """Test the warm-up dictionary functions."""
+def test_warmup_dictionaries(): # Renamed from test_dictionaries
+    """Test the warm-up dictionary exercises."""
     print("--- Testing Warm-up Exercises ---")
     passed_count = 0
     # Test 1
     try:
         expected = {"name": "web-server", "port": 80, "active": True}
-        assert create_server_details() == expected, "Warm-up 1 Failed"
+        assert server_info_warmup1 == expected, "Warmup 1 Failed"
         print("✅ Warm-up 1 PASSED")
         passed_count += 1
     except (NameError, AssertionError) as e: print(f"❌ Warm-up 1 FAILED: {e}")
     # Test 2
     try:
-        user_data = {"username": "admin", "role": "administrator"}
-        assert get_user_info(user_data) == ("admin", "administrator"), "Warm-up 2 Failed: Valid user"
-        assert get_user_info({"username": "guest"}) == ("guest", "N/A"), "Warm-up 2 Failed: Missing role"
+        assert warmup2_username == "admin", "Warmup 2 Failed: Username"
+        assert warmup2_role == "administrator", "Warmup 2 Failed: Role"
+        # Test .get() with missing key implicitly by checking default if user_warmup2 was empty
+        # For a direct test of .get(), the setup would need to ensure a key is missing.
+        # This test assumes user_warmup2 was created as specified.
         print("✅ Warm-up 2 PASSED")
         passed_count += 1
     except (NameError, AssertionError) as e: print(f"❌ Warm-up 2 FAILED: {e}")
     # Test 3
     try:
-        assert add_system_metric({"cpu": 45}, "memory", 60) == {"cpu": 45, "memory": 60}, "Warm-up 3 Failed: Add new"
-        assert add_system_metric({"cpu": 45}, "cpu", 55) == {"cpu": 55}, "Warm-up 3 Failed: Update existing"
+        expected_system = {"cpu": 45, "memory": 60, "disk": 30}
+        assert system_warmup3_modified == expected_system, "Warmup 3 Failed"
         print("✅ Warm-up 3 PASSED")
         passed_count += 1
     except (NameError, AssertionError) as e: print(f"❌ Warm-up 3 FAILED: {e}")
     # Test 4
     try:
-        config = {"firewall": True, "antivirus": False, "logging": True}
-        assert is_security_feature_enabled(config, "firewall") is True, "Warm-up 4 Failed: firewall True"
-        assert is_security_feature_enabled(config, "antivirus") is False, "Warm-up 4 Failed: antivirus False"
-        assert is_security_feature_enabled(config, "backup") is False, "Warm-up 4 Failed: backup missing"
+        assert warmup4_firewall_exists is True, "Warmup 4 Failed: Firewall check"
+        assert warmup4_backup_exists is False, "Warmup 4 Failed: Backup check"
         print("✅ Warm-up 4 PASSED")
         passed_count += 1
     except (NameError, AssertionError) as e: print(f"❌ Warm-up 4 FAILED: {e}")
@@ -467,16 +476,16 @@ def test_warmup_dictionaries():
     print(f"Warm-up Score: {passed_count}/4 passed.")
     return passed_count == 4
 
-def test_main_exercise_dictionaries():
+def test_main_exercise_dictionaries(): # Renamed
     """Test function to verify your main exercise dictionary operations are correct."""
     print("\n--- Testing Main Exercise ---")
     main_passed = True
 
     # Check initial dictionary creations (existence and basic structure)
     try:
-        assert isinstance(user_database, dict) and "alice_admin" in user_database
-        assert isinstance(system_status, dict) and "web_server" in system_status
-        assert isinstance(security_tools, dict) and "firewall" in security_tools
+        assert isinstance(user_database, dict) and "alice_admin" in user_database, "Initial user_database not correct."
+        assert isinstance(system_status, dict) and "web_server" in system_status, "Initial system_status not correct."
+        assert isinstance(security_tools, dict) and "firewall" in security_tools, "Initial security_tools not correct."
         print("✅ Initial Dictionaries: Basic structure OK.")
     except (NameError, AssertionError) as e:
         print(f"❌ ERROR: Initial dictionaries not defined or basic content wrong - {e}")
@@ -486,10 +495,9 @@ def test_main_exercise_dictionaries():
     try:
         assert "david_manager" in user_database and user_database["david_manager"]["role"] == "manager", "TASK 4.1: david_manager not added or incorrect."
         assert user_database["bob_analyst"]["failed_attempts"] == 0, "TASK 4.2: bob_analyst's failed_attempts not reset."
-        assert eve_hacker_present is False, "TASK 4.3: eve_hacker_present should be False."
-        # Expected: Charlie (5 failed), David (1 failed)
-        expected_attention = sorted(["charlie_guest", "david_manager"])
-        assert sorted(users_needing_attention) == expected_attention, f"TASK 4.4: users_needing_attention incorrect. Expected {expected_attention}, got {sorted(users_needing_attention)}."
+        assert main_eve_hacker_exists is False, "TASK 4.3: main_eve_hacker_exists should be False."
+        expected_attention_users = sorted(["charlie_guest", "david_manager"]) # Charlie (inactive, 5 attempts), David (1 attempt)
+        assert sorted(main_users_needing_attention) == expected_attention_users, f"TASK 4.4: main_users_needing_attention incorrect. Expected {expected_attention_users}, got {sorted(main_users_needing_attention)}."
         print("✅ TASK 4 (User Ops): PASSED")
     except (NameError, AssertionError, KeyError) as e:
         print(f"❌ TASK 4 (User Ops): FAILED - {e}")
@@ -497,12 +505,12 @@ def test_main_exercise_dictionaries():
 
     # TASK 5 Tests
     try:
-        assert sorted(high_cpu_systems_names) == sorted(["database_server"]), "TASK 5.1: high_cpu_systems_names incorrect."
+        assert sorted(main_high_cpu_systems) == sorted(["database_server"]), "TASK 5.1: main_high_cpu_systems incorrect."
         assert system_status["web_server"]["status"] == "optimal", "TASK 5.2: web_server status not updated."
-        # disk usages: web=45, db=70, backup=95. Sum=210. Avg=70.0
-        assert abs(average_system_disk_usage - 70.0) < 0.001, f"TASK 5.3: average_system_disk_usage incorrect. Expected 70.0, Got {average_system_disk_usage}"
-        expected_issues = sorted(["database_server", "backup_server"])
-        assert sorted(systems_with_issues) == expected_issues, "TASK 5.4: systems_with_issues incorrect."
+        expected_avg_disk = (45 + 70 + 95) / 3
+        assert abs(main_average_disk_usage - expected_avg_disk) < 0.001, f"TASK 5.3: main_average_disk_usage incorrect. Expected {expected_avg_disk}, Got {main_average_disk_usage}"
+        expected_issues_systems = sorted(["database_server", "backup_server"])
+        assert sorted(main_attention_systems) == expected_issues_systems, "TASK 5.4: main_attention_systems incorrect."
         print("✅ TASK 5 (System Monitoring): PASSED")
     except (NameError, AssertionError, KeyError, TypeError) as e:
         print(f"❌ TASK 5 (System Monitoring): FAILED - {e}")
@@ -510,11 +518,11 @@ def test_main_exercise_dictionaries():
 
     # TASK 6 Tests
     try:
-        assert security_tools["ids"]["enabled"] is True, "TASK 6.3: IDS 'enabled' status not updated to True." # Check update first
-        expected_active_tools = sorted(["firewall", "antivirus", "ids"]) # After update
-        assert sorted(active_security_tools_names) == expected_active_tools, "TASK 6.1: active_security_tools_names incorrect."
-        # Firewall: 3, Antivirus: 0 (threats_found), IDS: 12 (total_alerts)
-        assert tool_with_highest_alerts == "ids", f"TASK 6.2: tool_with_highest_alerts incorrect. Expected 'ids', got {tool_with_highest_alerts}."
+        assert security_tools["ids"]["enabled"] is True, "TASK 6.3: IDS 'enabled' status not updated to True."
+        expected_active_tools_after_update = sorted(["firewall", "antivirus", "ids"])
+        assert sorted(main_enabled_tools) == expected_active_tools_after_update, "TASK 6.1: main_enabled_tools incorrect."
+        # Firewall: 3 alerts, Antivirus: 0 threats_found, IDS: 12 total_alerts
+        assert main_tool_max_alerts == "ids", f"TASK 6.2: main_tool_max_alerts incorrect. Expected 'ids', got {main_tool_max_alerts}."
         print("✅ TASK 6 (Security Tools): PASSED")
     except (NameError, AssertionError, KeyError) as e:
         print(f"❌ TASK 6 (Security Tools): FAILED - {e}")
@@ -522,14 +530,16 @@ def test_main_exercise_dictionaries():
 
     # TASK 7 Tests
     try:
-        assert isinstance(security_report_data, dict), "TASK 7: security_report_data should be a dictionary."
-        # Expected: Alice, Bob, David are active = 3
-        assert security_report_data.get("total_active_users") == 3, "TASK 7: total_active_users incorrect."
-        # Expected: backup_server
-        assert security_report_data.get("systems_in_critical_state") == 1, "TASK 7: systems_in_critical_state incorrect."
-        assert security_report_data.get("ids_status_updated") is True, "TASK 7: ids_status_updated incorrect."
-        # Expected: Charlie, David
-        assert security_report_data.get("users_to_investigate_count") == 2, "TASK 7: users_to_investigate_count incorrect."
+        assert isinstance(report_data_dict, dict), "TASK 7: report_data_dict should be a dictionary."
+        # Active users: alice, bob, david = 3
+        assert report_data_dict.get("total_active_users") == 3, "TASK 7: total_active_users incorrect."
+        # Critical systems: backup_server = 1
+        assert report_data_dict.get("systems_in_critical_state") == 1, "TASK 7: systems_in_critical_state incorrect."
+        assert report_data_dict.get("ids_status_updated") is True, "TASK 7: ids_status_updated incorrect."
+        # Attention users: charlie, david = 2
+        assert report_data_dict.get("attention_user_count") == 2, "TASK 7: attention_user_count incorrect."
+        # Based on current state: 1 critical system, 3 tools enabled, 1 inactive user (Charlie) -> NEEDS ATTENTION
+        assert report_data_dict.get("overall_system_health_string") == "NEEDS ATTENTION", "TASK 7: overall_system_health_string incorrect."
         print("✅ TASK 7 (Report Data): PASSED")
     except (NameError, AssertionError, KeyError, TypeError) as e:
         print(f"❌ TASK 7 (Report Data): FAILED - {e}")
@@ -541,7 +551,7 @@ def test_main_exercise_dictionaries():
         print("\n❌ MAIN EXERCISE: Some core logic tests failed.")
     return main_passed
 
-def run_all_tests():
+def run_all_tests(): # Renamed
     warmup_ok = test_warmup_dictionaries()
     main_ok = test_main_exercise_dictionaries()
 
@@ -553,7 +563,7 @@ def run_all_tests():
         print("\n📚 Keep practicing! Review the failed tests or messages above.")
 
 # Run the tests
-run_all_tests()
+run_all_tests() # Renamed
 
 # ============================================================================
 # WHAT'S NEXT?

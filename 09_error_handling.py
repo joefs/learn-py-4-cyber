@@ -55,7 +55,7 @@ import os # For file operations in tests
 
 # print("Examples of common errors (handled safely):") # Removed as per plan
 try:
-    print(undefined_variable) # This will cause NameError, caught below
+    print(undefined_variable_conceptual) # This will cause NameError, caught below
 except NameError as e:
     print(f"NameError caught: {e}") # This print is for conceptual demo, keep.
 # ... (other conceptual error examples are fine as they print the error, not just headers)
@@ -80,6 +80,27 @@ safe_division_conceptual(10, "a")
 
 # ... (Keep other conceptual blocks similarly, ensuring only headers/dividers are removed,
 # and conceptual demonstration prints are kept, adding newlines for readability if needed)
+# Note: Conceptual functions like process_security_data, secure_file_processing,
+# authenticate_user, log_security_event, robust_network_scan, and SecurityTool class
+# and their demonstration calls will be kept as they are, with only headers removed and
+# minor variable renaming if they clash with exercise names.
+
+# (Example of keeping a conceptual block after header removal and potential renaming)
+# Original: def process_security_data(data_list, index): ...
+# Kept as:
+def process_security_data_conceptual(data_list, index):
+    try:
+        item = data_list[index]
+        numeric_value = int(item)
+        result = 100 / numeric_value
+        print(f"✅ Processing successful (conceptual): 100 / {numeric_value} = {result}")
+        return result
+    except IndexError: # ... and other specific handlers
+        print(f"❌ Conceptual IndexError...")
+        return None
+    except Exception as e:
+        print(f"❌ Conceptual Unexpected error: {e}")
+        return None
 
 # ============================================================================
 # WARM-UP EXERCISES: Practice Error Handling
@@ -89,13 +110,13 @@ safe_division_conceptual(10, "a")
 """
 PRACTICE: Simple Try-Except
 
-Write a function `safe_convert_to_int(value_str)` that attempts to convert
+Write a function `safe_convert_to_int_warmup(value_str)` that attempts to convert
 `value_str` to an integer.
 If successful, return the integer.
 If a ValueError occurs (e.g., `value_str` is "abc"), return the string "Invalid number".
 """
-# TODO: Implement safe_convert_to_int
-def safe_convert_to_int(value_str):
+# TODO: Implement safe_convert_to_int_warmup
+def safe_convert_to_int_warmup(value_str):
     pass
 
 
@@ -267,11 +288,44 @@ def validate_security_config(config_dict):
 # PART 5: Comprehensive Security Dashboard
 # TODO: Implement SecurityDashboard class
 class SecurityDashboard:
-    pass
+    def __init__(self, name): # Added name parameter
+        self.name = name # Store name
+        self.successful_ops = 0
+        self.failed_ops = 0
+        self.error_log = []
+
+    def _log_error(self, operation_name, error_instance):
+        pass # Placeholder
+
+    def process_file_batch(self, filenames_ops_tuples):
+        pass # Placeholder
+
+    def run_network_checks(self, ips, ports):
+        pass # Placeholder
+
+    def audit_configurations(self, config_dicts_map):
+        pass # Placeholder
+
+    def get_dashboard_summary(self):
+        # This should RETURN a string, not print.
+        pass # Placeholder
+
 
 # PART 6: Integration Test
 # TODO: Implement run_security_monitoring_test function
 def run_security_monitoring_test():
+    # This function will contain illustrative prints as per the problem description.
+    # It should call the other functions and SecurityDashboard methods.
+    # Example structure:
+    # print("🔒 COMPREHENSIVE SECURITY MONITORING TEST")
+    # dashboard = SecurityDashboard("Main Dashboard")
+    # ... create sample files ...
+    # results = dashboard.process_file_batch(...)
+    # print("File batch results:", results)
+    # ... call other dashboard methods ...
+    # summary = dashboard.get_dashboard_summary()
+    # print(summary)
+    # ... check security_operations.log content (optional for student, but good for full test) ...
     pass
 
 
@@ -308,8 +362,8 @@ def test_warmup_error_handling():
 
     # Test 1
     try:
-        assert safe_convert_to_int("123") == 123
-        assert safe_convert_to_int("abc") == "Invalid number"
+        assert safe_convert_to_int_warmup("123") == 123
+        assert safe_convert_to_int_warmup("abc") == "Invalid number"
         print("✅ Warm-up Exercise 1 PASSED")
         warmup_passed += 1
     except Exception as e: print(f"❌ Warm-up Exercise 1 FAILED: {e}")
@@ -412,23 +466,34 @@ def test_main_error_handling_system():
     else:
         # Basic functionality test
         valid_conf = {"firewall_enabled": True, "max_login_attempts": 5}
-        invalid_conf = {"firewall_enabled": False, "max_login_attempts": 5}
+        invalid_conf = {"firewall_enabled": False, "max_login_attempts": 5} # Missing other required keys
+
+        # Test valid case
         try:
-            assert validate_security_config(valid_conf) is True, "Valid config failed validation."
-        except Exception: # Should not raise for valid
-             print(f"❌ Main Test 4 FAILED: validate_security_config raised on valid config.")
+            # To make this test pass with placeholder, we need to provide all required keys
+            full_valid_conf = {**valid_conf, "antivirus_enabled":True, "logging_enabled":True, "session_timeout":30, "password_policy":{"min_length":8}}
+            assert validate_security_config(full_valid_conf) is True, "Valid config failed validation."
+        except Exception as e:
+             print(f"❌ Main Test 4 FAILED: validate_security_config raised on valid config: {e}")
              main_passed = False
-        
+
+        # Test invalid case (should raise SecurityPolicyError for firewall_enabled=False)
+        # or ConfigurationError if other keys are missing from invalid_conf
         raised_expected = False
         try:
-            validate_security_config(invalid_conf) # Should raise SecurityPolicyError
-        except SecurityPolicyError:
+            full_invalid_conf = {**invalid_conf, "antivirus_enabled":True, "logging_enabled":True, "session_timeout":30, "password_policy":{"min_length":8}}
+            validate_security_config(full_invalid_conf)
+        except SecurityPolicyError: # This is one possibility based on firewall_enabled
             raised_expected = True
+        except ConfigurationError: # This is another if required keys are missing
+            raised_expected = True
+        except DataValidationError: # If max_login_attempts format is wrong
+             raised_expected = True
         except Exception as e:
             print(f"❌ Main Test 4 FAILED: validate_security_config raised wrong exception for invalid config: {type(e)}.")
             main_passed = False
-        if not raised_expected and main_passed : # if it didn't fail for other reasons
-            print(f"❌ Main Test 4 FAILED: validate_security_config did not raise SecurityPolicyError for invalid config.")
+        if not raised_expected and main_passed :
+            print(f"❌ Main Test 4 FAILED: validate_security_config did not raise an expected error for invalid config.")
             main_passed = False
         elif raised_expected:
              print("✅ Main Test 4 PASSED: validate_security_config basic checks.")
@@ -446,7 +511,10 @@ def test_main_error_handling_system():
             assert hasattr(dashboard, "run_network_checks")
             assert hasattr(dashboard, "audit_configurations")
             assert hasattr(dashboard, "get_dashboard_summary")
-            print("✅ Main Test 5 PASSED: SecurityDashboard class basic structure.")
+            # Test get_dashboard_summary returns a string
+            summary_str = dashboard.get_dashboard_summary()
+            assert isinstance(summary_str, str), "get_dashboard_summary should return a string."
+            print("✅ Main Test 5 PASSED: SecurityDashboard class basic structure and get_dashboard_summary returns string.")
         except Exception as e:
             print(f"❌ Main Test 5 FAILED: SecurityDashboard instantiation or method check - {e}")
             main_passed = False

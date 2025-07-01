@@ -18,6 +18,8 @@ TYPES OF LOOPS WE'LL COVER:
 - Loop control: break and continue statements
 """
 
+import random # Moved to top of the file
+
 # ============================================================================
 # CONCEPT EXPLANATION: Basic FOR Loops
 # ============================================================================
@@ -159,7 +161,7 @@ for server in servers:
     print(f"Scanning {server}...")
 
     # Simulate finding vulnerabilities (random for demo)
-    import random # This import is fine here for a conceptual example
+    # import random # Moved to top
     vuln_count = random.randint(0, 3)
     vulnerabilities_found += vuln_count
 
@@ -171,8 +173,8 @@ for server in servers:
 print(f"Scan complete. Total vulnerabilities: {vulnerabilities_found}")
 
 # Brute force detection simulation
-failed_attempts_dict = {} # Renamed to avoid conflict with a common variable name
-login_attempts_list = [ # Renamed to avoid conflict
+failed_attempts_dict = {} # Renamed to avoid conflict
+login_attempts_list = [ # Renamed
     ("user1", "192.168.1.100"),
     ("admin", "203.0.113.42"),
     ("admin", "203.0.113.42"),
@@ -199,66 +201,56 @@ for username, ip_address in login_attempts_list:
 # WARM-UP EXERCISES: Practice Using Loops
 # ============================================================================
 
+# Initialize global variables for warmup outputs
+warmup1_output_list = []
+warmup2_output_list = []
+warmup3_output_list = []
+warmup4_output_list = []
+
 # Exercise 1: Simple for loop with range
 """
 PRACTICE: Basic For Loop
 
-Write a function `generate_system_check_messages()` that uses a for loop
-to generate a list of strings. For numbers 1 through 3 (inclusive),
-it should add "Checking system X" (where X is the number) to the list.
-The function should return this list.
-Example: ["Checking system 1", "Checking system 2", "Checking system 3"]
+Use a for loop to iterate through numbers 1 through 3 (inclusive).
+For each number, create a string "Checking system X" (where X is the number)
+and add it to the global list `warmup1_output_list`.
 """
-# TODO: Implement the function generate_system_check_messages
-def generate_system_check_messages():
-    pass
+# TODO: Create for loop with range(1, 4) and append messages to warmup1_output_list
 
 
 # Exercise 2: Loop through a simple list
 """
 PRACTICE: Loop Through List
 
-Write a function `generate_server_check_messages(server_list)` that takes a
-list of server names. It should return a new list where each item is
-"Checking [server_name] server".
-Example: generate_server_check_messages(["web", "mail"]) should return
-         ["Checking web server", "Checking mail server"]
+Create a list called `servers_warmup2 = ["web", "mail", "file"]`.
+Use a for loop to iterate through `servers_warmup2`. For each server,
+create a string "Checking [server] server" and add it to the global list
+`warmup2_output_list`.
 """
-# TODO: Implement the function generate_server_check_messages
-def generate_server_check_messages(server_list):
-    pass
+# TODO: Create servers_warmup2 list and for loop, append messages to warmup2_output_list
 
 
 # Exercise 3: Simple while loop
 """
 PRACTICE: Basic While Loop
 
-Write a function `simulate_security_scans(max_scans)` that takes an integer.
-It should simulate performing security scans up to `max_scans`.
-The function should return a list of strings, where each string is
-"Security scan X" (X being the scan number, starting from 1 up to `max_scans`).
-Example: simulate_security_scans(3) should return
-         ["Security scan 1", "Security scan 2", "Security scan 3"]
+Initialize a variable `count_warmup3 = 1`.
+Use a while loop that continues as long as `count_warmup3` is less than 4.
+Inside the loop, create a string "Security scan X" (where X is `count_warmup3`)
+and add it to the global list `warmup3_output_list`. Increment `count_warmup3`.
 """
-# TODO: Implement the function simulate_security_scans
-def simulate_security_scans(max_scans):
-    pass
+# TODO: Create while loop, append messages to warmup3_output_list
 
 
 # Exercise 4: Loop with if condition
 """
 PRACTICE: Loop with Conditional
 
-Write a function `check_ports_status(port_list)` that takes a list of port numbers.
-It should return a new list containing strings describing each port.
-If a port is 22, add "SSH port found".
-For other ports, add "Port [number] checked".
-Example: check_ports_status([22, 80, 443]) should return
-         ["SSH port found", "Port 80 checked", "Port 443 checked"]
+Create a list `ports_warmup4 = [22, 80, 443, 3389]`.
+Loop through `ports_warmup4`. If a port is 22, add "SSH port found" to the
+global list `warmup4_output_list`. For other ports, add "Port [number] checked".
 """
-# TODO: Implement the function check_ports_status
-def check_ports_status(port_list):
-    pass
+# TODO: Create list and loop with if condition, append messages to warmup4_output_list
 
 
 # ============================================================================
@@ -271,72 +263,78 @@ You are implementing an automated security monitoring system that performs regul
 checks across multiple security domains. The system needs to process lists of data
 and perform repetitive security validation tasks.
 
+For each task, you will process the initial data and store your results in the
+specified global variables.
+
 TASK 1: SECURITY SERVICE MONITORING
-Define `critical_services = ["firewall", "antivirus", "backup", "logging"]`.
-Define `running_services = {"firewall", "antivirus"}` (a set for efficient lookup).
-Create a function `get_service_statuses(critical_services_list, services_currently_running_set)`
-that returns a list of dictionaries, where each dictionary represents a service and its status:
-`[{"service": "firewall", "status": "running"}, {"service": "backup", "status": "stopped"}, ...]`.
+Initial data:
+  `critical_services = ["firewall", "antivirus", "backup", "logging"]`
+  `running_services = {"firewall", "antivirus"}` (a set for efficient lookup)
+Task:
+  Iterate through `critical_services`. For each service, check if it's in
+  `running_services`.
+  Store the results in a global list called `service_status_results`. This list
+  should contain dictionaries, e.g.,
+  `[{"service": "firewall", "status": "running"}, {"service": "backup", "status": "stopped"}, ...]`.
 
 TASK 2: IP ACCESS CONTROL VALIDATION
-Define `ip_whitelist = ["192.168.1.1", "10.0.0.1", "172.16.0.1"]`.
-Define `connection_attempts = ["192.168.1.1", "203.0.113.42", "10.0.0.1", "198.51.100.1", "172.16.0.1"]`.
-Create a function `validate_ip_connections(whitelist, attempts_list)` that returns a list of
-dictionaries: `[{"ip": "192.168.1.1", "status": "allowed"}, {"ip": "203.0.113.42", "status": "blocked"}, ...]`.
+Initial data:
+  `ip_whitelist = ["192.168.1.1", "10.0.0.1", "172.16.0.1"]`
+  `connection_attempts = ["192.168.1.1", "203.0.113.42", "10.0.0.1", "198.51.100.1", "172.16.0.1"]`
+Task:
+  Iterate through `connection_attempts`. For each IP, check if it's in `ip_whitelist`.
+  Store the results in a global list called `ip_validation_results`. This list should
+  contain dictionaries, e.g.,
+  `[{"ip": "192.168.1.1", "status": "allowed"}, {"ip": "203.0.113.42", "status": "blocked"}, ...]`.
 
 TASK 3: USER LOGIN PATTERN ANALYSIS
-Define `recent_logins = ["admin", "user1", "guest", "admin", "user2", "admin"]`.
-Create a function `analyze_login_patterns(logins_list)` that returns two items:
-1. A dictionary `login_counts` where keys are usernames and values are their login counts.
-   (e.g., `{"admin": 3, "user1": 1, ...}`)
-2. A list `high_activity_users` containing usernames of users who logged in more than 2 times.
+Initial data:
+  `recent_logins = ["admin", "user1", "guest", "admin", "user2", "admin"]`
+Task:
+  1. Create a global dictionary `user_login_counts` to store login counts for each user.
+     Iterate through `recent_logins` and populate this dictionary.
+  2. Create a global list `high_activity_users_list` containing usernames of users
+     who logged in more than 2 times (based on `user_login_counts`).
 
 TASK 4: CONTINUOUS MONITORING CYCLES
-Create a function `simulate_monitoring_cycles(num_cycles)` that simulates `num_cycles`
-monitoring cycles. Odd-numbered cycles perform "Quick security check", and even-numbered
-cycles perform "Deep security scan".
-The function should return a list of strings describing the action for each cycle.
-(e.g., `["Cycle 1: Quick security check", "Cycle 2: Deep security scan", ...]`)
-
-You will need to call these functions with the provided data and store their results
-in variables like `service_status_results`, `ip_validation_results`,
-`user_login_counts`, `high_activity_users_list`, and `monitoring_actions_list`.
+Task:
+  Simulate 3 monitoring cycles (i.e., loop 3 times, for cycles 1, 2, and 3).
+  Odd-numbered cycles perform a "Quick security check".
+  Even-numbered cycles perform a "Deep security scan".
+  Store a list of strings describing the action for each cycle in a global list
+  called `monitoring_actions_list`.
+  (e.g., `["Cycle 1: Quick security check", "Cycle 2: Deep security scan", ...]`)
 """
 
 # YOUR CODE GOES HERE
 # ============================================================================
 
-# PART 1: Define initial data lists
+# PART 1: Define initial data lists (already provided for the main exercise)
 critical_services = ["firewall", "antivirus", "backup", "logging"]
-running_services = {"firewall", "antivirus"} # Using a set for efficient lookup
+running_services = {"firewall", "antivirus"}
 ip_whitelist = ["192.168.1.1", "10.0.0.1", "172.16.0.1"]
 connection_attempts = ["192.168.1.1", "203.0.113.42", "10.0.0.1", "198.51.100.1", "172.16.0.1"]
 recent_logins = ["admin", "user1", "guest", "admin", "user2", "admin"]
 
-# PART 2: Implement the required functions
+# Initialize global variables for main exercise results
+service_status_results = []
+ip_validation_results = []
+user_login_counts = {}
+high_activity_users_list = []
+monitoring_actions_list = []
 
-# TODO: Implement get_service_statuses
-def get_service_statuses(critical_services_list, services_currently_running_set):
-    pass
+# PART 2: Implement loop-based logic to populate the global result variables
 
-# TODO: Implement validate_ip_connections
-def validate_ip_connections(whitelist, attempts_list):
-    pass
+# TODO: TASK 1: Security Service Monitoring - Populate service_status_results
 
-# TODO: Implement analyze_login_patterns
-def analyze_login_patterns(logins_list):
-    pass
 
-# TODO: Implement simulate_monitoring_cycles
-def simulate_monitoring_cycles(num_cycles):
-    pass
+# TODO: TASK 2: IP Access Control Validation - Populate ip_validation_results
 
-# PART 3: Call functions and store results
-# TODO: Call your functions here and store their results
-# service_status_results = ?
-# ip_validation_results = ?
-# user_login_counts, high_activity_users_list = ? # Unpack results from analyze_login_patterns
-# monitoring_actions_list = ?
+
+# TODO: TASK 3: User Login Pattern Analysis - Populate user_login_counts and high_activity_users_list
+
+
+# TODO: TASK 4: Continuous Monitoring Cycles - Populate monitoring_actions_list
 
 
 # ============================================================================
@@ -355,34 +353,36 @@ def test_warmup_loops():
     # Test 1
     try:
         expected1 = ["Checking system 1", "Checking system 2", "Checking system 3"]
-        assert generate_system_check_messages() == expected1, "Warm-up 1 FAILED"
+        assert warmup1_output_list == expected1, "Warmup 1 FAILED"
         print("✅ Warm-up 1 PASSED")
         passed_count +=1
-    except (NameError, AssertionError) as e: print(f"❌ Warm-up 1 FAILED: {e}")
+    except (NameError, AssertionError) as e: print(f"❌ Warm-up 1 FAILED: {e}. Did you assign to 'warmup1_output_list'?")
 
     # Test 2
     try:
-        expected2 = ["Checking web server", "Checking mail server"]
-        assert generate_server_check_messages(["web", "mail"]) == expected2, "Warm-up 2 FAILED"
+        expected2 = ["Checking web server", "Checking mail server", "Checking file server"]
+        # This assumes user created servers_warmup2 = ["web", "mail", "file"] in their code for Ex2
+        assert warmup2_output_list == expected2, "Warmup 2 FAILED" # User needs to define servers_warmup2
         print("✅ Warm-up 2 PASSED")
         passed_count +=1
-    except (NameError, AssertionError) as e: print(f"❌ Warm-up 2 FAILED: {e}")
+    except (NameError, AssertionError) as e: print(f"❌ Warm-up 2 FAILED: {e}. Did you assign to 'warmup2_output_list' and define 'servers_warmup2'?")
 
     # Test 3
     try:
         expected3 = ["Security scan 1", "Security scan 2", "Security scan 3"]
-        assert simulate_security_scans(3) == expected3, "Warm-up 3 FAILED"
+        assert warmup3_output_list == expected3, "Warmup 3 FAILED"
         print("✅ Warm-up 3 PASSED")
         passed_count +=1
-    except (NameError, AssertionError) as e: print(f"❌ Warm-up 3 FAILED: {e}")
+    except (NameError, AssertionError) as e: print(f"❌ Warm-up 3 FAILED: {e}. Did you assign to 'warmup3_output_list'?")
 
     # Test 4
     try:
-        expected4 = ["SSH port found", "Port 80 checked", "Port 3389 checked"]
-        assert check_ports_status([22, 80, 3389]) == expected4, "Warm-up 4 FAILED"
+        expected4 = ["SSH port found", "Port 80 checked", "Port 443 checked", "Port 3389 checked"]
+        # Assumes user created ports_warmup4 = [22, 80, 443, 3389]
+        assert warmup4_output_list == expected4, "Warmup 4 FAILED" # User needs to define ports_warmup4
         print("✅ Warm-up 4 PASSED")
         passed_count +=1
-    except (NameError, AssertionError) as e: print(f"❌ Warm-up 4 FAILED: {e}")
+    except (NameError, AssertionError) as e: print(f"❌ Warm-up 4 FAILED: {e}. Did you assign to 'warmup4_output_list' and define 'ports_warmup4'?")
 
     print(f"Warm-up Score: {passed_count}/4 passed.")
     return passed_count == 4
@@ -392,69 +392,59 @@ def test_main_exercise_loops():
     print("\n--- Testing Main Exercise ---")
     main_passed = True
 
-    # Check initial data lists are defined correctly
+    # Check initial data lists are defined correctly (they are defined globally in the template)
     try:
         assert critical_services == ["firewall", "antivirus", "backup", "logging"]
         assert running_services == {"firewall", "antivirus"}
-        assert ip_whitelist == ["192.168.1.1", "10.0.0.1", "172.16.0.1"]
-        assert connection_attempts == ["192.168.1.1", "203.0.113.42", "10.0.0.1", "198.51.100.1", "172.16.0.1"]
-        assert recent_logins == ["admin", "user1", "guest", "admin", "user2", "admin"]
-        print("✅ Initial data lists defined correctly.")
+        # ... (other initial data checks are implicitly covered by testing their use)
+        print("✅ Initial data lists seem OK.")
     except (NameError, AssertionError) as e:
         print(f"❌ ERROR: Initial data lists not defined correctly or have wrong values - {e}")
-        return False # Cannot proceed if data is wrong
+        return False
 
-    # Test get_service_statuses
+    # Test TASK 1: Security Service Monitoring
     try:
-        global service_status_results # Make it accessible for tests
-        service_status_results = get_service_statuses(critical_services, running_services)
         expected_statuses = [
             {"service": "firewall", "status": "running"}, {"service": "antivirus", "status": "running"},
             {"service": "backup", "status": "stopped"}, {"service": "logging", "status": "stopped"}
         ]
-        assert service_status_results == expected_statuses, "Service statuses incorrect."
+        assert service_status_results == expected_statuses, "TASK 1: Service statuses incorrect."
         print("✅ TASK 1 (Service Statuses): PASSED")
-    except (NameError, AssertionError, TypeError) as e: # Added TypeError for uncallable
-        print(f"❌ TASK 1 (Service Statuses): FAILED - {e}")
+    except (NameError, AssertionError) as e:
+        print(f"❌ TASK 1 (Service Statuses): FAILED - {e}. Is 'service_status_results' populated correctly?")
         main_passed = False
 
-    # Test validate_ip_connections
+    # Test TASK 2: IP Access Control Validation
     try:
-        global ip_validation_results # Make it accessible
-        ip_validation_results = validate_ip_connections(ip_whitelist, connection_attempts)
         expected_ip_results = [
             {"ip": "192.168.1.1", "status": "allowed"}, {"ip": "203.0.113.42", "status": "blocked"},
             {"ip": "10.0.0.1", "status": "allowed"}, {"ip": "198.51.100.1", "status": "blocked"},
             {"ip": "172.16.0.1", "status": "allowed"}
         ]
-        assert ip_validation_results == expected_ip_results, "IP validation results incorrect."
+        assert ip_validation_results == expected_ip_results, "TASK 2: IP validation results incorrect."
         print("✅ TASK 2 (IP Validation): PASSED")
-    except (NameError, AssertionError, TypeError) as e:
-        print(f"❌ TASK 2 (IP Validation): FAILED - {e}")
+    except (NameError, AssertionError) as e:
+        print(f"❌ TASK 2 (IP Validation): FAILED - {e}. Is 'ip_validation_results' populated correctly?")
         main_passed = False
 
-    # Test analyze_login_patterns
+    # Test TASK 3: User Login Pattern Analysis
     try:
-        global user_login_counts, high_activity_users_list # Make them accessible
-        user_login_counts, high_activity_users_list = analyze_login_patterns(recent_logins)
         expected_login_counts = {"admin": 3, "user1": 1, "guest": 1, "user2": 1}
         expected_high_activity = ["admin"]
-        assert user_login_counts == expected_login_counts, "User login counts incorrect."
-        assert sorted(high_activity_users_list) == sorted(expected_high_activity), "High activity users list incorrect."
+        assert user_login_counts == expected_login_counts, "TASK 3: User login counts incorrect."
+        assert sorted(high_activity_users_list) == sorted(expected_high_activity), "TASK 3: High activity users list incorrect."
         print("✅ TASK 3 (Login Patterns): PASSED")
-    except (NameError, AssertionError, TypeError, ValueError) as e: # Added ValueError for unpacking issues
-        print(f"❌ TASK 3 (Login Patterns): FAILED - {e}")
+    except (NameError, AssertionError) as e:
+        print(f"❌ TASK 3 (Login Patterns): FAILED - {e}. Are 'user_login_counts' and 'high_activity_users_list' populated correctly?")
         main_passed = False
 
-    # Test simulate_monitoring_cycles
+    # Test TASK 4: Continuous Monitoring Cycles
     try:
-        global monitoring_actions_list # Make it accessible
-        monitoring_actions_list = simulate_monitoring_cycles(3)
         expected_actions = ["Cycle 1: Quick security check", "Cycle 2: Deep security scan", "Cycle 3: Quick security check"]
-        assert monitoring_actions_list == expected_actions, "Monitoring cycle actions incorrect."
+        assert monitoring_actions_list == expected_actions, "TASK 4: Monitoring cycle actions incorrect."
         print("✅ TASK 4 (Monitoring Cycles): PASSED")
-    except (NameError, AssertionError, TypeError) as e:
-        print(f"❌ TASK 4 (Monitoring Cycles): FAILED - {e}")
+    except (NameError, AssertionError) as e:
+        print(f"❌ TASK 4 (Monitoring Cycles): FAILED - {e}. Is 'monitoring_actions_list' populated correctly?")
         main_passed = False
 
     if main_passed:
